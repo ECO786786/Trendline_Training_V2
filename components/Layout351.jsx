@@ -1,0 +1,124 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+export default function Layout351() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 992);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const features = [
+    {
+      number: "01",
+      title: "Real implementation",
+      heading: "ROI you can see",
+      description:
+        "Better dashboards. Faster decisions. Lower costs. We track what matters and show you the impact.",
+      image: "/images/different-01.jpg",
+    },
+    {
+      number: "02",
+      title: "Local expertise",
+      heading: "Market knowledge",
+      description:
+        "We understand Zambian business challenges and regulatory requirements. Our solutions are built for your context.",
+      image: "/images/different-02.jpg",
+    },
+    {
+      number: "03",
+      title: "Hands-on training",
+      heading: "Skills that stick",
+      description:
+        "No theory-only sessions. We train your teams to use the tools and make decisions independently.",
+      image: "/images/different-03.jpg",
+    },
+    {
+      number: "04",
+      title: "Measurable results",
+      heading: "Results",
+      description:
+        "We measure success by business impact, not deliverables. Every engagement includes clear KPIs.",
+      image: "/images/different-04.jpg",
+    },
+  ];
+
+  return (
+    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="mb-12 w-full max-w-[768px] md:mb-18 lg:mb-20">
+          <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
+            Why we&apos;re different
+          </p>
+          <h2 className="mb-5 text-[52px] font-medium leading-[120%] font-heading">
+            Why organizations choose Trendline
+          </h2>
+          <p className="md:text-md font-body font-normal">
+            We combine deep Zambian market knowledge with global analytics
+            standards. Our approach is hands on, results driven, and built for
+            organizations that need data to work harder.
+          </p>
+        </div>
+        <div className="flex w-full flex-col overflow-hidden border-b border-l border-r border-border-primary lg:h-[90vh] lg:flex-row lg:border-r-0 lg:border-t font-heading">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="flex flex-col justify-start overflow-hidden lg:h-[90vh] lg:flex-row lg:border-r lg:border-border-primary transition-all duration-500 ease-in-out"
+              style={{
+                width: isMobile
+                  ? "100%"
+                  : activeIndex === index
+                  ? "100%"
+                  : "5rem",
+              }}
+            >
+              <div
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium"
+                onMouseEnter={() => setActiveIndex(index)}
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                <p className="absolute left-6 whitespace-nowrap text-xl font-medium md:left-10 md:text-2xl lg:relative lg:left-0">
+                  {feature.number}
+                </p>
+                <h2 className="hidden [writing-mode:vertical-rl] lg:mx-auto lg:block lg:rotate-180 lg:text-2xl lg:font-medium">
+                  {feature.title}
+                </h2>
+                <p className="text-xl font-medium md:text-2xl lg:hidden">
+                  {feature.title}
+                </p>
+              </div>
+              <div
+                className="w-full overflow-hidden lg:h-full lg:w-auto lg:min-w-[200vw] lg:overflow-auto transition-all duration-500 ease-in-out"
+                style={{
+                  height: isMobile || activeIndex === index ? "auto" : "0px",
+                }}
+              >
+                <div className="flex h-full flex-col px-6 pb-8 pt-4 md:px-10 md:pb-12 md:pt-12 lg:w-[40rem] lg:px-12 lg:pb-16 lg:pt-16">
+                  <h3 className="mb-5 text-4xl font-medium leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl">
+                    {feature.heading}
+                  </h3>
+                  <p className="md:text-md">{feature.description}</p>
+                  <div className="rt-8 mt-8 h-80 md:mt-10 md:h-[25rem] lg:mt-12">
+                    <Image
+                      src={feature.image}
+                      alt={`${feature.title} illustration`}
+                      width={640}
+                      height={400}
+                      className="size-full object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
