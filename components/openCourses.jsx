@@ -5,25 +5,23 @@ import Link from "next/link";
 export default function OpenCourses() {
   const courses = [
     {
-      image:
-        "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
+      image: "images/excel.jpg",
       level: "Intermediate",
-      startDate: "Sep 15, 2024",
+      startDate: "Feb 15, 2026",
       location: "Lusaka",
       title: "Data Analysis with Excel",
       description:
-        "Intensive 3-day workshop focused on practical instruction in creating dashboards and visual representations",
+        "Intensive 3-day workshop focused on practical instruction in creating dashboards and visual representations.",
       link: "#",
     },
     {
-      image:
-        "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
+      image: "images/sql.jpg",
       level: "Beginner",
-      startDate: "Oct 02, 2024",
+      startDate: "Mar 02, 2026",
       location: "Online",
       title: "SQL for decision makers",
       description:
-        "Two weeks learning to query data and build reports that matter",
+        "Intensive 3-day workshop focused on learning to query data and build reports that matter.",
       link: "#",
     },
   ];
@@ -32,15 +30,19 @@ export default function OpenCourses() {
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12 grid auto-cols-fr grid-cols-1 items-end gap-12 md:mb-18 md:grid-cols-[1fr_max-content] lg:mb-20 lg:gap-20">
-          <div className="max-w-lg">
-            <p className="mb-3 font-semibold md:mb-4 text-[16px]">Programs</p>
-            <h2 className="mb-3 text-[52px] font-medium leading-[120%] font-heading">
-              Open enrollment courses
+          <div>
+            <p className="mb-3 font-semibold md:mb-4 text-[16px] text-[#1e3a8a]">
+              Programs
+            </p>
+            <h2 className="text-[52px] font-medium leading-[120%] font-heading">
+              Open enrollment
             </h2>
           </div>
           <Link
-            href="#"
-            className="hidden md:inline-flex items-center justify-center px-6 py-3 border border-border-primary hover:bg-gray-100 transition-colors font-medium full-rounded"
+            href="/brochures/calendar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center justify-center px-6 py-2 border border-border-primary hover:bg-gray-100 transition-colors font-medium rounded-full"
           >
             View calendar
           </Link>
@@ -55,9 +57,9 @@ export default function OpenCourses() {
                 <img
                   src={course.image}
                   alt={course.title}
-                  className="absolute size-full object-cover"
+                  className="absolute size-full object-cover rounded-lg"
                 />
-                <span className="absolute right-4 top-4 bg-background-secondary px-2 py-1 text-sm font-semibold">
+                <span className="absolute right-4 top-4 bg-background-secondary px-2 py-1 text-sm font-semibold bg-white rounded-full">
                   {course.level}
                 </span>
               </Link>
@@ -133,8 +135,10 @@ export default function OpenCourses() {
         </div>
         <div className="mt-12 flex justify-end md:hidden">
           <Link
-            href="#"
-            className="inline-flex items-center justify-center px-6 py-3 border border-border-primary hover:bg-gray-100 transition-colors font-medium"
+            href="/brochures/calendar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 hover:bg-gray-100 transition-colors font-medium "
           >
             View calendar
           </Link>

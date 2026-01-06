@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { Logo } from "../logo/logo";
 
 export default function Hero() {
   return (
     <section
-      className="px-[5%] py-16 md:py-24 lg:py-28"
+      className="px-[5%] pt-16 md:pt-24 lg:pt-28"
       aria-labelledby="hero-heading"
     >
       <div className="container">
@@ -14,7 +15,7 @@ export default function Hero() {
                 id="hero-heading"
                 className="mb-5 text-6xl font-semibold md:mb-6 leading-[120%] opacity-0 animate-fade-up"
               >
-                Empowering Businesses with{" "}
+                Transforming Businesses with{" "}
                 <span className="bg-linear-to-r from-[#1e3a8a] to-[#42D6FF] bg-clip-text text-transparent">
                   Data
                 </span>
@@ -39,7 +40,7 @@ export default function Hero() {
                   Request a Consultation
                 </a>
                 <a
-                  href="/brochure/trendline-training-brochure.pdf"
+                  href="/brochures/trendline-training-brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full border border-blue-900 bg-white px-6 py-2 text-base font-medium text-blue-900 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
@@ -62,6 +63,7 @@ export default function Hero() {
           </figure>
         </div>
       </div>
+      <Logo />
     </section>
   );
 }

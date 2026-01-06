@@ -14,25 +14,28 @@ export function Logo() {
   ];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 max-w-[1280px] mx-auto bg-[#E8EBF3] rounded-lg overflow-hidden">
+    <section className="pt-12 md:pt-16 lg:pt-20 max-w-[1280px] mx-auto overflow-hidden">
+      <style>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
+
       <div className="mb-8 px-[5%] text-center">
-        <h1 className="text-base font-bold leading-[1.2] md:text-md">
+        <h2 className="text-base font-bold leading-[1.2] md:text-lg text-blue-900">
           Trusted by Zambia&apos;s largest corporations
-        </h1>
+        </h2>
       </div>
 
       <div className="relative overflow-hidden">
-        <style>{`
-          @keyframes marquee {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-50%);
-            }
-          }
-        `}</style>
-
         <div className="flex w-max animate-marquee">
           <div className="flex">
             {logos.map((logo, index) => (
@@ -45,7 +48,7 @@ export function Logo() {
             ))}
           </div>
 
-          <div className="flex">
+          <div className="flex" aria-hidden="true">
             {logos.map((logo, index) => (
               <img
                 key={`logo-2-${index}`}
@@ -57,12 +60,6 @@ export function Logo() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-      `}</style>
     </section>
   );
 }

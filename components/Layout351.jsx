@@ -50,7 +50,7 @@ export default function Layout351() {
   ];
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="px-[5%] pt-16 md:pt-24 lg:pt-28">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12 w-full max-w-[768px] md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
@@ -65,7 +65,7 @@ export default function Layout351() {
             organizations that need data to work harder.
           </p>
         </div>
-        <div className="flex w-full flex-col overflow-hidden border-b border-l border-r border-border-primary lg:h-[90vh] lg:flex-row lg:border-r-0 lg:border-t font-heading">
+        <div className="flex w-full flex-col overflow-hidden border-b border-l border-r border-border-primary lg:h-[90vh] lg:flex-row lg:border-r-0 lg:border-t font-heading rounded-lg">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -79,7 +79,7 @@ export default function Layout351() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >

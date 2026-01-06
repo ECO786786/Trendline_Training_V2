@@ -11,6 +11,15 @@ export const theme = {
       body: ["var(--font-body)"],
       heading: ["var(--font-heading)"],
     },
+    keyframes: {
+      marquee: {
+        from: { transform: "translateX(0)" },
+        to: { transform: "translateX(-50%)" },
+      },
+    },
+    animation: {
+      marquee: "marquee 25s linear infinite",
+    },
   },
 };
 export const plugins = [];
