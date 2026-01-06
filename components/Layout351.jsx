@@ -79,14 +79,14 @@ export default function Layout351() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-end lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                <p className="absolute left-6 whitespace-nowrap text-xl font-medium md:left-10 md:text-2xl lg:relative lg:left-0">
+                <p className="absolute left-6 whitespace-nowrap text-xl font-medium md:left-10 md:text-2xl lg:static lg:left-0 lg:mb-auto">
                   {feature.number}
                 </p>
-                <h2 className="hidden [writing-mode:vertical-rl] lg:mx-auto lg:block lg:rotate-180 lg:text-2xl lg:font-medium">
+                <h2 className="hidden [writing-mode:vertical-rl] lg:mx-auto lg:block lg:rotate-180 lg:text-2xl lg:font-medium lg:mt-auto">
                   {feature.title}
                 </h2>
                 <p className="text-xl font-medium md:text-2xl lg:hidden">
@@ -100,7 +100,7 @@ export default function Layout351() {
                 }}
               >
                 <div className="flex h-full flex-col px-6 pb-8 pt-4 md:px-10 md:pb-12 md:pt-12 lg:w-[40rem] lg:px-12 lg:pb-16 lg:pt-16">
-                  <h3 className="mb-5 text-4xl font-medium leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl">
+                  <h3 className="mb-5 text-4xl font-medium leading-[1.2] md:mb-6 ">
                     {feature.heading}
                   </h3>
                   <p className="md:text-md">{feature.description}</p>
