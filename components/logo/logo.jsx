@@ -30,7 +30,7 @@ export function Logo() {
       `}</style>
 
       <div className="mb-8 px-[5%] text-center">
-        <h2 className="text-base font-bold leading-[1.2] md:text-lg text-blue-900">
+        <h2 className="text-base font-bold leading-[1.2] md:text-lg">
           Trusted by Zambia&apos;s largest corporations
         </h2>
       </div>

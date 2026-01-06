@@ -60,7 +60,7 @@ export default function IndustriesSection() {
     },
     {
       id: 8,
-      icon: "ri-factory-fill",
+      icon: "ri-donut-chart-fill",
       title: "Manufacturing",
       description:
         "Smart Manufacturing, Industrial Operations, Production Facilities, and Industry 4.0 Solutions",

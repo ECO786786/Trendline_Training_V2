@@ -79,7 +79,7 @@ export default function Layout351() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-end lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
@@ -104,7 +104,7 @@ export default function Layout351() {
                     {feature.heading}
                   </h3>
                   <p className="md:text-md">{feature.description}</p>
-                  <div className="rt-8 mt-8 h-80 md:mt-10 md:h-[25rem] lg:mt-12">
+                  <div className="mt-8 h-80 md:mt-10 md:h-[25rem] lg:mt-12">
                     <Image
                       src={feature.image}
                       alt={`${feature.title} illustration`}
