@@ -7,7 +7,7 @@ export default function Hero() {
       className="px-[5%] pt-16 md:pt-24 lg:pt-28"
       aria-labelledby="hero-heading"
     >
-      <div className="container">
+      <div className="container mx-auto">
         <div className="flex flex-col items-center">
           <header className="mb-12 text-center md:mb-18 lg:mb-20">
             <div className="w-full max-w-2xl">
