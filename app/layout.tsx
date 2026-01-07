@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope, Inter } from "next/font/google";
 import { Navbar } from "../components/navigation/navbar";
+import WhatsAppButton from "@/components/whatsAppButton";
 
 export const metadata: Metadata = {
   title:
@@ -76,6 +77,10 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <WhatsAppButton
+          phoneNumber="1234567890"
+          message="Hello! I'm interested in your services."
+        />
       </body>
     </html>
   );
