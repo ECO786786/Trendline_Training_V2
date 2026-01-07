@@ -4,8 +4,52 @@ import { Manrope, Inter } from "next/font/google";
 import { Navbar } from "../components/navigation/navbar";
 
 export const metadata: Metadata = {
-  title: "My App",
-  description: "Next.js + Tailwind fonts",
+  title:
+    "Trendline Training & Consultancy Ltd | Data Training & Corporate Consultancy",
+  description:
+    "Expert led corporate training and consultancy helping businesses unlock the power of data for strategic growth, innovation, and long term success.",
+  keywords: [
+    "trendline training",
+    "corporate training",
+    "data analytics training",
+    "business consultancy",
+    "professional development",
+  ],
+  authors: [{ name: "Trendline Training & Consultancy Ltd" }],
+  alternates: {
+    canonical: "https://trendlinec.com/",
+  },
+  openGraph: {
+    title: "Trendline Training & Consultancy Ltd",
+    description:
+      "Helping businesses grow through data-driven training and consulting.",
+    url: "https://trendlinec.com/",
+    siteName: "Trendline Training & Consultancy Ltd",
+    images: [
+      {
+        url: "https://static.readdy.ai/image/7a2941f4f4bd206a071b69a2951de2dc/66ca896711b4be15fa15f7657f0c555e.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Trendline Training & Consultancy",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trendline Training & Consultancy Ltd",
+    description:
+      "Helping businesses grow through data-driven training and consulting.",
+    images: [
+      "https://static.readdy.ai/image/7a2941f4f4bd206a071b69a2951de2dc/66ca896711b4be15fa15f7657f0c555e.jpeg",
+    ],
+  },
+  verification: {
+    google: "CPnNW4Bq1VN2rZRWSpb200rbJvK9u0njx7sXdVpvhKk",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 const manrope = Manrope({

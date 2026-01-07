@@ -1,108 +1,185 @@
 "use client";
 
-interface Industry {
+import React from "react";
+
+interface IndustryDetail {
   id: number;
   icon: string;
   title: string;
-  description: string;
+  subtitle: string;
+  items: string[];
 }
 
 export default function IndustriesSection() {
-  const industries: Industry[] = [
+  const [openId, setOpenId] = React.useState<number | null>(null);
+
+  const industries: IndustryDetail[] = [
     {
       id: 1,
-      icon: "ri-bank-fill",
+      icon: "account_balance",
       title: "Financial Services",
-      description:
-        "Banks, Insurance Companies, Investment Firms, FinTech Startups, and Asset Management",
+      subtitle: "Advanced modeling for risk, fraud, and credit analysis.",
+      items: [
+        "Commercial Banks",
+        "Insurance Companies",
+        "Microfinance",
+        "Fintech Startups",
+      ],
     },
     {
       id: 2,
-      icon: "ri-hospital-fill",
+      icon: "monitor_heart",
       title: "Healthcare",
-      description:
-        "Hospitals, Medical Clinics, Pharmaceutical Companies, Research Institutions, and Healthcare Tech",
+      subtitle: "Data-driven patient care and resource management.",
+      items: [
+        "Hospitals & Clinics",
+        "Pharmaceuticals",
+        "Public Health NGOs",
+        "Medical Research",
+      ],
     },
     {
       id: 3,
-      icon: "ri-store-2-fill",
+      icon: "shopping_cart",
       title: "Retail & E-commerce",
-      description:
-        "Online Marketplaces, Retail Chains, Consumer Brands, Digital Commerce, and Shopping Centers",
+      subtitle: "Customer segmentation and inventory optimization.",
+      items: [
+        "Supermarkets",
+        "Online Marketplaces",
+        "FMCG Distributors",
+        "Fashion Retail",
+      ],
     },
     {
       id: 4,
-      icon: "ri-government-fill",
+      icon: "public",
       title: "Government",
-      description:
-        "Public Sector Organizations, Government Agencies, Regulatory Bodies, and State-Owned Enterprises",
+      subtitle: "Enhancing public sector service delivery and policy analysis.",
+      items: [
+        "Ministries",
+        "Revenue Authorities",
+        "Public Agencies",
+        "Local Councils",
+      ],
     },
     {
       id: 5,
-      icon: "ri-building-2-fill",
+      icon: "apartment",
       title: "Real Estate",
-      description:
-        "Property Development, Real Estate Management, Investment Trusts, and Property Tech Solutions",
+      subtitle: "Property valuation models and investment analysis.",
+      items: [
+        "Property Developers",
+        "Management Agencies",
+        "REITs",
+        "Valuation Firms",
+      ],
     },
     {
       id: 6,
-      icon: "ri-plant-fill",
+      icon: "agriculture",
       title: "Agriculture",
-      description:
-        "Smart Farming Operations, Agribusiness Enterprises, Agricultural Technology, and Food Production",
+      subtitle: "Yield forecasting and supply chain optimization.",
+      items: [
+        "Agribusinesses",
+        "Farming Co-ops",
+        "Food Processing",
+        "Input Suppliers",
+      ],
     },
     {
       id: 7,
-      icon: "ri-truck-fill",
+      icon: "local_shipping",
       title: "Logistics",
-      description:
-        "Transportation Networks, Supply Chain Management, Distribution Centers, and Logistics Tech",
+      subtitle: "Fleet management and route efficiency analysis.",
+      items: [
+        "Transport Companies",
+        "Warehousing",
+        "Freight Forwarders",
+        "Delivery Services",
+      ],
     },
     {
       id: 8,
-      icon: "ri-donut-chart-fill",
+      icon: "precision_manufacturing",
       title: "Manufacturing",
-      description:
-        "Smart Manufacturing, Industrial Operations, Production Facilities, and Industry 4.0 Solutions",
+      subtitle: "Production optimization and predictive maintenance.",
+      items: ["Factories", "Assembly Plants", "Industrial Goods", "Textiles"],
     },
   ];
+
+  const toggleAccordion = (id: number) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   return (
     <>
       <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet"
       />
-      <section className="bg-gray-50 px-[5%] py-16 md:py-24 lg:py-28">
+      <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#E8EBF3]">
         <div className="max-w-[1280px] mx-auto">
           <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
-            <h2 className="mb-5 font-medium md:mb-6 text-[52px] font-heading leading-[120%]">
-              Industries We Serve
+            <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
+              Services
+            </p>
+            <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
+              Industries we serve
             </h2>
-            <p className="md:text-md text-[18px] text-[#04030B] font-regular">
+            <p className="text-[16px] text-[#04030B] font-regular">
               Our specialized training and consultancy services cater to diverse
               industries, helping organizations harness the power of data
-              analytics
+              analytics.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:items-start">
             {industries.map((industry) => (
               <div
                 key={industry.id}
-                className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+                className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden transition-all duration-300 self-start"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-900/20 to-blue-900/5 rounded-full flex items-center justify-center mb-6 shadow-sm transform hover:scale-105 transition-transform">
-                  <i
-                    className={`${industry.icon} text-[#1e3a8a] text-[32px]`}
-                  ></i>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleAccordion(industry.id);
+                  }}
+                  className="flex cursor-pointer items-center justify-between p-5 text-gray-900 font-medium text-[20px] font-heading select-none hover:bg-gray-100 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-[#1e3a8a]">
+                      <span className="material-symbols-outlined text-xl">
+                        {industry.icon}
+                      </span>
+                    </div>
+                    <span>{industry.title}</span>
+                  </div>
+                  <span
+                    className={`material-symbols-outlined transition-transform duration-300 ${
+                      openId === industry.id ? "rotate-180" : ""
+                    }`}
+                  >
+                    expand_more
+                  </span>
                 </div>
-                <h3 className="font-medium text-gray-900 mb-3 text-[20px] font-heading">
-                  {industry.title}
-                </h3>
-                <p className="text-gray-600 text-[16px] leading-relaxed">
-                  {industry.description}
-                </p>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openId === industry.id ? "max-h-96" : "max-h-0"
+                  }`}
+                >
+                  <div className="px-5 pb-5 pt-2 text-gray-600 text-[14px] leading-relaxed border-t border-gray-200">
+                    <p className="mb-3 italic">{industry.subtitle}</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {industry.items.map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

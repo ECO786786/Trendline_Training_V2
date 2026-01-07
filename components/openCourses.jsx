@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OpenCourses() {
   const courses = [
     {
-      image: "images/excel.jpg",
+      image: "/images/excel.jpg",
       level: "Intermediate",
       startDate: "Feb 15, 2026",
       location: "Lusaka",
@@ -15,7 +16,7 @@ export default function OpenCourses() {
       link: "#",
     },
     {
-      image: "images/sql.jpg",
+      image: "/images/sql.jpg",
       level: "Beginner",
       startDate: "Mar 02, 2026",
       location: "Online",
@@ -27,7 +28,7 @@ export default function OpenCourses() {
   ];
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12 grid auto-cols-fr grid-cols-1 items-end gap-12 md:mb-18 md:grid-cols-[1fr_max-content] lg:mb-20 lg:gap-20">
           <div>
@@ -37,6 +38,9 @@ export default function OpenCourses() {
             <h2 className="text-[52px] font-medium leading-[120%] font-heading">
               Open enrollment
             </h2>
+            <p className="mt-5 md:mt-6">
+              Start building analytics skills today
+            </p>
           </div>
           <Link
             href="/brochures/calendar.pdf"
@@ -54,9 +58,11 @@ export default function OpenCourses() {
                 href={course.link}
                 className="relative block aspect-[3/2] w-full"
               >
-                <img
+                <Image
                   src={course.image}
                   alt={course.title}
+                  width={640}
+                  height={427}
                   className="absolute size-full object-cover rounded-lg"
                 />
                 <span className="absolute right-4 top-4 bg-background-secondary px-2 py-1 text-sm font-semibold bg-white rounded-full">

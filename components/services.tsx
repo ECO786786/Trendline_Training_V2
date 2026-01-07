@@ -84,7 +84,7 @@ export default function Services() {
           <h2 className="mb-5 font-medium md:mb-6 text-[52px] font-heading leading-[120%]">
             What we deliver
           </h2>
-          <p className="md:text-md text-[18px] text-[#04030B] font-regular">
+          <p className="md:text-md text-[16px] text-[#04030B] font-regular">
             We offer comprehensive training and consultancy services designed to
             transform your organization&apos;s approach to data and strategy.
           </p>
@@ -108,7 +108,7 @@ export default function Services() {
                 onMouseEnter={() => !isMobile && handleTabInteraction(index)}
                 className={`inline-flex items-start justify-start border-0 border-b border-gray-200 px-6 py-6 font-medium last-of-type:border-0 transition-all cursor-pointer focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:px-8 text-[20px] font-heading ${
                   activeTab === index
-                    ? "bg-blue-50 text-[#1e3a8a]"
+                    ? "bg-[#1e3a8a] text-white"
                     : "bg-white text-gray-900 hover:bg-gray-50"
                 }`}
               >

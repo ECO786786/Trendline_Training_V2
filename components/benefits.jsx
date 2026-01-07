@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Layout351() {
+export default function Benefits() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -50,7 +50,10 @@ export default function Layout351() {
   ];
 
   return (
-    <section className="px-[5%] pt-16 md:pt-24 lg:pt-28">
+    <section
+      className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50"
+      aria-labelledby="benefits-heading"
+    >
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12 w-full max-w-[768px] md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
@@ -79,14 +82,14 @@ export default function Layout351() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-blue-50 hover:bg-blue-100 transition-colors text-blue-900"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-[#1e3a8a] hover::bg-blue-950 transition-colors text-white"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <p className="absolute left-6 whitespace-nowrap text-xl font-medium md:left-10 md:text-2xl lg:static lg:left-0 lg:mb-auto">
                   {feature.number}
                 </p>
-                <h2 className="hidden [writing-mode:vertical-rl] lg:mx-auto lg:block lg:rotate-180 lg:text-2xl lg:font-medium lg:mt-auto">
+                <h2 className="hidden [writing-mode:vertical-rl]  lg:block lg:rotate-180 lg:text-2xl lg:font-medium">
                   {feature.title}
                 </h2>
                 <p className="text-xl font-medium md:text-2xl lg:hidden">

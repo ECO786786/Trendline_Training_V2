@@ -4,7 +4,7 @@ import { Logo } from "../logo/logo";
 export default function Hero() {
   return (
     <section
-      className="px-[5%] pt-16 md:pt-24 lg:pt-28"
+      className="px-[5%] py-16 md:py-24 lg:py-28"
       aria-labelledby="hero-heading"
     >
       <div className="container mx-auto">
