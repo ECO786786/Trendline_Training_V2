@@ -117,14 +117,14 @@ export default function IndustriesSection() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet"
       />
-      <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#E8EBF3]">
+      <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#f5f6fb]">
         <div className="max-w-[1280px] mx-auto">
           <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
             <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
-              Services
+              Industries
             </p>
             <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
-              Industries we serve
+              Sectors we serve
             </h2>
             <p className="text-[16px] text-[#04030B] font-regular">
               Our specialized training and consultancy services cater to diverse

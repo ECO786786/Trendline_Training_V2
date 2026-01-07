@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
       "The training session was very good overall. The trainer demonstrated strong knowledge of the subject matter and delivered the content in an engaging, easy-to-follow way. The key lessons were clearly explained, practical, and directly applicable, allowing me to start using what I learned immediately after the session.",
     name: "Results Delivery Office Analyst",
     company: "Zambia Sugar",
-    avatar: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
+    avatar: "/images/zambia-sugar-plc-logo-1.png",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
       "Trendline designed and managed our Fixed Asset Data Registry with professionalism, precision, and great attention to detail. Their thorough work streamlined our asset tracking processes and significantly enhanced our audit readiness, providing efficiency, accuracy, and confidence. We highly recommend their reliable services.",
     name: "Asset Manager",
     company: "Gatesville Investments Limited",
-    avatar: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
+    avatar: "/images/gatesvile.png",
   },
   {
     id: 5,
@@ -56,11 +56,10 @@ const testimonials: Testimonial[] = [
       "Trendline transformed how we view and manage our business operations. With accurate, real-time data at our fingertips, decision-making has become faster, more informed, and more effective. The team is better aligned with customer expectations, resulting in stronger performance, improved efficiency, and lasting value across the organization.",
     name: "Operations Manager",
     company: "Powerdrive Freight",
-    avatar: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
+    avatar: "/images/powerdrive-logo-1.png",
   },
 ];
 
-// Hook to get window width
 function useWindowWidth() {
   const [width, setWidth] = useState<number>(0);
   useEffect(() => {
