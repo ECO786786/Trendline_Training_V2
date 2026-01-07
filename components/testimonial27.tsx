@@ -76,28 +76,33 @@ export function Testimonial27() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
 
-  // Determine number of testimonials per slide
-  const perSlide = width >= 768 ? 2 : 1; // 2 on md+, 1 on mobile
-  const slides = Math.ceil(testimonials.length / perSlide);
+  // Determine number of visible cards
+  const cardsVisible = width >= 768 ? 2 : 1;
+  const maxIndex = testimonials.length - cardsVisible;
 
   // Auto-play
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides);
+      setCurrentIndex((prev) => {
+        if (prev >= maxIndex) return 0;
+        return prev + 1;
+      });
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slides]);
+  }, [isAutoPlaying, maxIndex]);
 
   // Navigation
   const handlePrevious = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev === 0 ? slides - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
+
   const handleNext = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % slides);
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
+
   const handleDotClick = (index: number) => {
     setIsAutoPlaying(false);
     setCurrentIndex(index);
@@ -114,6 +119,9 @@ export function Testimonial27() {
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
       </svg>
     ));
+
+  // Calculate the width percentage for each card based on visible cards
+  const cardWidthPercent = 100 / cardsVisible;
 
   return (
     <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28 bg-white">
@@ -132,56 +140,47 @@ export function Testimonial27() {
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              style={{
+                transform: `translateX(-${currentIndex * cardWidthPercent}%)`,
+              }}
             >
-              {Array.from({ length: slides }).map((_, slideIndex) => (
+              {testimonials.map((t) => (
                 <div
-                  key={slideIndex}
-                  className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-0 md:px-4"
+                  key={t.id}
+                  className="flex-shrink-0 px-2 md:px-4"
+                  style={{ width: `${cardWidthPercent}%` }}
                 >
-                  {testimonials
-                    .slice(
-                      slideIndex * perSlide,
-                      slideIndex * perSlide + perSlide
-                    )
-                    .map((t) => (
-                      <div
-                        key={t.id}
-                        className="flex flex-col items-start justify-between border border-gray-200 p-6 md:p-8 rounded-lg"
-                      >
-                        <div className="mb-6 flex items-center">
-                          {renderStars(t.rating)}
-                        </div>
-                        <blockquote className="mb-5 md:mb-6 text-base md:text-lg text-gray-700">
-                          {t.quote}
-                        </blockquote>
-                        <div className="flex w-full flex-col items-start gap-4 md:w-auto md:flex-row md:items-center">
-                          <Image
-                            src={t.avatar}
-                            alt={`${t.name} avatar`}
-                            width={48}
-                            height={48}
-                            className="object-cover"
-                          />
-                          <div>
-                            <p className="font-semibold text-gray-900">
-                              {t.name}
-                            </p>
-                            <p className="text-gray-600">{t.company}</p>
-                          </div>
-                        </div>
+                  <div className="flex flex-col items-start justify-between border border-gray-200 p-6 md:p-8 rounded-lg h-full">
+                    <div className="mb-6 flex items-center">
+                      {renderStars(t.rating)}
+                    </div>
+                    <blockquote className="mb-5 md:mb-6 text-base md:text-lg text-gray-700">
+                      {t.quote}
+                    </blockquote>
+                    <div className="flex w-full flex-col items-start gap-4 md:w-auto md:flex-row md:items-center">
+                      <Image
+                        src={t.avatar}
+                        alt={`${t.name} avatar`}
+                        width={48}
+                        height={48}
+                        className="object-cover"
+                      />
+                      <div>
+                        <p className="font-semibold text-gray-900">{t.name}</p>
+                        <p className="text-gray-600">{t.company}</p>
                       </div>
-                    ))}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Navigation Arrows (visible on all screen sizes, smaller on mobile) */}
+          {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
             className="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 lg:-translate-x-6 w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full bg-white border-2 border-gray-300 hover:bg-gray-50 transition-colors"
-            aria-label="Previous testimonials"
+            aria-label="Previous testimonial"
           >
             <svg
               className="w-4 h-4 md:w-6 md:h-6 text-gray-700"
@@ -200,7 +199,7 @@ export function Testimonial27() {
           <button
             onClick={handleNext}
             className="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 lg:translate-x-6 w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full bg-white border-2 border-gray-300 hover:bg-gray-50 transition-colors"
-            aria-label="Next testimonials"
+            aria-label="Next testimonial"
           >
             <svg
               className="w-4 h-4 md:w-6 md:h-6 text-gray-700"
@@ -220,14 +219,14 @@ export function Testimonial27() {
 
         {/* Dots */}
         <div className="mt-8 md:mt-12 flex items-center justify-center gap-2">
-          {Array.from({ length: slides }).map((_, index) => (
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
               onClick={() => handleDotClick(index)}
               className={`w-2 h-2 rounded-full transition-colors ${
                 currentIndex === index ? "bg-black" : "bg-gray-300"
               }`}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>

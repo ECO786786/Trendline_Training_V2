@@ -68,6 +68,38 @@ export default function Services() {
       heading: "From Power BI to advanced analytics",
       description: "Structured programs that build lasting capability",
     },
+    {
+      id: "reaserch-and-insights",
+      label: "Research and Insights",
+      icon: "/icons/strategy.svg",
+      heading: "From Power BI to advanced analytics",
+      description:
+        "Providing insightsand analytics for market research, healthcare, finance, and more",
+    },
+    {
+      id: "workshops-and-seminars",
+      label: "Workshops and Seminars",
+      icon: "/icons/strategy.svg",
+      heading: "Interactive learning experiences",
+      description:
+        "Engaging sessions on the latest trends and technologies in data analytics and business intelligence.",
+    },
+    {
+      id: "Mentorship Program",
+      label: "Mentorship Program",
+      icon: "/icons/strategy.svg",
+      heading: "Personalized guidance and support",
+      description:
+        "One-on-one mentorship to help individuals navigate their data analytics career paths and achieve their professional goals.",
+    },
+    {
+      id: "evluation-and-assessment",
+      label: "Evaluation and Assessment",
+      icon: "/icons/strategy.svg",
+      heading: "Measuring impact and effectiveness",
+      description:
+        "Comprehensive evaluation services to assess the effectiveness of training programs and data strategies, ensuring continuous improvement and ROI.",
+    },
   ];
 
   const handleTabInteraction = (index: number) => {
@@ -106,7 +138,7 @@ export default function Services() {
                 id={`${tab.id}-trigger`}
                 onClick={() => handleTabInteraction(index)}
                 onMouseEnter={() => !isMobile && handleTabInteraction(index)}
-                className={`inline-flex items-start justify-start border-0 border-b border-gray-200 px-6 py-6 font-medium last-of-type:border-0 transition-all cursor-pointer focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:px-8 text-[20px] font-heading ${
+                className={`inline-flex items-start text-left justify-start border-0 border-b border-gray-200 px-6 py-6 font-medium last-of-type:border-0 transition-all cursor-pointer focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:px-8 text-[20px] font-heading ${
                   activeTab === index
                     ? "bg-[#1e3a8a] text-white"
                     : "bg-white text-gray-900 hover:bg-gray-50"
@@ -136,7 +168,7 @@ export default function Services() {
                     alt={`${tab.label} icon`}
                   />
                 </div>
-                <h2 className="mb-5 font-medium leading-[1.2] md:mb-6 text-[44px] font-heading">
+                <h2 className="mb-5 font-medium leading-[1.2] md:mb-6 text-[30px] font-heading">
                   {tab.heading}
                 </h2>
                 <p className="text-[16px]">{tab.description}</p>

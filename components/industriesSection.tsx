@@ -147,7 +147,7 @@ export default function IndustriesSection() {
                   className="flex cursor-pointer items-center justify-between p-5 text-gray-900 font-medium text-[20px] font-heading select-none hover:bg-gray-100 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-[#1e3a8a]">
+                    <div className="w-8 h-8 rounded bg-[#f0f8ff] flex items-center justify-center text-[#1e3a8a]">
                       <span className="material-symbols-outlined text-xl">
                         {industry.icon}
                       </span>
