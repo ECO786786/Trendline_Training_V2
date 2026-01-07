@@ -59,7 +59,7 @@ export default function Benefits() {
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
             Why we&apos;re different
           </p>
-          <h2 className="mb-5 text-[52px] font-medium leading-[120%] font-heading">
+          <h2 className="mb-5 text-[60px] font-medium leading-[120%] font-heading">
             Why organizations choose Trendline
           </h2>
           <p className="md:text-md font-body font-normal">

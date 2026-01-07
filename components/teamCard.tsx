@@ -1,63 +1,52 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface TeamMember {
   name: string;
   jobTitle: string;
-  description: string;
   image: string;
 }
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Priscilla M Ngambi",
-    jobTitle: "Head consultant",
-    description:
-      "FCCA, FZICA, MBA with deep expertise in operations and data analysis",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/eaefa2a8bfc1e4e40ea13d691547b76e7ea9b8c1?width=789",
+    name: "Priscilla M Ngambi Fcca, FZica, MBA, Data Analyst",
+    jobTitle: "Head Consultant | Operations",
+    image: "/images/priscilla.jpg",
   },
   {
     name: "Edgar Matisha",
-    jobTitle: "HR specialist",
-    description:
-      "Learning and development professional bringing organizational change expertise",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/eaefa2a8bfc1e4e40ea13d691547b76e7ea9b8c1?width=789",
+    jobTitle: `Human Resource Professional | Consultant | Learning & Development Specialist`,
+    image: "/images/edgar.jpg",
   },
   {
-    name: "Thabo Mwale",
-    jobTitle: "Data architect",
-    description:
-      "Designs scalable analytics infrastructure for enterprise clients",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/eaefa2a8bfc1e4e40ea13d691547b76e7ea9b8c1?width=789",
+    name: "Lilato Lisulo",
+    jobTitle: "Consultant Trainer | Power BI Data Analyst | Data Scientist",
+    image: "/images/lilato.jpg",
   },
   {
-    name: "Nalini Patel",
-    jobTitle: "Power BI specialist",
-    description:
-      "Transforms raw data into actionable business intelligence dashboards",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/83fffb1870913c745742108c590bf0e288cec477?width=789",
+    name: "Obbie Kalenga",
+    jobTitle:
+      "Data Driven Professional | Consultant | Trainer | Power BI Specialist",
+    image: "/images/Obbie.jpg",
   },
   {
-    name: "Chipo Banda",
-    jobTitle: "Financial analyst",
-    description:
-      "Applies analytics to drive cost optimization and revenue growth",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/ad33659c33381eac40061641b81f19d65a13ad9f?width=789",
-  },
-  {
-    name: "Kasonde Phiri",
-    jobTitle: "AI consultant",
-    description:
-      "Implements machine learning solutions for predictive analytics",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/ad33659c33381eac40061641b81f19d65a13ad9f?width=789",
+    name: "Martin Mwaala",
+    jobTitle:
+      "Consultant Trainer | AI Specialist | Excel Expert | Financial Analyst | Financial Modelling",
+    image: "/images/Martin.jpg",
   },
 ];
+
+function useWindowWidth() {
+  const [width, setWidth] = useState<number>(0);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return width;
+}
 
 const SocialIcons = () => (
   <div className="flex items-start gap-3.5">
@@ -138,9 +127,6 @@ const TeamCard = ({ member }: { member: TeamMember }) => (
           {member.jobTitle}
         </p>
       </div>
-      <p className="w-full text-[#04030B] font-inter text-base font-normal leading-[150%]">
-        {member.description}
-      </p>
     </div>
     <SocialIcons />
   </div>
@@ -202,27 +188,28 @@ const NavigationButton = ({
 );
 
 export default function Index() {
-  const [currentPage, setCurrentPage] = useState(0);
-  const membersPerPage = 3;
-  const totalPages = Math.ceil(teamMembers.length / membersPerPage);
+  const width = useWindowWidth();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const visibleMembers = teamMembers.slice(
-    currentPage * membersPerPage,
-    (currentPage + 1) * membersPerPage
-  );
+  // Determine cards visible based on screen size
+  const cardsVisible = width >= 1024 ? 3 : width >= 768 ? 2 : 1;
+  const maxIndex = teamMembers.length - cardsVisible;
 
   const handlePrevious = () => {
-    setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
+
+  // Calculate the width percentage for each card
+  const cardWidthPercent = 100 / cardsVisible;
 
   return (
     <div className="flex flex-col items-center bg-white min-h-screen">
       <div className="flex px-8 md:px-16 py-16 md:py-28 flex-col items-center gap-12 md:gap-20 w-full">
-        <div className="flex max-w-[1280px] w-full flex-col items-start gap-12 md:gap-20">
+        <div className="flex container w-full flex-col items-start gap-12 md:gap-20">
           {/* Section Title */}
           <div className="flex max-w-[768px] w-full flex-col items-start gap-4">
             <div className="flex items-center w-full">
@@ -243,17 +230,30 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Team Cards Row */}
+          {/* Team Cards Carousel */}
           <div className="flex flex-col items-start gap-12 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 w-full">
-              {visibleMembers.map((member, index) => (
-                <TeamCard key={`${member.name}-${index}`} member={member} />
-              ))}
+            <div className="overflow-hidden w-full -mx-4 md:-mx-6">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentIndex * cardWidthPercent}%)`,
+                }}
+              >
+                {teamMembers.map((member, idx) => (
+                  <div
+                    key={`${member.name}-${idx}`}
+                    className="flex-shrink-0 px-4 md:px-6"
+                    style={{ width: `${cardWidthPercent}%` }}
+                  >
+                    <TeamCard member={member} />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Carousel Controls */}
             <div className="flex justify-between items-center w-full">
-              <SliderDots total={totalPages} active={currentPage} />
+              <SliderDots total={maxIndex + 1} active={currentIndex} />
               <div className="flex items-start gap-4">
                 <NavigationButton direction="left" onClick={handlePrevious} />
                 <NavigationButton direction="right" onClick={handleNext} />

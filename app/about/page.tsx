@@ -1,5 +1,5 @@
-import SectionItem from "@/components/sectionItem";
 import Index from "@/components/teamCard";
+import OurStorySection from "@/components/ourStorySection";
 
 export default function About() {
   return (
@@ -25,7 +25,8 @@ export default function About() {
           </div>
         </div>
       </section>
-      <SectionItem />
+      <OurStorySection />
+
       <Index />
     </>
   );
