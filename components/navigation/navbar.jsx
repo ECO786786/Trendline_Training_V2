@@ -118,10 +118,10 @@ export function Navbar() {
 
             <div className="hidden lg:block absolute left-0 top-full mt-2 z-50 min-w-[200px] rounded-md border border-gray-200 bg-white p-2 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
               <Link
-                href="/services/consultancy"
+                href="/corporate"
                 className="block px-4 py-2 text-base hover:bg-blue-50 rounded transition-colors"
               >
-                Consultancy
+                Corporate Solutions
               </Link>
             </div>
           </div>

@@ -107,7 +107,7 @@ export default function Services() {
   };
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#f0f8ff]">
       <div className="max-w-[1280px] mx-auto">
         <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
