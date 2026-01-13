@@ -32,13 +32,13 @@ export default function Footer() {
 
   return (
     <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-gray-900 text-white">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
               <Image
-                src="/images/logo-1.png"
+                src="/images/footer-logo.jpeg"
                 alt="Trendline Training Logo"
                 width={56}
                 height={56}
@@ -276,7 +276,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2025 Trendline Training & Consultancy Ltd. All rights reserved.
+            © 2026 Trendline Training & Consultancy Ltd. All rights reserved.
           </p>
           <nav aria-label="Legal Links" className="flex space-x-6">
             {legalLinks.map((link) => (

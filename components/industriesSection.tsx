@@ -117,7 +117,7 @@ export default function IndustriesSection() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet"
       />
-      <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#f5f6fb]">
+      <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
         <div className="max-w-[1280px] mx-auto">
           <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
             <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
@@ -137,7 +137,7 @@ export default function IndustriesSection() {
             {industries.map((industry) => (
               <div
                 key={industry.id}
-                className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden transition-all duration-300 self-start"
+                className="bg-gray-50 rounded-xl border border-gray-500 overflow-hidden transition-all duration-300 self-start"
               >
                 <div
                   onClick={(e) => {
@@ -164,12 +164,12 @@ export default function IndustriesSection() {
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
+                  className={`overflow-hidden transition-all duration-300 bg-white ${
                     openId === industry.id ? "max-h-96" : "max-h-0"
                   }`}
                 >
-                  <div className="px-5 pb-5 pt-2 text-gray-600 text-[14px] leading-relaxed border-t border-gray-200">
-                    <p className="mb-3 italic">{industry.subtitle}</p>
+                  <div className="px-5 pb-5 pt-2 text-[#04030B] text-[14px] leading-relaxed border-t border-gray-200">
+                    <p className="mb-3">{industry.subtitle}</p>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {industry.items.map((item, index) => (
                         <li key={index} className="flex items-center gap-2">

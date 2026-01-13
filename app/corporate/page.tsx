@@ -20,6 +20,10 @@ export default function Corporate() {
       <SubHero
         title="Corporate Solutions"
         description="Comprehensive data training and analytics solutions designed specifically for corporate environments. Transform your organization's data capabilities with our proven methodologies."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Corporate", href: "/corporate" },
+        ]}
       />
       <CorporateSolutions />
       <WhyChooseUs />

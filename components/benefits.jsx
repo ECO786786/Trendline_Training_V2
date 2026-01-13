@@ -33,7 +33,7 @@ export default function Benefits() {
     },
     {
       number: "03",
-      title: "Hands-on training",
+      title: "Hands on training",
       heading: "Skills that stick",
       description:
         "No theory-only sessions. We train your teams to use the tools and make decisions independently.",
@@ -42,7 +42,7 @@ export default function Benefits() {
     {
       number: "04",
       title: "Measurable results",
-      heading: "Results",
+      heading: "Results that matter",
       description:
         "We measure success by business impact, not deliverables. Every engagement includes clear KPIs.",
       image: "/images/different-04.jpg",
@@ -97,7 +97,7 @@ export default function Benefits() {
                 </p>
               </div>
               <div
-                className="w-full overflow-hidden lg:h-full lg:w-auto lg:min-w-[200vw] lg:overflow-auto transition-all duration-500 ease-in-out"
+                className="w-full overflow-hidden lg:h-full lg:w-auto lg:min-w-[200vw] lg:overflow-auto transition-all duration-500 ease-in-out bg-white"
                 style={{
                   height: isMobile || activeIndex === index ? "auto" : "0px",
                 }}

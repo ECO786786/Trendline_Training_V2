@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -36,10 +34,10 @@ export default function OpenCourses() {
               Programs
             </p>
             <h2 className="text-[52px] font-medium leading-[120%] font-heading">
-              Open enrollment
+              Training schedule
             </h2>
             <p className="mt-5 md:mt-6">
-              Start building analytics skills today
+              Upcoming sessions in Lusaka and Online. Spots are limited.
             </p>
           </div>
           <Link

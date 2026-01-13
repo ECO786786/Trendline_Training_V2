@@ -107,7 +107,7 @@ export default function Services() {
   };
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#f0f8ff]">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
       <div className="max-w-[1280px] mx-auto">
         <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
@@ -122,11 +122,11 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-200 md:grid-cols-[1fr_1.5fr] rounded-lg">
+        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-500 md:grid-cols-[1fr_1.5fr] rounded-lg">
           <div
             role="tablist"
             aria-orientation="vertical"
-            className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-gray-200 md:border-b-0 md:border-r"
+            className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-gray-500 md:border-b-0 md:border-r"
           >
             {tabs.map((tab, index) => (
               <button
@@ -138,7 +138,7 @@ export default function Services() {
                 id={`${tab.id}-trigger`}
                 onClick={() => handleTabInteraction(index)}
                 onMouseEnter={() => !isMobile && handleTabInteraction(index)}
-                className={`inline-flex items-start text-left justify-start border-0 border-b border-gray-200 px-6 py-6 font-medium last-of-type:border-0 transition-all cursor-pointer focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:px-8 text-[20px] font-heading ${
+                className={`inline-flex items-start text-left justify-start border-0 border-b border-gray-500 px-6 py-6 font-medium last-of-type:border-0 transition-all cursor-pointer focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:px-8 text-[20px] font-heading  ${
                   activeTab === index
                     ? "bg-[#1e3a8a] text-white"
                     : "bg-white text-gray-900 hover:bg-gray-50"
@@ -160,7 +160,7 @@ export default function Services() {
                 activeTab === index ? "animate-fadeIn" : ""
               }`}
             >
-              <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16">
+              <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16 bg-white rounded-bl-lg rounded-br-lg rounded-tr-lg">
                 <div className="mb-5 md:mb-6">
                   <img
                     src={tab.icon}

@@ -13,7 +13,7 @@ export default function Hero() {
             <div className="w-full max-w-2xl">
               <h1
                 id="hero-heading"
-                className="mb-5 text-6xl font-semibold md:mb-6 leading-[120%] opacity-0 animate-fade-up"
+                className="mb-5 text-[40px] md:text-[60px] font-semibold md:mb-6 leading-[120%] opacity-0 animate-fade-up"
               >
                 Transforming Businesses with{" "}
                 <span className="bg-linear-to-r from-[#1e3a8a] to-[#42D6FF] bg-clip-text text-transparent">
@@ -34,7 +34,7 @@ export default function Hero() {
                   href="https://calendly.com/trendline02tc/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
                   aria-label="Request a consultation with our team"
                 >
                   Book Appointment
@@ -43,7 +43,7 @@ export default function Hero() {
                   href="/brochures/trendline-training-brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-blue-900 bg-white px-6 py-2 text-base font-medium text-blue-900 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
+                  className="inline-flex items-center justify-center rounded-full border border-blue-900 bg-white px-6 py-2 text-[14px] md:text-base font-medium text-blue-900 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
                   aria-label="View our services brochure"
                 >
                   View Brochure
