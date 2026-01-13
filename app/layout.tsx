@@ -4,6 +4,7 @@ import { Manrope, Inter } from "next/font/google";
 import { Navbar } from "../components/navigation/navbar";
 import WhatsAppButton from "@/components/whatsAppButton";
 import Footer from "@/components/footer";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   title:
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <CookieConsent />
         <WhatsAppButton
           phoneNumber="1234567890"
           message="Hello! I'm interested in your services."

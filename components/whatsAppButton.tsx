@@ -18,7 +18,7 @@ export default function WhatsAppFloatButton({
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 z-50 right-4 bg-white shadow-lg p-3 rounded-full cursor-pointer hover:shadow-xl hover:scale-110 transition-all duration-300"
+      className="fixed bottom-4 z-50 right-4 bg-[#7ed321] shadow-lg p-3 rounded-full cursor-pointer hover:shadow-xl hover:scale-110 transition-all duration-300"
       aria-label="Contact us on WhatsApp"
     >
       <svg
@@ -26,7 +26,7 @@ export default function WhatsAppFloatButton({
         viewBox="0 0 24 24"
         width="20"
         height="20"
-        color="#7ed321"
+        color="#ffffff"
         fill="none"
       >
         <path
