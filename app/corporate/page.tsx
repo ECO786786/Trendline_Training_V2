@@ -1,7 +1,7 @@
 import SubHero from "@/components/hero/subHero";
 import ContentCard from "@/components/contentCard";
 import { corporateSolutions } from "@/data/corporateSolutions";
-import Banner from "@/components/banner";
+import Banner from "@/components/Banner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 export function CorporateSolutions() {

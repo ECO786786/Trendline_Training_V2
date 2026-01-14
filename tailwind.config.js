@@ -8,8 +8,26 @@ export const safelist = ["font-body", "font-heading"];
 export const theme = {
   extend: {
     fontFamily: {
-      body: ["var(--font-body)"],
-      heading: ["var(--font-heading)"],
+      body: [
+        "var(--font-body)",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+      ],
+      heading: [
+        "var(--font-heading)",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+      ],
     },
     keyframes: {
       marquee: {
