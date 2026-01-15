@@ -39,7 +39,7 @@ export default function CourseGrid({ courses }: CourseGridProps) {
                 </div>
               </Link>
               <div className="px-5 py-6 md:p-6 flex flex-col grow">
-                <div className="mb-4 flex w-full items-center justify-start">
+                <div className="mb-4 flex w-full items-center justify-between">
                   <p className="mr-4 bg-[#1e3a8a1a] px-2 py-1 text-sm font-medium rounded-full text-[#1e3a8a]">
                     {course.category}
                   </p>
@@ -51,14 +51,16 @@ export default function CourseGrid({ courses }: CourseGridProps) {
                   className="mb-2 block max-w-full"
                   href={course.buttonLink}
                 >
-                  <h2 className="text-xl font-bold md:text-2xl hover:text-[#1e3a8a] transition-colors">
+                  <h2 className="text-xl font-normal md:text-[1.75rem] hover:text-[#1e3a8a] transition-colors">
                     {course.title}
                   </h2>
                 </Link>
-                <p className="text-gray-600 mb-6 grow">{course.description}</p>
+                <p className="text-xs md:text-base mb-6 grow">
+                  {course.description}
+                </p>
                 <Link
                   href={course.buttonLink}
-                  className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 mt-auto self-start"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-xs md:text-base font-normal text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 mt-auto self-start"
                 >
                   {course.buttonText}
                 </Link>
