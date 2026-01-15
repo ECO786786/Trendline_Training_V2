@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "../app/actions/contact";
+import Link from "next/link";
 
 const initialState = {
   success: false,
@@ -16,8 +17,8 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full sm:w-auto rounded-full bg-[#1e3a8a] px-8 py-3 text-white font-medium
-      disabled:opacity-50 disabled:cursor-not-allowed"
+      className="sm:w-auto rounded-full bg-[#1e3a8a] px-8 py-3 text-white font-medium
+      disabled:opacity-50 cursor-pointer mt-6"
     >
       {pending ? "Sending..." : "Send Message"}
     </button>
@@ -27,19 +28,30 @@ function SubmitButton() {
 export default function ContactForm() {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const [modalClosed, setModalClosed] = useState(false);
+  const [clearedErrors, setClearedErrors] = useState<Set<string>>(new Set());
 
   const closeModal = () => setModalClosed(true);
   const showModal = state.success && !modalClosed;
 
-  // Wrap formAction to reset modalClosed on new submission
+  const getError = (field: string) => {
+    if (clearedErrors.has(field)) return undefined;
+    return state.errors[field];
+  };
+
+  const handleInputChange = (field: string) => {
+    if (state.errors[field] && !clearedErrors.has(field)) {
+      setClearedErrors((prev) => new Set(prev).add(field));
+    }
+  };
+
   const handleSubmit = (formData: FormData) => {
     setModalClosed(false);
+    setClearedErrors(new Set());
     return formAction(formData);
   };
 
   return (
     <>
-      {/* Success Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center">
@@ -66,7 +78,7 @@ export default function ContactForm() {
             </p>
             <button
               onClick={closeModal}
-              className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition"
+              className="bg-[#1e3a8a] text-white px-6 py-2 font-medium hover:bg-blue-700 transition rounded-full"
             >
               Close
             </button>
@@ -74,106 +86,107 @@ export default function ContactForm() {
         </div>
       )}
 
-      <form
-        action={handleSubmit}
-        noValidate
-        aria-describedby="form-status"
-        className="grid max-w-lg grid-cols-1 gap-6"
-      >
-        {/* Full name */}
-        <div>
-          <label htmlFor="fullName" className="block text-sm font-medium mb-2">
-            Full name
-          </label>
-          <input
-            id="fullName"
-            name="fullName"
-            aria-invalid={!!state.errors.fullName}
-            aria-describedby="fullName-error"
-            className={`w-full rounded-md border px-4 py-3 ${
-              state.errors.fullName ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {state.errors.fullName && (
-            <p
-              id="fullName-error"
-              className="mt-1 text-xs text-red-600 animate-in fade-in"
+      <form action={handleSubmit} noValidate aria-describedby="form-status">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium mb-2"
             >
-              {state.errors.fullName[0]}
-            </p>
-          )}
-        </div>
+              Full Name
+            </label>
+            <input
+              id="fullName"
+              name="fullName"
+              aria-invalid={!!getError("fullName")}
+              aria-describedby="fullName-error"
+              onChange={() => handleInputChange("fullName")}
+              className={`w-full rounded-md border px-4 py-3 ${
+                getError("fullName") ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {getError("fullName") && (
+              <p
+                id="fullName-error"
+                className="mt-1 text-xs text-red-600 animate-in fade-in"
+              >
+                {getError("fullName")![0]}
+              </p>
+            )}
+          </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            aria-invalid={!!state.errors.email}
-            aria-describedby="email-error"
-            className={`w-full rounded-md border px-4 py-3 ${
-              state.errors.email ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {state.errors.email && (
-            <p
-              id="email-error"
-              className="mt-1 text-xs text-red-600 animate-in fade-in"
-            >
-              {state.errors.email[0]}
-            </p>
-          )}
-        </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              aria-invalid={!!getError("email")}
+              aria-describedby="email-error"
+              onChange={() => handleInputChange("email")}
+              className={`w-full rounded-md border px-4 py-3 ${
+                getError("email") ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {getError("email") && (
+              <p
+                id="email-error"
+                className="mt-1 text-xs text-red-600 animate-in fade-in"
+              >
+                {getError("email")![0]}
+              </p>
+            )}
+          </div>
 
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium mb-2">
-            Phone
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            className="w-full rounded-md border border-gray-300 px-4 py-3"
-          />
-        </div>
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium mb-2">
+              Phone
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              className="w-full rounded-md border border-gray-300 px-4 py-3"
+            />
+          </div>
 
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium mb-2">
-            Company
-          </label>
-          <input
-            id="company"
-            name="company"
-            className="w-full rounded-md border border-gray-300 px-4 py-3"
-          />
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium mb-2">
+              Company
+            </label>
+            <input
+              id="company"
+              name="company"
+              className="w-full rounded-md border border-gray-300 px-4 py-3"
+            />
+          </div>
         </div>
-
-        <div>
+        <div className="mb-6">
           <label htmlFor="subject" className="block text-sm font-medium mb-2">
             Subject
           </label>
           <input
             id="subject"
             name="subject"
-            aria-invalid={!!state.errors.subject}
+            aria-invalid={!!getError("subject")}
             aria-describedby="subject-error"
+            onChange={() => handleInputChange("subject")}
             className={`w-full rounded-md border px-4 py-3 ${
-              state.errors.subject ? "border-red-500" : "border-gray-300"
+              getError("subject") ? "border-red-500" : "border-gray-300"
             }`}
           />
-          {state.errors.subject && (
+          {getError("subject") && (
             <p
               id="subject-error"
               className="mt-1 text-xs text-red-600 animate-in fade-in"
             >
-              {state.errors.subject[0]}
+              {getError("subject")![0]}
             </p>
           )}
         </div>
 
-        <div>
+        <div className="mb-6">
           <label htmlFor="message" className="block text-sm font-medium mb-2">
             Message
           </label>
@@ -181,39 +194,43 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows={5}
-            aria-invalid={!!state.errors.message}
+            aria-invalid={!!getError("message")}
             aria-describedby="message-error"
+            onChange={() => handleInputChange("message")}
             className={`w-full rounded-md border px-4 py-3 resize-none ${
-              state.errors.message ? "border-red-500" : "border-gray-300"
+              getError("message") ? "border-red-500" : "border-gray-300"
             }`}
           />
-          {state.errors.message && (
+          {getError("message") && (
             <p
               id="message-error"
               className="mt-1 text-xs text-red-600 animate-in fade-in"
             >
-              {state.errors.message[0]}
+              {getError("message")![0]}
             </p>
           )}
         </div>
-
-        {/* Terms */}
         <label className="flex items-center gap-3 text-sm cursor-pointer">
           <input
             type="checkbox"
             name="terms"
-            aria-invalid={!!state.errors.terms}
-            className="h-5 w-5"
+            aria-invalid={!!getError("terms")}
+            onChange={() => handleInputChange("terms")}
+            className="h-5 w-5 cursor-pointer"
           />
-          I agree to the Privacy Policy
+          <span>
+            I agree to the{" "}
+            <Link href="/privacy" className="text-[#1e3a8a] hover:underline">
+              Privacy Policy
+            </Link>
+          </span>
         </label>
 
-        {state.errors.terms && (
-          <p className="text-xs text-red-600 animate-in fade-in">
-            {state.errors.terms[0]}
+        {getError("terms") && (
+          <p className="mt-1 text-xs text-red-600 animate-in fade-in">
+            {getError("terms")![0]}
           </p>
         )}
-
         <SubmitButton />
       </form>
     </>

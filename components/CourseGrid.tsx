@@ -28,7 +28,7 @@ export default function CourseGrid({ courses }: CourseGridProps) {
               className="flex size-full flex-col items-center justify-start border border-gray-200 hover:shadow-lg transition-shadow duration-300 rounded-lg"
             >
               <Link href={course.buttonLink} className="w-full">
-                <div className="relative w-full aspect-[3/2] overflow-hidden rounded-t-lg">
+                <div className="relative w-full aspect-3/2 overflow-hidden rounded-t-lg">
                   <Image
                     src={course.imageSrc}
                     alt={course.imageAlt}
@@ -38,7 +38,7 @@ export default function CourseGrid({ courses }: CourseGridProps) {
                   />
                 </div>
               </Link>
-              <div className="px-5 py-6 md:p-6">
+              <div className="px-5 py-6 md:p-6 flex flex-col grow">
                 <div className="mb-4 flex w-full items-center justify-start">
                   <p className="mr-4 bg-[#1e3a8a1a] px-2 py-1 text-sm font-medium rounded-full text-[#1e3a8a]">
                     {course.category}
@@ -55,25 +55,12 @@ export default function CourseGrid({ courses }: CourseGridProps) {
                     {course.title}
                   </h2>
                 </Link>
-                <p className="text-gray-600 mb-6">{course.description}</p>
+                <p className="text-gray-600 mb-6 grow">{course.description}</p>
                 <Link
                   href={course.buttonLink}
-                  className="mt-6 flex items-center justify-start gap-x-2 text-gray-900 hover:text-[#1e3a8a] transition-colors font-medium"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 mt-auto self-start"
                 >
                   {course.buttonText}
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
                 </Link>
               </div>
             </div>
