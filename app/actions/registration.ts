@@ -1,19 +1,22 @@
 "use server";
 
-import { registrationSchema } from "@/lib/registration-schema";
+import { registrationSchema } from "@/lib/contact-schema";
 
 type RegistrationFormState = {
   success: boolean;
   errors: Record<string, string[] | undefined>;
 };
 
-export async function submitRegistrationForm(
+export async function submitRegistration(
   prevState: RegistrationFormState | null,
   formData: FormData
 ) {
   const rawData = Object.fromEntries(formData.entries());
 
-  const parsed = registrationSchema.safeParse(rawData);
+  const parsed = registrationSchema.safeParse({
+    ...rawData,
+    terms: rawData.terms === "on",
+  });
 
   if (!parsed.success) {
     return {
@@ -22,8 +25,8 @@ export async function submitRegistrationForm(
     };
   }
 
-  // 👉 Do real work here (DB, email, etc.)
-  console.log("Registration form submitted:", parsed.data);
+  // 👉 Do real work here (create user, hash password, etc.)
+  console.log("Registration submitted");
 
   return {
     success: true,

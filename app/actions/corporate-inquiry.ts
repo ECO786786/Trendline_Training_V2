@@ -1,6 +1,6 @@
 "use server";
 
-import { corporateInquirySchema } from "@/lib/corporate-inquiry-schema";
+import { corporateInquirySchema } from "@/lib/contact-schema";
 
 type CorporateInquiryFormState = {
   success: boolean;
@@ -13,7 +13,10 @@ export async function submitCorporateInquiry(
 ) {
   const rawData = Object.fromEntries(formData.entries());
 
-  const parsed = corporateInquirySchema.safeParse(rawData);
+  const parsed = corporateInquirySchema.safeParse({
+    ...rawData,
+    terms: rawData.terms === "on",
+  });
 
   if (!parsed.success) {
     return {
@@ -23,7 +26,7 @@ export async function submitCorporateInquiry(
   }
 
   // 👉 Do real work here (DB, email, etc.)
-  console.log("Corporate inquiry submitted:", parsed.data);
+  console.log("Corporate inquiry submitted");
 
   return {
     success: true,
