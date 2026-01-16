@@ -7,7 +7,7 @@ type RegistrationFormState = {
   errors: Record<string, string[] | undefined>;
 };
 
-export async function submitRegistration(
+export async function submitRegistrationForm(
   prevState: RegistrationFormState | null,
   formData: FormData
 ) {
