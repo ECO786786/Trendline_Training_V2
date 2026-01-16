@@ -27,7 +27,7 @@ export default function OpenCourses() {
 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-12 grid auto-cols-fr grid-cols-1 items-end gap-12 md:mb-18 md:grid-cols-[1fr_max-content] lg:mb-20 lg:gap-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4 text-[16px] text-[#1e3a8a]">
@@ -54,7 +54,7 @@ export default function OpenCourses() {
             <div key={index} className="flex flex-col items-start">
               <Link
                 href={course.link}
-                className="relative block aspect-[3/2] w-full"
+                className="relative block aspect-3/2 w-full"
               >
                 <Image
                   src={course.image}

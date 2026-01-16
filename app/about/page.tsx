@@ -1,4 +1,4 @@
-import Team from "@/components/teamCard";
+import Team from "@/components/TeamCard";
 import Mission from "@/components/Mission";
 import SubHero from "@/components/hero/SubHero";
 import Origins from "@/components/Origins";

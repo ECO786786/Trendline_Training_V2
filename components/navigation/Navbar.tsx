@@ -18,12 +18,12 @@ export function Navbar() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const isActive = (href) => {
+  const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
-  const linkClass = (href) =>
+  const linkClass = (href: string) =>
     `block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 transition-colors ${
       isActive(href) ? "text-blue-900 font-bold" : "hover:text-blue-900"
     }`;

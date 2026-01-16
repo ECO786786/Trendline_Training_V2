@@ -1,9 +1,9 @@
-import Hero from "../components/hero/hero";
+import Hero from "@/components/hero/Hero";
 import Benefits from "@/components/Benefits";
-import OpenCourse from "../components/openCourses";
-import Banner from "../components/Banner";
-import Services from "../components/services";
-import IndustriesSection from "../components/industriesSection";
+import OpenCourse from "@/components/OpenCourses";
+import Banner from "@/components/Banner";
+import Services from "@/components/Services";
+import IndustriesSection from "@/components/IndustriesSection";
 import Testimonials from "../components/Testimonials";
 import Events from "../components/Events";
 

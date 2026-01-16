@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, JSX } from "react";
+import { Suspense, useState, JSX } from "react";
 import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
@@ -37,7 +37,7 @@ interface DeliveryMethod {
   icon: JSX.Element;
 }
 
-export default function EnrollmentPage() {
+function EnrollmentContent() {
   const searchParams = useSearchParams();
   const courseSlug = searchParams.get("course") || "";
 
@@ -141,7 +141,7 @@ export default function EnrollmentPage() {
   ];
 
   return (
-    <div className="font-display bg-gray-50 dark:bg-[#101922] text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <>
       {showModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center">
@@ -425,6 +425,24 @@ export default function EnrollmentPage() {
           </div>
         </div>
       </main>
+    </>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-pulse text-gray-500">Loading...</div>
+    </div>
+  );
+}
+
+export default function EnrollmentPage() {
+  return (
+    <div className="font-display bg-gray-50 dark:bg-[#101922] text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+      <Suspense fallback={<LoadingFallback />}>
+        <EnrollmentContent />
+      </Suspense>
     </div>
   );
 }

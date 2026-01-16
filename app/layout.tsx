@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope, Inter } from "next/font/google";
-import { Navbar } from "../components/navigation/navbar";
-import WhatsAppButton from "@/components/whatsAppButton";
+import { Navbar } from "@/components/navigation/Navbar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 

@@ -1,5 +1,6 @@
-import GalleryItem from "@/components/galleryItem";
+import GalleryItem from "@/components/GalleryItem";
 import SubHero from "@/components/hero/SubHero";
+import Image from "next/image";
 
 export default function Gallery() {
   return (
@@ -13,6 +14,12 @@ export default function Gallery() {
         ]}
       />
       <GalleryItem />
+      <Image
+        src="/images/powerdrive-logo-1.png"
+        alt="PowerDrive Logo"
+        width={150}
+        height={50}
+      />
     </>
   );
 }

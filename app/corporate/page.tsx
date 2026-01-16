@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import SubHero from "@/components/hero/SubHero";
-import ContentCard from "@/components/contentCard";
+import ContentCard from "@/components/ContentCard";
 import { corporateSolutions } from "@/data/corporateSolutions";
 import Banner from "@/components/Banner";
 import WhyChooseUs from "@/components/WhyChooseUs";
