@@ -8,20 +8,41 @@ export default function Footer() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Corporate Solutions", href: "/corporate" },
-    { name: "Training Programs", href: "/programs" },
+    { name: "Courses", href: "/courses" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
   const trainingPrograms = [
-    "Data Analytics – Beginner",
-    "Data Analytics – Intermediate",
-    "Data Analytics – Advanced",
-    "Power BI Mastery Course",
-    "SQL for Data Analysis",
-    "Data Visualization Essentials",
-    "Data Storytelling Mastery",
-    "Soft Skills for Data Professionals",
+    {
+      name: "Data Analytics – Fundamentals",
+      href: "/courses/data-analytics-fundamentals",
+    },
+    {
+      name: "Data Analytics – Intermediate",
+      href: "/courses/intermediate-data-analytics",
+    },
+    {
+      name: "Data Analytics – Advanced",
+      href: "/courses/advanced-data-analytics-ai",
+    },
+    {
+      name: "Power BI Mastery Course",
+      href: "/courses/power-bi-mastery-program",
+    },
+    { name: "SQL for Data Analysis", href: "/courses/sql-for-data-analysis" },
+    {
+      name: "Data Visualization Essentials",
+      href: "/courses/data-visualization-essentials",
+    },
+    {
+      name: "Data Storytelling Mastery",
+      href: "/courses/data-storytelling-mastery",
+    },
+    {
+      name: "Soft Skills for Data Professionals",
+      href: "/courses/soft-skills-for-data-professionals",
+    },
   ];
 
   const legalLinks = [
@@ -34,7 +55,6 @@ export default function Footer() {
     <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
               <Image
@@ -91,8 +111,6 @@ export default function Footer() {
               </a>
             </nav>
           </div>
-
-          {/* Quick Links */}
           <nav aria-label="Quick Links">
             <h3 className="text-lg font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
@@ -108,32 +126,29 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-
-          {/* Training Programs */}
           <nav aria-label="Training Programs">
             <h3 className="text-lg font-bold mb-6">Training Programs</h3>
             <ul className="space-y-3">
               {trainingPrograms.map((program) => (
-                <li key={program}>
+                <li key={program.name}>
                   <Link
-                    href="/programs"
+                    href={program.href}
                     className="text-gray-400 hover:text-white transition"
                   >
-                    {program}
+                    {program.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Contact Info */}
           <div className="not-italic">
             <h3 className="text-lg font-bold mb-6">Contact Us</h3>
             <address className="not-italic">
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <svg
-                    className="w-5 h-5 text-gray-400 mt-1 mr-3 flex-shrink-0"
+                    className="w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -161,7 +176,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="w-5 h-5 text-gray-400 mt-1 mr-3 flex-shrink-0"
+                    className="w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -198,7 +213,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="w-5 h-5 text-gray-400 mt-1 mr-3 flex-shrink-0"
+                    className="w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -228,7 +243,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="w-5 h-5 text-gray-400 mt-1 mr-3 flex-shrink-0"
+                    className="w-5 h-5 text-gray-400 mt-1 mr-3 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -240,17 +255,17 @@ export default function Footer() {
                       d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
                     />
                   </svg>
-                  <a
-                    href="https://www.trendlinec.com"
+                  <Link
+                    href="/"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition"
                   >
                     www.trendlinec.com
-                  </a>
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <svg
-                    className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0"
+                    className="w-5 h-5 text-gray-400 mr-3 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -273,7 +288,6 @@ export default function Footer() {
 
         <hr className="border-gray-800 mb-8" />
 
-        {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
             © 2026 Trendline Training & Consultancy Ltd. All rights reserved.
