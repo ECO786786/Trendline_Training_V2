@@ -3,7 +3,7 @@ import "./globals.css";
 import { Manrope, Inter } from "next/font/google";
 import { Navbar } from "../components/navigation/navbar";
 import WhatsAppButton from "@/components/whatsAppButton";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {

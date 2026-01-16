@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 992);
@@ -15,6 +17,16 @@ export function Navbar() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
+  const linkClass = (href) =>
+    `block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 transition-colors ${
+      isActive(href) ? "text-blue-900 font-bold" : "hover:text-blue-900"
+    }`;
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/60 flex w-full items-center border-b border-gray-200 lg:min-h-18 lg:px-[5%]">
@@ -37,17 +49,17 @@ export function Navbar() {
             aria-controls="mobile-menu"
           >
             <span
-              className={`my-[3px] h-0.5 w-6 bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? "translate-y-2 rotate-[-45deg]" : ""
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
+                isMobileMenuOpen ? "translate-y-2 -rotate-45" : ""
               }`}
             />
             <span
-              className={`my-[3px] h-0.5 w-6 bg-black transition-all duration-300 ${
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
                 isMobileMenuOpen ? "w-0 opacity-0" : ""
               }`}
             />
             <span
-              className={`my-[3px] h-0.5 w-6 bg-black transition-all duration-300 ${
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
                 isMobileMenuOpen ? "-translate-y-2 rotate-45" : ""
               }`}
             />
@@ -62,15 +74,16 @@ export function Navbar() {
           } lg:max-h-full lg:overflow-visible px-[5%]`}
           aria-label="Main navigation"
         >
-          <Link
-            href="/about"
-            className="block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 hover:text-blue-900 transition-colors"
-          >
+          <Link href="/about" className={linkClass("/about")}>
             About us
           </Link>
           <div className="relative group">
             <button
-              className="flex w-full items-center justify-between gap-2 py-3 text-left text-base lg:flex-none lg:justify-start lg:px-4 lg:py-2 hover:text-blue-900 transition-colors"
+              className={`flex w-full items-center justify-between gap-2 py-3 text-left text-base lg:flex-none lg:justify-start lg:px-4 lg:py-2 transition-colors ${
+                isActive("/corporate") || isActive("/services")
+                  ? "text-blue-900 font-bold"
+                  : "hover:text-blue-900"
+              }`}
               onClick={() =>
                 isMobile && setIsMobileDropdownOpen((prev) => !prev)
               }
@@ -109,7 +122,11 @@ export function Navbar() {
             >
               <Link
                 href="/services/consultancy"
-                className="block py-3 pl-[5%] text-base hover:bg-blue-50 transition-colors"
+                className={`block py-3 pl-[5%] text-base transition-colors ${
+                  isActive("/services/consultancy")
+                    ? "text-blue-900 font-bold bg-blue-50"
+                    : "hover:bg-blue-50"
+                }`}
                 onClick={() => setIsMobileDropdownOpen(false)}
               >
                 Consultancy
@@ -119,29 +136,24 @@ export function Navbar() {
             <div className="hidden lg:block absolute lg:w-62.5 left-0 top-full mt-2 z-50 min-w-50 rounded-md border border-gray-200 bg-white p-2 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
               <Link
                 href="/corporate"
-                className="block px-4 py-2 text-base hover:bg-blue-50 rounded transition-colors"
+                className={`block px-4 py-2 text-base rounded transition-colors ${
+                  isActive("/corporate")
+                    ? "text-blue-900 font-bold bg-blue-50"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 Corporate Solutions
               </Link>
             </div>
           </div>
 
-          <Link
-            href="/courses"
-            className="block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 hover:text-blue-900 transition-colors"
-          >
+          <Link href="/courses" className={linkClass("/courses")}>
             Courses
           </Link>
-          <Link
-            href="/gallery"
-            className="block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 hover:text-blue-900 transition-colors"
-          >
+          <Link href="/gallery" className={linkClass("/gallery")}>
             Gallery
           </Link>
-          <Link
-            href="/contact"
-            className="block py-3 text-base first:pt-7 lg:px-4 lg:py-2 first:lg:pt-2 hover:text-blue-900 transition-colors"
-          >
+          <Link href="/contact" className={linkClass("/contact")}>
             Contact
           </Link>
 
