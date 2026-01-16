@@ -1,5 +1,5 @@
 import Hero from "../components/hero/hero";
-import Benefits from "../components/benefits";
+import Benefits from "@/components/Benefits";
 import OpenCourse from "../components/openCourses";
 import Banner from "../components/Banner";
 import Services from "../components/services";
