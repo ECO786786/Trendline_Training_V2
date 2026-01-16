@@ -4,7 +4,8 @@ import OpenCourse from "../components/openCourses";
 import Banner from "../components/Banner";
 import Services from "../components/services";
 import IndustriesSection from "../components/industriesSection";
-import { Testimonial27 } from "../components/testimonial27";
+import Testimonials from "../components/Testimonials";
+import Events from "../components/Events";
 
 export default function Home() {
   return (
@@ -13,8 +14,9 @@ export default function Home() {
       <Benefits />
       <Services />
       <IndustriesSection />
-      <Testimonial27 />
       <OpenCourse />
+      {/* <Events /> */}
+      <Testimonials />
       <Banner />
     </>
   );

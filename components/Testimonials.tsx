@@ -71,16 +71,14 @@ function useWindowWidth() {
   return width;
 }
 
-export function Testimonial27() {
+export default function Testimonials() {
   const width = useWindowWidth();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
 
-  // Determine number of visible cards
   const cardsVisible = width >= 768 ? 2 : 1;
   const maxIndex = testimonials.length - cardsVisible;
 
-  // Auto-play
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
@@ -92,7 +90,6 @@ export function Testimonial27() {
     return () => clearInterval(interval);
   }, [isAutoPlaying, maxIndex]);
 
-  // Navigation
   const handlePrevious = () => {
     setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
@@ -108,7 +105,6 @@ export function Testimonial27() {
     setCurrentIndex(index);
   };
 
-  // Stars
   const renderStars = (rating: number) =>
     Array.from({ length: rating }, (_, i) => (
       <svg
@@ -120,13 +116,12 @@ export function Testimonial27() {
       </svg>
     ));
 
-  // Calculate the width percentage for each card based on visible cards
   const cardWidthPercent = 100 / cardsVisible;
 
   return (
     <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28 bg-white">
       <div className="container mx-auto max-w-7xl">
-        <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
+        <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
           <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
             What our clients say
           </h2>
@@ -147,7 +142,7 @@ export function Testimonial27() {
               {testimonials.map((t) => (
                 <div
                   key={t.id}
-                  className="flex-shrink-0 px-2 md:px-4"
+                  className="shrink-0 px-2 md:px-4"
                   style={{ width: `${cardWidthPercent}%` }}
                 >
                   <div className="flex flex-col items-start justify-between border border-gray-200 p-6 md:p-8 rounded-lg h-full">
@@ -175,8 +170,6 @@ export function Testimonial27() {
               ))}
             </div>
           </div>
-
-          {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
             className="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 lg:-translate-x-6 w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full bg-white border-2 border-gray-300 hover:bg-gray-50 transition-colors"
@@ -216,8 +209,6 @@ export function Testimonial27() {
             </svg>
           </button>
         </div>
-
-        {/* Dots */}
         <div className="mt-8 md:mt-12 flex items-center justify-center gap-2">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button

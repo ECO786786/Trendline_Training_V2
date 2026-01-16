@@ -1,4 +1,4 @@
-import SubHero from "@/components/hero/subHero";
+import SubHero from "@/components/hero/SubHero";
 import ContactForm from "@/components/ContactInfo";
 
 export default function Contact() {

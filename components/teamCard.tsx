@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -113,11 +114,14 @@ const SocialIcons = () => (
 
 const TeamCard = ({ member }: { member: TeamMember }) => (
   <div className="flex flex-col items-start gap-6">
-    <img
-      src={member.image}
-      alt={member.name}
-      className="w-full aspect-square rounded-lg object-cover"
-    />
+    <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+      <Image
+        src={member.image}
+        alt={member.name}
+        fill
+        className="object-cover"
+      />
+    </div>
     <div className="flex flex-col items-center gap-4 w-full">
       <div className="flex flex-col items-center w-full">
         <h3 className="w-full text-[#04030B] font-inter text-[22px] font-semibold leading-[150%]">
@@ -187,13 +191,13 @@ const NavigationButton = ({
   </button>
 );
 
-export default function Index() {
+export default function Team() {
   const width = useWindowWidth();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Determine cards visible based on screen size
   const cardsVisible = width >= 1024 ? 3 : width >= 768 ? 2 : 1;
   const maxIndex = teamMembers.length - cardsVisible;
+  const gap = 24;
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
@@ -203,25 +207,21 @@ export default function Index() {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
-  // Calculate the width percentage for each card
-  const cardWidthPercent = 100 / cardsVisible;
-
   return (
-    <div className="flex flex-col items-center bg-white min-h-screen">
+    <div className="flex flex-col items-center justify-center bg-white min-h-screen">
       <div className="flex px-8 md:px-16 py-16 md:py-28 flex-col items-center gap-12 md:gap-20 w-full">
-        <div className="flex container w-full flex-col items-start gap-12 md:gap-20">
-          {/* Section Title */}
-          <div className="flex max-w-[768px] w-full flex-col items-start gap-4">
-            <div className="flex items-center w-full">
-              <div className="text-[#04030B] font-inter text-base font-semibold leading-[150%]">
+        <div className="flex container w-full flex-col items-center gap-12 md:gap-20">
+          <div className="flex max-w-3xl w-full flex-col items-center justify-center gap-4 text-center">
+            <div className="flex items-center">
+              <div className="text-[#1e3a8a] font-inter text-base font-semibold leading-[150%]">
                 People
               </div>
             </div>
             <div className="flex flex-col items-center gap-6 w-full">
-              <h1 className="w-full text-[#04030B] font-['Manrope',sans-serif] text-[32px] md:text-[52px] font-medium leading-[120%] tracking-[-0.52px]">
-                Meet our expert team
-              </h1>
-              <p className="w-full text-[#04030B] font-inter text-base md:text-lg font-normal leading-[150%]">
+              <h2 className="w-full text-[#04030B] font-['Manrope',sans-serif] text-[32px] md:text-[52px] font-medium leading-[120%] tracking-[-0.52px] text-center">
+                Meet Our Expert Team
+              </h2>
+              <p className="text-[#04030B] font-inter text-base md:text-lg font-normal leading-[150%] text-center">
                 Our world class team of consultants, trainers, and specialists
                 brings combined expertise in data science, AI, Power BI,
                 operations, HR, and financial analysis to deliver impactful
@@ -229,29 +229,32 @@ export default function Index() {
               </p>
             </div>
           </div>
-
-          {/* Team Cards Carousel */}
-          <div className="flex flex-col items-start gap-12 w-full">
-            <div className="overflow-hidden w-full -mx-4 md:-mx-6">
+          <div className="flex flex-col items-center gap-12 w-full">
+            <div className="overflow-hidden w-full">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentIndex * cardWidthPercent}%)`,
+                  gap: `${gap}px`,
+                  transform: `translateX(calc(-${currentIndex} * (100% / ${cardsVisible} + ${
+                    gap / cardsVisible
+                  }px)))`,
                 }}
               >
                 {teamMembers.map((member, idx) => (
                   <div
                     key={`${member.name}-${idx}`}
-                    className="flex-shrink-0 px-4 md:px-6"
-                    style={{ width: `${cardWidthPercent}%` }}
+                    className="shrink-0"
+                    style={{
+                      width: `calc((100% - ${
+                        gap * (cardsVisible - 1)
+                      }px) / ${cardsVisible})`,
+                    }}
                   >
                     <TeamCard member={member} />
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Carousel Controls */}
             <div className="flex justify-between items-center w-full">
               <SliderDots total={maxIndex + 1} active={currentIndex} />
               <div className="flex items-start gap-4">

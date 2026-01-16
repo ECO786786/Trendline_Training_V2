@@ -1,6 +1,7 @@
 export interface CTA {
   text: string;
   href: string;
+  onClick?: () => void;
 }
 
 export interface ImageConfig {

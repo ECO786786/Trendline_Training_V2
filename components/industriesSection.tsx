@@ -118,13 +118,13 @@ export default function IndustriesSection() {
         rel="stylesheet"
       />
       <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
-        <div className="max-w-[1280px] mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
             <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
               Industries
             </p>
             <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
-              Sectors we serve
+              Sectors We Serve
             </h2>
             <p className="text-[16px] text-[#04030B] font-regular">
               Our specialized training and consultancy services cater to diverse
@@ -137,17 +137,17 @@ export default function IndustriesSection() {
             {industries.map((industry) => (
               <div
                 key={industry.id}
-                className="bg-gray-50 rounded-xl border border-gray-500 overflow-hidden transition-all duration-300 self-start"
+                className="bg-[#1e3a8a] text-white rounded-xl border border-gray-500 overflow-hidden transition-all duration-300 self-start group"
               >
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
                     toggleAccordion(industry.id);
                   }}
-                  className="flex cursor-pointer items-center justify-between p-5 text-gray-900 font-medium text-[20px] font-heading select-none hover:bg-gray-100 transition-colors"
+                  className="flex cursor-pointer items-center justify-between p-5 text-white font-medium text-[20px] font-heading select-none"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-[#f0f8ff] flex items-center justify-center text-[#1e3a8a]">
+                    <div className="w-8 h-8 rounded  flex items-center justify-center text-white">
                       <span className="material-symbols-outlined text-xl">
                         {industry.icon}
                       </span>

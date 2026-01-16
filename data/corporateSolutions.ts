@@ -18,7 +18,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "left",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {
@@ -30,7 +30,7 @@ export const corporateSolutions: ContentCardModel[] = [
 
   {
     tag: "Corporate Training",
-    title: "Structured In-House Programs",
+    title: "Structured In House Programs",
     description:
       "Comprehensive training programs delivered directly to your team, customized to your business processes, data systems, and organizational objectives.",
     features: [
@@ -45,7 +45,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "right",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {
@@ -57,12 +57,12 @@ export const corporateSolutions: ContentCardModel[] = [
 
   {
     tag: "Executive Coaching",
-    title: "Leadership-Focused Data Understanding",
+    title: "Leadership Focused Data Understanding",
     description:
-      "One-on-one or small group coaching for managers and leaders, focusing on understanding data reports, making data-driven decisions, and leading analytics initiatives.",
+      "One-on-one or small group coaching for managers and leaders, focusing on understanding data reports, making data driven decisions, and leading analytics initiatives.",
     features: [
       "Personalized approach",
-      "Executive-level content",
+      "Executive level content",
       "Strategic decision support",
       "Ongoing support",
     ],
@@ -72,7 +72,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "left",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {
@@ -99,7 +99,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "right",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {
@@ -113,9 +113,9 @@ export const corporateSolutions: ContentCardModel[] = [
     tag: "Data Literacy Campaigns",
     title: "Ongoing Corporate Upskilling Programs",
     description:
-      "Comprehensive upskilling initiatives covering Excel mastery, Power BI proficiency, and data literacy fundamentals designed for organization-wide implementation.",
+      "Comprehensive upskilling initiatives covering Excel mastery, Power BI proficiency, and data literacy fundamentals designed for organization wide implementation.",
     features: [
-      "Organization-wide impact",
+      "Organization wide impact",
       "Progressive skill building",
       "Certification programs",
       "Performance tracking",
@@ -126,7 +126,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "left",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {
@@ -138,13 +138,13 @@ export const corporateSolutions: ContentCardModel[] = [
 
   {
     tag: "Custom Dashboard Deployment",
-    title: "Done-for-You Power BI Solutions",
+    title: "Done for You Power BI Solutions",
     description:
       "Complete dashboard solutions for HR, Finance, Logistics, and other departments. We design, build, and deploy custom Power BI dashboards tailored to your specific business needs.",
     features: [
       "Unique solutions",
       "Training included",
-      "Department-specific design",
+      "Department specific design",
       "Ongoing maintenance",
     ],
     image: {
@@ -153,7 +153,7 @@ export const corporateSolutions: ContentCardModel[] = [
       position: "right",
     },
     primaryCTA: {
-      text: "Inquire",
+      text: "Request Inquiry",
       href: "#",
     },
     secondaryCTA: {

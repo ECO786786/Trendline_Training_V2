@@ -1,5 +1,5 @@
 import GalleryItem from "@/components/galleryItem";
-import SubHero from "@/components/hero/subHero";
+import SubHero from "@/components/hero/SubHero";
 
 export default function Gallery() {
   return (

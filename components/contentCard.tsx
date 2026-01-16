@@ -46,18 +46,16 @@ export default function ContentCard({
               <p className="mb-3 font-semibold text-[#1e3a8a] md:mb-4">{tag}</p>
             )}
 
-            <h2 className="mb-5 text-3xl font-medium tracking-[-1%] leading-[3.75rem] md:mb-6 md:text-4xl lg:text-5xl">
+            <h2 className="mb-5 text-4xl font-medium lg:tracking-[-1%] lg:leading-15 md:mb-6  lg:text-5xl">
               {title}
             </h2>
 
-            <p className="mb-8 text-gray-700 md:text-md">{description}</p>
+            <p className="mb-8 text-black md:text-md">{description}</p>
 
             {features && features.length > 0 && (
               <div className="mb-6">
-                <h4 className="mb-3 font-semibold text-gray-900">
-                  Key Benefits:
-                </h4>
-                <ul className="list-inside list-disc text-gray-700">
+                <h4 className="mb-3 font-semibold text-black">Key Benefits:</h4>
+                <ul className="list-inside list-disc text-black">
                   {features.map((feature, index) => (
                     <li key={index}>{feature}</li>
                   ))}
@@ -66,35 +64,32 @@ export default function ContentCard({
             )}
 
             {(primaryCTA || secondaryCTA) && (
-              <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
-                {primaryCTA && (
-                  <a
-                    href={primaryCTA.href}
-                    className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
-                  >
-                    {primaryCTA.text}
-                  </a>
-                )}
+              <div className="mt-6 flex gap-4 md:mt-8">
+                {primaryCTA &&
+                  (primaryCTA.onClick ? (
+                    <button
+                      onClick={primaryCTA.onClick}
+                      className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] lg:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 cursor-pointer"
+                    >
+                      {primaryCTA.text}
+                    </button>
+                  ) : (
+                    <a
+                      href={primaryCTA.href}
+                      className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] lg:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
+                    >
+                      {primaryCTA.text}
+                    </a>
+                  ))}
 
                 {secondaryCTA && (
                   <a
                     href={secondaryCTA.href}
-                    className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-gray-900 transition-colors hover:text-[#1e3a8a]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] lg:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
                   >
                     {secondaryCTA.text}
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
                   </a>
                 )}
               </div>

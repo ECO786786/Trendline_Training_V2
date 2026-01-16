@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface Tab {
   id: string;
@@ -69,36 +70,36 @@ export default function Services() {
       description: "Structured programs that build lasting capability",
     },
     {
-      id: "reaserch-and-insights",
+      id: "research-and-insights",
       label: "Research and Insights",
-      icon: "/icons/strategy.svg",
-      heading: "From Power BI to advanced analytics",
+      icon: "/icons/data-sql.svg",
+      heading: "Turning Data into Strategic Insight",
       description:
-        "Providing insightsand analytics for market research, healthcare, finance, and more",
+        "We deliver advanced analytics and research-driven insights across sectors including market research, healthcare, finance, and the public sector—empowering evidence-based decision-making.",
     },
     {
       id: "workshops-and-seminars",
       label: "Workshops and Seminars",
-      icon: "/icons/strategy.svg",
-      heading: "Interactive learning experiences",
+      icon: "/icons/help-desk.svg",
+      heading: "Hands-On, Expert-Led Learning",
       description:
-        "Engaging sessions on the latest trends and technologies in data analytics and business intelligence.",
+        "Interactive workshops and seminars covering the latest tools, trends, and best practices in data analytics and business intelligence.",
     },
     {
-      id: "Mentorship Program",
+      id: "mentorship-program",
       label: "Mentorship Program",
-      icon: "/icons/strategy.svg",
-      heading: "Personalized guidance and support",
+      icon: "/icons/speech.svg",
+      heading: "Personalized Career Guidance",
       description:
-        "One-on-one mentorship to help individuals navigate their data analytics career paths and achieve their professional goals.",
+        "One-on-one mentorship designed to support individuals at every stage of their data analytics journey, from skill development to career progression.",
     },
     {
-      id: "evluation-and-assessment",
+      id: "evaluation-and-assessment",
       label: "Evaluation and Assessment",
-      icon: "/icons/strategy.svg",
-      heading: "Measuring impact and effectiveness",
+      icon: "/icons/assessment.svg",
+      heading: "Measuring Impact and Driving Improvement",
       description:
-        "Comprehensive evaluation services to assess the effectiveness of training programs and data strategies, ensuring continuous improvement and ROI.",
+        "Comprehensive evaluation and assessment services that measure the effectiveness of training initiatives and data strategies, ensuring measurable impact and return on investment.",
     },
   ];
 
@@ -108,13 +109,13 @@ export default function Services() {
 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
             Services
           </p>
           <h2 className="mb-5 font-medium md:mb-6 text-[52px] font-heading leading-[120%]">
-            What we deliver
+            What We Deliver
           </h2>
           <p className="md:text-md text-[16px] text-[#04030B] font-regular">
             We offer comprehensive training and consultancy services designed to
@@ -122,7 +123,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-500 md:grid-cols-[1fr_1.5fr] rounded-lg">
+        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-500 md:grid-cols-[1fr_1.5fr] rounded-lg overflow-hidden">
           <div
             role="tablist"
             aria-orientation="vertical"
@@ -160,15 +161,17 @@ export default function Services() {
                 activeTab === index ? "animate-fadeIn" : ""
               }`}
             >
-              <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16 bg-white rounded-bl-lg rounded-br-lg rounded-tr-lg">
-                <div className="mb-5 md:mb-6">
-                  <img
+              <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16 bg-white">
+                <div className="mb-5 md:mb-6 w-16 h-16 bg-linear-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center">
+                  <Image
                     src={tab.icon}
                     className="size-12"
                     alt={`${tab.label} icon`}
+                    width={30}
+                    height={30}
                   />
                 </div>
-                <h2 className="mb-5 font-medium leading-[1.2] md:mb-6 text-[30px] font-heading">
+                <h2 className="mb-5 font-medium leading-[1.2] md:mb-6 text-3xl md:text-[2.75rem] font-heading">
                   {tab.heading}
                 </h2>
                 <p className="text-[16px]">{tab.description}</p>

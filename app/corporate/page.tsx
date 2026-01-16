@@ -1,20 +1,25 @@
-import SubHero from "@/components/hero/subHero";
+"use client";
+
+import { useState } from "react";
+import SubHero from "@/components/hero/SubHero";
 import ContentCard from "@/components/contentCard";
 import { corporateSolutions } from "@/data/corporateSolutions";
 import Banner from "@/components/Banner";
 import WhyChooseUs from "@/components/WhyChooseUs";
-
-export function CorporateSolutions() {
-  return (
-    <>
-      {corporateSolutions.map((item, index) => (
-        <ContentCard key={index} {...item} />
-      ))}
-    </>
-  );
-}
+import InquiryModal from "@/components/InquiryModal";
 
 export default function Corporate() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState({
+    name: "",
+    price: "",
+  });
+
+  const openInquiryModal = (serviceName: string, servicePrice?: string) => {
+    setSelectedService({ name: serviceName, price: servicePrice || "" });
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <SubHero
@@ -25,9 +30,27 @@ export default function Corporate() {
           { label: "Corporate", href: "/corporate" },
         ]}
       />
-      <CorporateSolutions />
+
+      {corporateSolutions.map((item, index) => (
+        <ContentCard
+          key={index}
+          {...item}
+          primaryCTA={{
+            ...item.primaryCTA,
+            onClick: () => openInquiryModal(item.title),
+          }}
+        />
+      ))}
+
       <WhyChooseUs />
       <Banner />
+
+      <InquiryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        serviceName={selectedService.name}
+        servicePrice={selectedService.price}
+      />
     </>
   );
 }

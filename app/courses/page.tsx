@@ -1,4 +1,4 @@
-import SubHero from "@/components/hero/subHero";
+import SubHero from "@/components/hero/SubHero";
 import CourseGrid from "@/components/CourseGrid";
 import { courses } from "@/data/courses";
 

@@ -78,7 +78,6 @@ export default function CourseDetailPage({
           </div>
         </div>
       </div>
-
       <div className="max-w-7xl mx-auto px-6 lg:px-20 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 flex flex-col gap-12">
@@ -174,7 +173,7 @@ export default function CourseDetailPage({
               <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                 <div className="p-6">
                   <Link
-                    href="#"
+                    href={`/registration?course=${slug}`}
                     className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 mb-4 w-full cursor-pointer"
                   >
                     Register Your Interest

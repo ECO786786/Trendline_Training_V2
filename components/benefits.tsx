@@ -54,13 +54,13 @@ export default function Benefits() {
       className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50"
       aria-labelledby="benefits-heading"
     >
-      <div className="max-w-[1280px] mx-auto">
-        <div className="mb-12 w-full max-w-[768px] md:mb-18 lg:mb-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 w-full max-w-3xl md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
             Why we&apos;re different
           </p>
-          <h2 className="mb-5 text-3xl md:text-[60px] font-medium leading-[120%] font-heading">
-            Why organizations choose Trendline
+          <h2 className="mb-5 text-4xl md:text-5xl font-medium leading-[120%] font-heading">
+            Why Organizations Choose Trendline
           </h2>
           <p className="md:text-md font-body font-normal">
             We combine deep Zambian market knowledge with global analytics
@@ -102,12 +102,12 @@ export default function Benefits() {
                   height: isMobile || activeIndex === index ? "auto" : "0px",
                 }}
               >
-                <div className="flex h-full flex-col px-6 pb-8 pt-4 md:px-10 md:pb-12 md:pt-12 lg:w-[40rem] lg:px-12 lg:pb-16 lg:pt-16">
-                  <h3 className="mb-5 text-4xl font-medium leading-[1.2] md:mb-6 ">
+                <div className="flex h-full flex-col px-6 pb-8 pt-4 md:px-10 md:pb-12 md:pt-12 lg:w-160 lg:px-12 lg:pb-16 lg:pt-16">
+                  <h3 className="mb-5 text-3xl md:text-4xl font-medium leading-[1.2] md:mb-6 ">
                     {feature.heading}
                   </h3>
                   <p className="md:text-md">{feature.description}</p>
-                  <div className="mt-8 h-80 md:mt-10 md:h-[25rem] lg:mt-12">
+                  <div className="mt-8 h-80 md:mt-10 md:h-100 lg:mt-12">
                     <Image
                       src={feature.image}
                       alt={`${feature.title} illustration`}
