@@ -143,7 +143,7 @@ export function TrainingSchedule() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Main Content */}
-      <div className="mx-auto max-w-[1440px] px-4 py-5 md:px-6 lg:px-10">
+      <div className="mx-auto max-w-360 px-4 py-5 md:px-6 lg:px-10">
         {/* Breadcrumb */}
         <div className="flex flex-wrap gap-2 py-4">
           <a
