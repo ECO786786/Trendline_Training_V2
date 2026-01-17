@@ -522,6 +522,210 @@ export const courseDetails: CourseDetail[] = [
     prerequisites: "Basic knowledge of Excel or spreadsheets recommended",
     certificate: "Yes",
   },
+  {
+    id: 11,
+    slug: "financial-analysis-power-bi",
+    title: "Financial Analysis with Power BI",
+    subTitle:
+      "Bridging the gap between traditional finance and modern business intelligence.",
+    level: "Intermediate",
+    duration: "5 Days (23-27 Mar)",
+    prices: {
+      ZM: { amount: 3500, currency: "ZMW" },
+      US: { amount: 150, currency: "USD" },
+    },
+    overview:
+      "A specialized program focused on automating financial statements, ratio analysis, and cash flow forecasting using Power BI.",
+    learningOutcomes: [
+      "Connect and transform accounting data from ERPs or Excel into Power BI",
+      "Build automated Income Statements and Balance Sheets",
+      "Develop dynamic financial ratios (Liquidity, Solvency, Profitability)",
+      "Create interactive trend analyses for budgetary control",
+    ],
+    curriculum: [
+      {
+        title: "Finance Data Modeling",
+        description:
+          "Structuring Chart of Accounts and General Ledger data for BI.",
+      },
+      {
+        title: "Advanced DAX for Finance",
+        description:
+          "Calculating Year-to-Date (YTD) and Variance (Actual vs Budget) logic.",
+      },
+    ],
+    prerequisites: "Basic Accounting knowledge and Excel proficiency",
+    certificate: "Yes",
+  },
+  {
+    id: 12,
+    slug: "excel-power-bi-integrated-reporting",
+    title: "Excel & Power BI for Integrated Reporting",
+    subTitle:
+      "Master the dual-power of Excel's flexibility and Power BI's visualization capabilities.",
+    level: "Intermediate",
+    duration: "5 Days (13-17 Apr)",
+    prices: {
+      ZM: { amount: 3500, currency: "ZMW" },
+      US: { amount: 150, currency: "USD" },
+    },
+    overview:
+      "Learn how to use Excel and Power BI as a unified ecosystem for corporate reporting.",
+    learningOutcomes: [
+      "Utilize Power Query consistently across both Excel and Power BI",
+      "Publish Excel datasets to the Power BI Service",
+      "Analyze Power BI datasets directly within Excel Pivot Tables",
+      "Streamline monthly reporting cycles through automation",
+    ],
+    curriculum: [
+      {
+        title: "The Unified Power Query Engine",
+        description: "Advanced M-code for data extraction across platforms.",
+      },
+      {
+        title: "Excel 'Analyze in Power BI'",
+        description:
+          "Leveraging cloud-based data for local spreadsheet analysis.",
+      },
+    ],
+    prerequisites: "Intermediate Excel",
+    certificate: "Yes",
+  },
+  {
+    id: 13,
+    slug: "data-governance-reporting-standards",
+    title: "Data Governance & Reporting Standards",
+    subTitle:
+      "Ensure accuracy, compliance, and consistency across all corporate reports.",
+    level: "All Levels",
+    duration: "3 Days (26-28 May)",
+    prices: {
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 110, currency: "USD" },
+    },
+    overview:
+      "Focuses on the framework of data quality and adherence to local and international reporting standards.",
+    learningOutcomes: [
+      "Implement data quality checks to prevent 'Garbage In, Garbage Out'",
+      "Align reports with the Zambian Data Protection Act",
+      "Create a 'Single Source of Truth' for organizational KPIs",
+      "Establish documentation standards for data lineages",
+    ],
+    curriculum: [
+      {
+        title: "Data Quality Frameworks",
+        description: "Setting up validation rules and automated error alerts.",
+      },
+      {
+        title: "Compliance & Security",
+        description:
+          "Managing data privacy and access control in shared environments.",
+      },
+    ],
+    prerequisites: "None",
+    certificate: "Yes",
+  },
+  {
+    id: 14,
+    slug: "executive-strategic-data-analysis",
+    title: "Executive Strategic Data Analysis",
+    subTitle:
+      "Data-driven leadership for C-Suite and Senior Management decision-making.",
+    level: "Advanced",
+    duration: "3 Days (18-20 Jun)",
+    prices: {
+      ZM: { amount: 4500, currency: "ZMW" },
+      US: { amount: 200, currency: "USD" },
+    },
+    overview:
+      "Equips decision-makers with the ability to interpret complex analytics without needing to write code.",
+    learningOutcomes: [
+      "Interpret AI and Machine Learning forecasts to guide company strategy",
+      "Identify key 'Hero Metrics' that actually drive business value",
+      "Ask the right questions to technical data teams",
+      "Evaluate the ROI of data and technology investments",
+    ],
+    curriculum: [
+      {
+        title: "Strategic KPI Selection",
+        description:
+          "Moving from vanity metrics to actionable business drivers.",
+      },
+      {
+        title: "The Executive Dashboard",
+        description:
+          "Learning to read and interrogate high-level visual summaries.",
+      },
+    ],
+    prerequisites: "Management experience",
+    certificate: "Yes",
+  },
+  {
+    id: 15,
+    slug: "budgeting-planning-variance-analysis",
+    title: "Budgeting, Planning & Variance Analysis",
+    subTitle:
+      "Precision forecasting and rigorous performance tracking for financial health.",
+    level: "Intermediate",
+    duration: "3 Days (27-29 Jul)",
+    prices: {
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 110, currency: "USD" },
+    },
+    overview:
+      "A deep dive into the cycle of setting financial targets and analyzing performance gaps.",
+    learningOutcomes: [
+      "Create driver-based budgets that adapt to market changes",
+      "Automate variance reports (Actual vs. Budget vs. Forecast)",
+      "Perform Root Cause Analysis on financial deviations",
+      "Forecast year-end results based on monthly run-rates",
+    ],
+    curriculum: [
+      {
+        title: "Rolling Forecasts",
+        description: "Moving beyond static annual budgets to dynamic planning.",
+      },
+      {
+        title: "Advanced Variance Modeling",
+        description: "Price-Volume-Mix analysis in Excel and Power BI.",
+      },
+    ],
+    prerequisites: "Basic Financial Modelling knowledge",
+    certificate: "Yes",
+  },
+  {
+    id: 16,
+    slug: "year-end-data-ai-trends",
+    title: "Year-End Data, AI & Analytics Trends Briefing",
+    subTitle:
+      "Prepare for 2027 by understanding the emerging technologies shaping the data landscape.",
+    level: "All Levels",
+    duration: "1 Day (14 Dec)",
+    prices: {
+      ZM: { amount: 1000, currency: "ZMW" },
+      US: { amount: 50, currency: "USD" },
+    },
+    overview:
+      "A high-impact briefing on the future of AI, SQL, and Power BI development.",
+    learningOutcomes: [
+      "Identify the top 5 AI trends impacting Zambian businesses for the coming year",
+      "Review major updates to the Microsoft Fabric and Power BI ecosystem",
+      "Understand the shift toward automated Machine Learning (AutoML)",
+      "Network with other data professionals to share year-end successes",
+    ],
+    curriculum: [
+      {
+        title: "2026 Tech Retrospective",
+        description: "Analyzing which data tools dominated the year.",
+      },
+      {
+        title: "2027 Strategic Roadmap",
+        description: "Planning for upcoming shifts in data engineering and AI.",
+      },
+    ],
+    prerequisites: "None",
+    certificate: "No (Briefing Session)",
+  },
 ];
 
 export function getCourseBySlug(slug: string): CourseDetail | undefined {
@@ -530,7 +734,7 @@ export function getCourseBySlug(slug: string): CourseDetail | undefined {
 
 export function getRelatedCourses(
   currentSlug: string,
-  limit: number = 3
+  limit: number = 3,
 ): CourseDetail[] {
   return courseDetails
     .filter((course) => course.slug !== currentSlug)

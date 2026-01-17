@@ -111,10 +111,7 @@ export default function Services() {
     <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
-          <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
-            Services
-          </p>
-          <h2 className="mb-5 font-medium md:mb-6 text-[52px] font-heading leading-[120%]">
+          <h2 className="mb-5 font-medium md:mb-6 text-4xl md:text-5xl lg:text-[3.25rem] font-heading leading-[120%]">
             What We Deliver
           </h2>
           <p className="md:text-md text-[16px] text-[#04030B] font-regular">

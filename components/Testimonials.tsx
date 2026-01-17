@@ -122,7 +122,7 @@ export default function Testimonials() {
     <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
-          <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
+          <h2 className="mb-5 font-medium text-4xl md:text-5xl lg:text-[3.25rem] font-heading leading-[120%]">
             What Our Clients Say
           </h2>
           <p className="text-[16px] text-[#04030B] font-regular">

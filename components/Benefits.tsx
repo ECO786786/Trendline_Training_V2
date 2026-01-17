@@ -55,10 +55,7 @@ export default function Benefits() {
       aria-labelledby="benefits-heading"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12 w-full max-w-3xl md:mb-18 lg:mb-20">
-          <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
-            Why we&apos;re different
-          </p>
+        <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
           <h2 className="mb-5 text-4xl md:text-5xl lg:text-[3.25rem] font-medium leading-[120%] font-heading">
             Why Organizations Choose Trendline
           </h2>
@@ -77,8 +74,8 @@ export default function Benefits() {
                 width: isMobile
                   ? "100%"
                   : activeIndex === index
-                  ? "100%"
-                  : "5rem",
+                    ? "100%"
+                    : "5rem",
               }}
             >
               <div

@@ -119,11 +119,8 @@ export default function IndustriesSection() {
       />
       <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="mx-auto mb-12 w-full max-w-[768px] text-center md:mb-18 lg:mb-20">
-            <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-[#1e3a8a]">
-              Industries
-            </p>
-            <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
+          <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
+            <h2 className="mb-5 font-medium text-4xl md:text-5xl lg:text-[3.25rem] font-heading leading-[120%]">
               Sectors We Serve
             </h2>
             <p className="text-[16px] text-[#04030B] font-regular">
