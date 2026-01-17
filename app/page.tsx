@@ -1,6 +1,5 @@
 import Hero from "@/components/hero/Hero";
 import Benefits from "@/components/Benefits";
-import OpenCourse from "@/components/OpenCourses";
 import Banner from "@/components/Banner";
 import Services from "@/components/Services";
 import IndustriesSection from "@/components/IndustriesSection";
@@ -14,8 +13,7 @@ export default function Home() {
       <Benefits />
       <Services />
       <IndustriesSection />
-      <OpenCourse />
-      {/* <Events /> */}
+      <Events />
       <Testimonials />
       <Banner />
     </>

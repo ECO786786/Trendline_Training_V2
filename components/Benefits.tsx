@@ -59,7 +59,7 @@ export default function Benefits() {
           <p className="mb-3 font-semibold md:mb-4 text-[16px] font-body text-blue-900">
             Why we&apos;re different
           </p>
-          <h2 className="mb-5 text-4xl md:text-5xl font-medium leading-[120%] font-heading">
+          <h2 className="mb-5 text-4xl md:text-5xl lg:text-[3.25rem] font-medium leading-[120%] font-heading">
             Why Organizations Choose Trendline
           </h2>
           <p className="md:text-md font-body font-normal">
@@ -68,11 +68,11 @@ export default function Benefits() {
             organizations that need data to work harder.
           </p>
         </div>
-        <div className="flex w-full flex-col overflow-hidden border-b border-l border-r border-border-primary lg:h-[90vh] lg:flex-row lg:border-r-0 lg:border-t font-heading rounded-lg">
+        <div className="flex w-full flex-col overflow-hidden border-b border-l border-r border-gray-400 lg:h-[90vh] lg:flex-row lg:border-r-0 lg:border-t font-heading rounded-lg">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col justify-start overflow-hidden lg:h-[90vh] lg:flex-row lg:border-r lg:border-border-primary transition-all duration-500 ease-in-out"
+              className="flex flex-col justify-start overflow-hidden lg:h-[90vh] lg:flex-row lg:border-r lg:border-gray-200 transition-all duration-500 ease-in-out"
               style={{
                 width: isMobile
                   ? "100%"
@@ -82,16 +82,16 @@ export default function Benefits() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-border-primary py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-[#1e3a8a] hover::bg-blue-950 transition-colors text-white"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-gray-400 py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-[#1e3a8a] hover::bg-blue-950 transition-colors text-white"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <p className="absolute left-6 whitespace-nowrap text-xl font-medium md:left-10 md:text-2xl lg:static lg:left-0 lg:mb-auto">
                   {feature.number}
                 </p>
-                <h2 className="hidden [writing-mode:vertical-rl]  lg:block lg:rotate-180 lg:text-2xl lg:font-medium">
+                <h3 className="hidden [writing-mode:vertical-rl] lg:block lg:rotate-180 lg:text-2xl lg:font-medium">
                   {feature.title}
-                </h2>
+                </h3>
                 <p className="text-xl font-medium md:text-2xl lg:hidden">
                   {feature.title}
                 </p>

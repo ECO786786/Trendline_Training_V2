@@ -123,7 +123,7 @@ export default function Testimonials() {
       <div className="container mx-auto max-w-7xl">
         <div className="mx-auto mb-12 w-full max-w-3xl text-center md:mb-18 lg:mb-20">
           <h2 className="mb-5 font-medium text-[52px] font-heading leading-[120%]">
-            What our clients say
+            What Our Clients Say
           </h2>
           <p className="text-[16px] text-[#04030B] font-regular">
             Hear from organizations that have transformed their approach to data

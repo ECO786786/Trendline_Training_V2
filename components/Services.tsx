@@ -123,11 +123,11 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-500 md:grid-cols-[1fr_1.5fr] rounded-lg overflow-hidden">
+        <div className="relative grid auto-cols-fr grid-cols-1 border border-gray-400 md:grid-cols-[1fr_1.5fr] rounded-lg overflow-hidden">
           <div
             role="tablist"
             aria-orientation="vertical"
-            className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-gray-500 md:border-b-0 md:border-r"
+            className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-gray-400 md:border-b-0 md:border-r"
           >
             {tabs.map((tab, index) => (
               <button
