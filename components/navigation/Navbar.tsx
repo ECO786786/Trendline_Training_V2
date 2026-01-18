@@ -29,7 +29,7 @@ export function Navbar() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/60 flex w-full items-center lg:min-h-18 lg:px-[5%] border-b border-gray-100">
+    <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/60 flex w-full items-center lg:min-h-18 lg:px-[5%]">
       <div className="w-full lg:flex lg:items-center lg:justify-between">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <Link href="/" aria-label="Home">
@@ -67,7 +67,7 @@ export function Navbar() {
           } lg:max-h-full lg:overflow-visible px-[5%]`}
         >
           <Link href="/about" className={linkClass("/about")}>
-            About us
+            About Us
           </Link>
           <div className="relative group">
             <button
