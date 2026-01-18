@@ -29,7 +29,7 @@ export function Navbar() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/60 flex w-full items-center border-b border-gray-200 lg:min-h-18 lg:px-[5%]">
+    <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/60 flex w-full items-center lg:min-h-18 lg:px-[5%] border-b border-gray-100">
       <div className="w-full lg:flex lg:items-center lg:justify-between">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <Link href="/" aria-label="Home">
@@ -46,22 +46,15 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
           >
             <span
-              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? "translate-y-2 -rotate-45" : ""
-              }`}
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${isMobileMenuOpen ? "translate-y-2 -rotate-45" : ""}`}
             />
             <span
-              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? "w-0 opacity-0" : ""
-              }`}
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${isMobileMenuOpen ? "w-0 opacity-0" : ""}`}
             />
             <span
-              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? "-translate-y-2 rotate-45" : ""
-              }`}
+              className={`my-0.75 h-0.5 w-6 bg-black transition-all duration-300 ${isMobileMenuOpen ? "-translate-y-2 rotate-45" : ""}`}
             />
           </button>
         </div>
@@ -72,7 +65,6 @@ export function Navbar() {
               ? "max-h-screen overflow-hidden"
               : "max-h-0 overflow-hidden"
           } lg:max-h-full lg:overflow-visible px-[5%]`}
-          aria-label="Main navigation"
         >
           <Link href="/about" className={linkClass("/about")}>
             About us
@@ -80,15 +72,13 @@ export function Navbar() {
           <div className="relative group">
             <button
               className={`flex w-full items-center justify-between gap-2 py-3 text-left text-base lg:flex-none lg:justify-start lg:px-4 lg:py-2 transition-colors ${
-                isActive("/corporate") || isActive("/services")
+                isActive("/services")
                   ? "text-blue-900 font-bold"
                   : "hover:text-blue-900"
               }`}
               onClick={() =>
                 isMobile && setIsMobileDropdownOpen((prev) => !prev)
               }
-              aria-haspopup="true"
-              aria-expanded={isMobile ? isMobileDropdownOpen : undefined}
             >
               <span>Our Services</span>
               <svg
@@ -99,7 +89,6 @@ export function Navbar() {
                       : ""
                     : "group-hover:rotate-180"
                 }`}
-                aria-hidden="true"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -112,27 +101,26 @@ export function Navbar() {
                 />
               </svg>
             </button>
-
             <div
-              className={`bg-white overflow-hidden transition-all duration-300 lg:hidden ${
+              className={`lg:hidden overflow-hidden transition-all duration-300 ${
                 isMobileDropdownOpen
-                  ? "max-h-96 opacity-100"
+                  ? "max-h-20 opacity-100"
                   : "max-h-0 opacity-0"
               }`}
             >
               <Link
-                href="/services/consultancy"
+                href="/corporate"
                 className={`block py-3 pl-[5%] text-base transition-colors ${
-                  isActive("/services/consultancy")
-                    ? "text-blue-900 font-bold bg-blue-50"
-                    : "hover:bg-blue-50"
+                  isActive("/corporate") ? "text-blue-900 font-bold" : ""
                 }`}
-                onClick={() => setIsMobileDropdownOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsMobileDropdownOpen(false);
+                }}
               >
-                Consultancy
+                Corporate Solutions
               </Link>
             </div>
-
             <div className="hidden lg:block absolute lg:w-62.5 left-0 top-full mt-2 z-50 min-w-50 rounded-md border border-gray-200 bg-white p-2 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
               <Link
                 href="/corporate"
@@ -156,12 +144,12 @@ export function Navbar() {
           <Link href="/contact" className={linkClass("/contact")}>
             Contact
           </Link>
-
           <div className="mt-6 flex flex-col items-center gap-4 lg:ml-4 lg:mt-0 lg:flex-row pb-6 lg:pb-0">
             <a
               href="https://calendly.com/trendline02tc/30min"
               target="_blank"
-              className="inline-flex w-full justify-center items-center px-6 py-2 bg-blue-900 hover:bg-blue-950 rounded-full text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2"
+              rel="noopener noreferrer"
+              className="inline-flex w-full justify-center items-center px-6 py-2 bg-blue-900 hover:bg-blue-950 rounded-full text-white text-sm font-medium transition-colors"
             >
               Book Appointment
             </a>
