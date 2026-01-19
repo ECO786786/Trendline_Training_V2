@@ -16,7 +16,7 @@ export interface ContentCardModel {
   description: string;
   features?: string[];
   image: ImageConfig;
-  primaryCTA: CTA;
+  primaryCTA?: CTA;
   secondaryCTA?: CTA;
   hasBackground: boolean;
 }

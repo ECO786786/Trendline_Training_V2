@@ -104,7 +104,7 @@ export default function Events() {
             >
               <div className="w-full overflow-hidden">
                 <Image
-                  src="/images/power-bi-course.png"
+                  src="/images/excel.jpg"
                   alt="Data analysis with Excel course"
                   className="aspect-3/2 size-full object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
                   width={800}

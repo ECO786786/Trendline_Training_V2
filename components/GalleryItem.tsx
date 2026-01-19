@@ -12,80 +12,108 @@ interface GalleryItem {
   videoSrc?: string;
 }
 
+const galleryItems: GalleryItem[] = [
+  {
+    id: 1,
+    src: "/images/liquid-training.jpg",
+    alt: "Excel Training Group Work",
+    caption: "Excel Training Group Work",
+  },
+  {
+    id: 2,
+    src: "/images/liquid-team.jpg",
+    alt: "Liquid Telecom Team",
+    caption: "Liquid Telecom Team",
+  },
+  {
+    id: 3,
+    src: "/images/video-placeholder.png",
+    alt: "Training Highlights Video",
+    caption: "Training Highlights Video",
+    isVideo: true,
+    videoSrc: "/videos/training-highlights.mp4",
+  },
+  {
+    id: 4,
+    src: "/images/transformation-team.jpg",
+    alt: "What We Stand For ...",
+    caption: "What We Stand For ...",
+  },
+  {
+    id: 5,
+    src: "/images/transformation-team-2.jpg",
+    alt: "Dangote Cement Zambia Staff",
+    caption: "Dangote Cement Zambia Staff",
+  },
+  {
+    id: 6,
+    src: "/images/presentation.jpg",
+    alt: "Certificate Presentation Session",
+    caption: "Certificate Presentation Session",
+  },
+  {
+    id: 7,
+    src: "/images/training-day.jpg",
+    alt: "Power BI Training",
+    caption: "Power BI Training",
+  },
+  {
+    id: 8,
+    src: "/images/MoU-ZIHRM.jpg",
+    alt: "Trendline & ZIHRM Collaborate on HR Skills Development",
+    caption: "Trendline & ZIHRM Collaborate on HR Skills Development",
+  },
+  {
+    id: 9,
+    src: "/images/partnership-milestone.jpg",
+    alt: "Partnership Milestone: ZIHRM & Trendline Training",
+    caption: "Partnership Milestone: ZIHRM & Trendline Training",
+  },
+  {
+    id: 10,
+    src: "/images/zambia-sugar-team.jpg",
+    alt: "Zambia Sugar Team done",
+    caption: "Zambia Sugar Team done",
+  },
+  {
+    id: 11,
+    src: "/images/zambia-sugar-trainee-award.jpg",
+    alt: "Zambia Sugar Trainee Awarded",
+    caption: "Zambia Sugar Trainee Awarded",
+  },
+  {
+    id: 12,
+    src: "/images/team-preparation.jpg",
+    alt: "Team Preparation for Training",
+    caption: "Team Preparation for Training",
+  },
+  {
+    id: 13,
+    src: "/images/power-bi-locations.jpg",
+    alt: "Power BI Training Locations",
+    caption: "Power BI Training Locations",
+  },
+  {
+    id: 14,
+    src: "/images/power-bi-walkthrough.png",
+    alt: "Power BI Walkthrough Video",
+    caption: "Power BI Walkthrough Video",
+    isVideo: true,
+    videoSrc: "/videos/power-bi-walkthrough.mp4",
+  },
+  {
+    id: 15,
+    src: "/images/power-bi-talk.png",
+    alt: "Power BI discussion Video",
+    caption: "Power BI discussion Video",
+    isVideo: true,
+    videoSrc: "/videos/power-bi-talk.mp4",
+  },
+];
+
 export default function GalleryItem() {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<GalleryItem | null>(null);
-
-  const galleryItems: GalleryItem[] = [
-    {
-      id: 1,
-      src: "/images/liquid-training.jpg",
-      alt: "Excel Training Group Work",
-      caption: "Excel Training Group Work",
-    },
-    {
-      id: 2,
-      src: "/images/liquid-team.jpg",
-      alt: "Liquid Telecom Team",
-      caption: "Liquid Telecom Team",
-    },
-    {
-      id: 3,
-      src: "/images/video-placeholder.png",
-      alt: "Training Highlights Video",
-      caption: "Training Highlights Video",
-      isVideo: true,
-      videoSrc: "/videos/training-highlights.mp4",
-    },
-    {
-      id: 4,
-      src: "/images/transformation-team.jpg",
-      alt: "What We Stand For ...",
-      caption: "What We Stand For ...",
-    },
-    {
-      id: 5,
-      src: "/images/transformation-team-2.jpg",
-      alt: "Dangote Cement Zambia Staff",
-      caption: "Dangote Cement Zambia Staff",
-    },
-    {
-      id: 6,
-      src: "/images/presentation.jpg",
-      alt: "Certificate Presentation Session",
-      caption: "Certificate Presentation Session",
-    },
-    {
-      id: 7,
-      src: "/images/training-day.jpg",
-      alt: "Power BI Training",
-      caption: "Power BI Training",
-    },
-    {
-      id: 8,
-      src: "/images/MoU-ZIHRM.jpg",
-      alt: "Trendline & ZIHRM Collaborate on HR Skills Development",
-      caption: "Trendline & ZIHRM Collaborate on HR Skills Development",
-    },
-    {
-      id: 9,
-      src: "/images/partnership-milestone.jpg",
-      alt: "Partnership Milestone: ZIHRM & Trendline Training",
-      caption: "Partnership Milestone: ZIHRM & Trendline Training",
-    },
-    {
-      id: 10,
-      src: "/images/zambia-sugar-team.jpg",
-      alt: "Zambia Sugar Team done",
-      caption: "Zambia Sugar Team done",
-    },
-    {
-      id: 11,
-      src: "/images/zambia-sugar-trainee-award.jpg",
-      alt: "Zambia Sugar Trainee Awarded",
-      caption: "Zambia Sugar Trainee Awarded",
-    },
-  ];
 
   const openLightbox = (item: GalleryItem) => {
     setCurrentItem(item);

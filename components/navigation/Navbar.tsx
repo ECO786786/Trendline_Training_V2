@@ -135,8 +135,8 @@ export function Navbar() {
             </div>
           </div>
 
-          <Link href="/courses" className={linkClass("/courses")}>
-            Courses
+          <Link href="/partnerships" className={linkClass("/partnerships")}>
+            Partnerships
           </Link>
           <Link href="/gallery" className={linkClass("/gallery")}>
             Gallery
