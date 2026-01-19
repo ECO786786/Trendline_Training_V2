@@ -145,7 +145,7 @@ export default function Testimonials() {
                   className="shrink-0 px-2 md:px-4"
                   style={{ width: `${cardWidthPercent}%` }}
                 >
-                  <div className="flex flex-col items-start justify-between border border-gray-200 p-6 md:p-8 rounded-lg h-full">
+                  <div className="flex flex-col items-start justify-between border border-gray-400 p-6 md:p-8 rounded-lg h-full">
                     <div className="mb-6 flex items-center">
                       {renderStars(t.rating)}
                     </div>
@@ -191,7 +191,7 @@ export default function Testimonials() {
           </button>
           <button
             onClick={handleNext}
-            className="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 lg:translate-x-6 w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full bg-white border-2 border-gray-300 hover:bg-gray-50 transition-colors"
+            className="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 lg:translate-x-6 w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full bg-white border-2 border-gray-400 hover:bg-gray-50 transition-colors"
             aria-label="Next testimonial"
           >
             <svg

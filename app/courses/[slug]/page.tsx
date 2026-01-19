@@ -110,7 +110,7 @@ export default function CourseDetailPage({
                 {course.learningOutcomes.map((outcome, index) => (
                   <div key={index} className="flex gap-3 items-start">
                     <svg
-                      className="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0"
+                      className="w-6 h-6 text-green-500 mt-0.5 shrink-0"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >

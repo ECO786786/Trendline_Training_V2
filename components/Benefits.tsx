@@ -3,6 +3,54 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+interface Feature {
+  id: string;
+  number: string;
+  title: string;
+  heading: string;
+  description: string;
+  image: string;
+}
+
+const features: Feature[] = [
+  {
+    id: "feature-01",
+    number: "01",
+    title: "Real implementation",
+    heading: "ROI you can see",
+    description:
+      "Better dashboards. Faster decisions. Lower costs. We track what matters and show you the impact.",
+    image: "/images/liquid-training.jpg",
+  },
+  {
+    id: "feature-02",
+    number: "02",
+    title: "Local expertise",
+    heading: "Market knowledge",
+    description:
+      "We understand Zambian business challenges and regulatory requirements. Our solutions are built for your context.",
+    image: "/images/live-session.jpg",
+  },
+  {
+    id: "feature-03",
+    number: "03",
+    title: "Hands on training",
+    heading: "Skills that stick",
+    description:
+      "No theory-only sessions. We train your teams to use the tools and make decisions independently.",
+    image: "/images/training-day.jpg",
+  },
+  {
+    id: "feature-04",
+    number: "04",
+    title: "Measurable results",
+    heading: "Results that matter",
+    description:
+      "We measure success by business impact, not deliverables. Every engagement includes clear KPIs.",
+    image: "/images/zambia-sugar-team.jpg",
+  },
+];
+
 export default function Benefits() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -13,41 +61,6 @@ export default function Benefits() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  const features = [
-    {
-      number: "01",
-      title: "Real implementation",
-      heading: "ROI you can see",
-      description:
-        "Better dashboards. Faster decisions. Lower costs. We track what matters and show you the impact.",
-      image: "/images/different-01.jpg",
-    },
-    {
-      number: "02",
-      title: "Local expertise",
-      heading: "Market knowledge",
-      description:
-        "We understand Zambian business challenges and regulatory requirements. Our solutions are built for your context.",
-      image: "/images/different-02.jpg",
-    },
-    {
-      number: "03",
-      title: "Hands on training",
-      heading: "Skills that stick",
-      description:
-        "No theory-only sessions. We train your teams to use the tools and make decisions independently.",
-      image: "/images/different-03.jpg",
-    },
-    {
-      number: "04",
-      title: "Measurable results",
-      heading: "Results that matter",
-      description:
-        "We measure success by business impact, not deliverables. Every engagement includes clear KPIs.",
-      image: "/images/different-04.jpg",
-    },
-  ];
 
   return (
     <section
@@ -79,7 +92,7 @@ export default function Benefits() {
               }}
             >
               <div
-                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-gray-400 py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-[#1e3a8a] hover::bg-blue-950 transition-colors text-white"
+                className="relative flex h-16 w-full min-w-full cursor-pointer items-center justify-center border-t border-gray-400 py-8 md:h-20 lg:h-[90vh] lg:w-20 lg:min-w-20 lg:flex-col lg:justify-between lg:border-none font-medium bg-[#1e3a8a] hover:bg-blue-950 transition-colors text-white"
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{ fontFamily: "var(--font-heading)" }}
               >
@@ -104,13 +117,14 @@ export default function Benefits() {
                     {feature.heading}
                   </h3>
                   <p className="md:text-md">{feature.description}</p>
-                  <div className="mt-8 h-80 md:mt-10 md:h-100 lg:mt-12">
+                  <div className="mt-8 h-80 md:mt-10 md:h-100 lg:mt-12 lg:h-120 relative overflow-hidden rounded-lg">
                     <Image
                       src={feature.image}
                       alt={`${feature.title} illustration`}
-                      width={640}
-                      height={400}
-                      className="size-full object-cover rounded-lg"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                      priority={index === 0}
                     />
                   </div>
                 </div>

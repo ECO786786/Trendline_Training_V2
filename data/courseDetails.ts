@@ -474,8 +474,8 @@ export const courseDetails: CourseDetail[] = [
   },
   {
     id: 10,
-    slug: "financial-modelling",
-    title: "Financial Modelling",
+    slug: "financial-modelling-and-forecasting",
+    title: "Financial Modelling & Forecasting",
     subTitle:
       "Predict the future with precision. Build robust financial frameworks to forecast growth, evaluate risk, and steer strategic investments.",
     level: "All Levels",
@@ -527,34 +527,65 @@ export const courseDetails: CourseDetail[] = [
     slug: "financial-analysis-power-bi",
     title: "Financial Analysis with Power BI",
     subTitle:
-      "Bridging the gap between traditional finance and modern business intelligence.",
+      "Transform financial data into automated, insight-driven reports using Power BI and advanced DAX.",
     level: "Intermediate",
-    duration: "5 Days (23-27 Mar)",
+    duration: "5 Days",
     prices: {
       ZM: { amount: 3500, currency: "ZMW" },
       US: { amount: 150, currency: "USD" },
     },
     overview:
-      "A specialized program focused on automating financial statements, ratio analysis, and cash flow forecasting using Power BI.",
+      "A hands-on program designed for finance professionals and analysts who want to automate financial reporting, perform advanced ratio analysis, and build interactive dashboards using Power BI. Participants will learn how to model accounting data, write finance-specific DAX, and deliver executive-ready insights.",
     learningOutcomes: [
-      "Connect and transform accounting data from ERPs or Excel into Power BI",
-      "Build automated Income Statements and Balance Sheets",
-      "Develop dynamic financial ratios (Liquidity, Solvency, Profitability)",
-      "Create interactive trend analyses for budgetary control",
+      "Model and structure financial data for scalable Power BI solutions",
+      "Automate Income Statements, Balance Sheets, and Cash Flow Statements",
+      "Build dynamic financial ratios across time periods",
+      "Perform budget vs actual and variance analysis",
+      "Create executive-level financial dashboards and reports",
     ],
     curriculum: [
       {
-        title: "Finance Data Modeling",
+        title: "Financial Data Foundations",
         description:
-          "Structuring Chart of Accounts and General Ledger data for BI.",
+          "Understanding financial datasets including Chart of Accounts, General Ledger, and trial balances. Best practices for preparing accounting data for BI and reporting.",
       },
       {
-        title: "Advanced DAX for Finance",
+        title: "Power BI Data Modeling for Finance",
         description:
-          "Calculating Year-to-Date (YTD) and Variance (Actual vs Budget) logic.",
+          "Designing star schemas for financial reporting, handling multiple fact tables, and managing date and account dimensions for accurate analysis.",
+      },
+      {
+        title: "Automated Financial Statements",
+        description:
+          "Building dynamic Income Statements and Balance Sheets using DAX measures, account hierarchies, and calculation groups.",
+      },
+      {
+        title: "Advanced DAX for Financial Analysis",
+        description:
+          "Writing finance-specific DAX including YTD, MTD, rolling periods, variance analysis, and Actual vs Budget calculations.",
+      },
+      {
+        title: "Financial Ratios & Performance Metrics",
+        description:
+          "Creating liquidity, solvency, and profitability ratios with dynamic filtering and period comparisons.",
+      },
+      {
+        title: "Cash Flow Analysis & Forecasting",
+        description:
+          "Analyzing operating, investing, and financing cash flows and building forward-looking cash flow forecasts.",
+      },
+      {
+        title: "Budgeting, Trend & Variance Analysis",
+        description:
+          "Tracking financial performance over time using trend analysis, scenario comparisons, and interactive visuals.",
+      },
+      {
+        title: "Executive Dashboards & Reporting",
+        description:
+          "Designing CFO-ready dashboards with KPIs, drill-downs, and storytelling best practices for financial insights.",
       },
     ],
-    prerequisites: "Basic Accounting knowledge and Excel proficiency",
+    prerequisites: "Basic accounting knowledge and intermediate Excel skills",
     certificate: "Yes",
   },
   {
@@ -564,7 +595,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Master the dual-power of Excel's flexibility and Power BI's visualization capabilities.",
     level: "Intermediate",
-    duration: "5 Days (13-17 Apr)",
+    duration: "5 Days",
     prices: {
       ZM: { amount: 3500, currency: "ZMW" },
       US: { amount: 150, currency: "USD" },
@@ -579,13 +610,44 @@ export const courseDetails: CourseDetail[] = [
     ],
     curriculum: [
       {
-        title: "The Unified Power Query Engine",
-        description: "Advanced M-code for data extraction across platforms.",
+        title: "The Excel–Power BI Reporting Ecosystem",
+        description:
+          "Understanding when to use Excel, when to use Power BI, and how they complement each other in modern reporting environments.",
       },
       {
-        title: "Excel 'Analyze in Power BI'",
+        title: "Unified Power Query & Data Preparation",
         description:
-          "Leveraging cloud-based data for local spreadsheet analysis.",
+          "Building shared Power Query transformations using M-code for consistent data ingestion across Excel and Power BI.",
+      },
+      {
+        title: "Centralized Data Models in Power BI",
+        description:
+          "Designing scalable Power BI datasets (semantic models) to serve multiple Excel and Power BI reports.",
+      },
+      {
+        title: "Advanced Excel Analysis on Power BI Datasets",
+        description:
+          "Using PivotTables, CUBE functions, and Excel formulas to analyze live Power BI datasets.",
+      },
+      {
+        title: "Automating Reporting Workflows",
+        description:
+          "Reducing manual effort through refresh automation, shared datasets, and standardized reporting templates.",
+      },
+      {
+        title: "Enterprise Publishing & Collaboration",
+        description:
+          "Publishing datasets and reports to the Power BI Service, managing permissions, and enabling secure collaboration.",
+      },
+      {
+        title: "Monthly & Management Reporting Use Cases",
+        description:
+          "Applying integrated reporting techniques to real-world scenarios such as financial, sales, and operational reporting.",
+      },
+      {
+        title: "Best Practices & Governance",
+        description:
+          "Ensuring data consistency, version control, performance optimization, and governance across Excel and Power BI.",
       },
     ],
     prerequisites: "Intermediate Excel",
@@ -596,30 +658,47 @@ export const courseDetails: CourseDetail[] = [
     slug: "data-governance-reporting-standards",
     title: "Data Governance & Reporting Standards",
     subTitle:
-      "Ensure accuracy, compliance, and consistency across all corporate reports.",
+      "Build trusted, compliant, and consistent reporting across the organization",
     level: "All Levels",
-    duration: "3 Days (26-28 May)",
+    duration: "3 Days",
     prices: {
       ZM: { amount: 2500, currency: "ZMW" },
       US: { amount: 110, currency: "USD" },
     },
     overview:
-      "Focuses on the framework of data quality and adherence to local and international reporting standards.",
+      "This course provides a practical introduction to data governance principles and reporting standards required for accurate, compliant, and reliable business intelligence. Participants will learn how to establish data quality frameworks, enforce reporting standards, and create a single source of truth for organizational data.",
     learningOutcomes: [
-      "Implement data quality checks to prevent 'Garbage In, Garbage Out'",
-      "Align reports with the Zambian Data Protection Act",
-      "Create a 'Single Source of Truth' for organizational KPIs",
-      "Establish documentation standards for data lineages",
+      "Design and implement data quality frameworks to improve reporting accuracy",
+      "Apply governance principles to prevent data inconsistencies and misuse",
+      "Align reporting practices with the Zambian Data Protection Act and global standards",
+      "Establish a single source of truth for enterprise KPIs and metrics",
+      "Document data definitions, ownership, and lineage for audit and transparency",
     ],
     curriculum: [
       {
-        title: "Data Quality Frameworks",
-        description: "Setting up validation rules and automated error alerts.",
+        title: "Foundations of Data Governance",
+        description:
+          "Understanding data governance concepts, roles, and responsibilities, including data ownership, stewardship, and accountability.",
       },
       {
-        title: "Compliance & Security",
+        title: "Data Quality Management",
         description:
-          "Managing data privacy and access control in shared environments.",
+          "Defining data quality dimensions and implementing validation rules, monitoring, and automated error detection.",
+      },
+      {
+        title: "Reporting Standards & KPI Consistency",
+        description:
+          "Establishing standardized metrics, report definitions, and naming conventions to ensure consistent reporting across teams.",
+      },
+      {
+        title: "Compliance, Privacy & Security",
+        description:
+          "Managing data privacy, access control, and compliance with the Zambian Data Protection Act and international best practices.",
+      },
+      {
+        title: "Documentation & Data Lineage",
+        description:
+          "Creating documentation standards for data sources, transformations, lineage, and audit readiness.",
       },
     ],
     prerequisites: "None",
@@ -632,7 +711,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Data-driven leadership for C-Suite and Senior Management decision-making.",
     level: "Advanced",
-    duration: "3 Days (18-20 Jun)",
+    duration: "3 Days",
     prices: {
       ZM: { amount: 4500, currency: "ZMW" },
       US: { amount: 200, currency: "USD" },
@@ -665,32 +744,65 @@ export const courseDetails: CourseDetail[] = [
     slug: "budgeting-planning-variance-analysis",
     title: "Budgeting, Planning & Variance Analysis",
     subTitle:
-      "Precision forecasting and rigorous performance tracking for financial health.",
+      "Build accurate forecasts, control budgets, and analyze performance with confidence",
     level: "Intermediate",
-    duration: "3 Days (27-29 Jul)",
+    duration: "3 Days",
     prices: {
       ZM: { amount: 2500, currency: "ZMW" },
       US: { amount: 110, currency: "USD" },
     },
     overview:
-      "A deep dive into the cycle of setting financial targets and analyzing performance gaps.",
+      "This course provides a practical, end-to-end approach to budgeting, planning, and variance analysis. Participants will learn how to build flexible budgets, automate performance tracking, and perform root cause analysis to support informed financial decision-making.",
     learningOutcomes: [
-      "Create driver-based budgets that adapt to market changes",
-      "Automate variance reports (Actual vs. Budget vs. Forecast)",
-      "Perform Root Cause Analysis on financial deviations",
-      "Forecast year-end results based on monthly run-rates",
+      "Design driver-based budgets that respond to business and market changes",
+      "Build rolling forecasts to replace static annual budgets",
+      "Automate variance analysis across Actual, Budget, and Forecast scenarios",
+      "Perform root cause analysis using price, volume, and mix techniques",
+      "Forecast year-end results using run-rate and trend-based methods",
     ],
     curriculum: [
       {
-        title: "Rolling Forecasts",
-        description: "Moving beyond static annual budgets to dynamic planning.",
+        title: "Budgeting & Financial Planning Foundations",
+        description:
+          "Understanding the budgeting cycle, key financial drivers, and best practices for building flexible, driver-based budgets.",
+      },
+      {
+        title: "Driver-Based Budgeting Models",
+        description:
+          "Designing budgets based on revenue, cost, and operational drivers that adapt to changing business conditions.",
+      },
+      {
+        title: "Rolling Forecasts & Scenario Planning",
+        description:
+          "Moving beyond static annual budgets to rolling forecasts, scenario modeling, and sensitivity analysis.",
+      },
+      {
+        title: "Automated Variance Analysis",
+        description:
+          "Building automated Actual vs Budget vs Forecast reports using Excel and Power BI.",
       },
       {
         title: "Advanced Variance Modeling",
-        description: "Price-Volume-Mix analysis in Excel and Power BI.",
+        description:
+          "Applying price, volume, and mix (PVM) analysis to understand the root causes of financial performance deviations.",
+      },
+      {
+        title: "Root Cause & Performance Analysis",
+        description:
+          "Investigating variances through trend analysis, drill-downs, and management-level performance insights.",
+      },
+      {
+        title: "Run-Rate & Year-End Forecasting",
+        description:
+          "Forecasting full-year results using monthly run-rates, trends, and historical performance patterns.",
+      },
+      {
+        title: "Management Reporting & Decision Support",
+        description:
+          "Presenting budget and variance insights through clear dashboards and reports to support executive decision-making.",
       },
     ],
-    prerequisites: "Basic Financial Modelling knowledge",
+    prerequisites: "Basic financial modeling knowledge",
     certificate: "Yes",
   },
   {
@@ -700,7 +812,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Prepare for 2027 by understanding the emerging technologies shaping the data landscape.",
     level: "All Levels",
-    duration: "1 Day (14 Dec)",
+    duration: "1 Day",
     prices: {
       ZM: { amount: 1000, currency: "ZMW" },
       US: { amount: 50, currency: "USD" },
@@ -724,7 +836,383 @@ export const courseDetails: CourseDetail[] = [
       },
     ],
     prerequisites: "None",
-    certificate: "No (Briefing Session)",
+    certificate: "Yes",
+  },
+  {
+    id: 17,
+    slug: "data-analysis-with-excel",
+    title: "Data Analysis with Excel",
+    subTitle: "Mastering Professional Reporting & Decision Making",
+    level: "Foundations/Intermediate",
+    duration: "3 Days",
+    prices: {
+      ZM: { amount: 1200, currency: "ZMW" },
+      US: { amount: 60, currency: "USD" },
+    },
+    overview:
+      "Confidently analyze, summarize, and present data using Excel for informed decision-making. This course takes you from interface basics to building functional analytical dashboards.",
+    learningOutcomes: [
+      "Clean and prepare raw data efficiently using industry-standard shortcuts",
+      "Master Logical, Lookup (VLOOKUP/XLOOKUP), Text, and Date functions",
+      "Implement Data Validation and advanced filtering to maintain data integrity",
+      "Construct interactive PivotTables and PivotCharts for rapid data summarization",
+      "Apply core visualization principles to build simple, effective analytical dashboards",
+    ],
+    curriculum: [
+      {
+        title: "Foundations & Data Cleaning",
+        description:
+          "Mastering the Excel interface, best practices shortcuts, and essential techniques for preparing messy data for analysis.",
+      },
+      {
+        title: "The Analyst's Formula Toolkit",
+        description:
+          "A deep dive into the 'Big Four' function categories: Logical (IF/IFS), Lookup (XLOOKUP), Text manipulation, and Date calculations.",
+      },
+      {
+        title: "Data Management & Integrity",
+        description:
+          "Using sorting, multi-level filtering, and data validation rules to ensure your datasets remain accurate and easy to navigate.",
+      },
+      {
+        title: "Summarization with PivotTables",
+        description:
+          "Building PivotTables and PivotCharts to transform thousands of rows of data into clear, actionable summaries.",
+      },
+      {
+        title: "Visualization & Dashboards",
+        description:
+          "Applying visualization principles to design and build simple analytical dashboards that communicate insights at a glance.",
+      },
+    ],
+    prerequisites: "Basic computer literacy",
+    certificate: "Yes",
+  },
+  {
+    id: 18,
+    slug: "advanced-excel-for-data-analysis",
+    title: "Advanced Excel for Data Analysis",
+    subTitle: "Elevate Your Analytical Skills to the Next Level",
+    level: "Advanced",
+    duration: "3 Days",
+    prices: {
+      ZM: { amount: 2000, currency: "ZMW" },
+      US: { amount: 95, currency: "USD" },
+    },
+    overview:
+      "Take your Excel skills to new heights with advanced functions, automation techniques, and sophisticated data analysis methods. This course is designed for professionals looking to leverage Excel for complex business challenges.",
+    learningOutcomes: [
+      "Utilize advanced functions including INDEX-MATCH, array formulas, and dynamic arrays for complex data retrieval",
+      "Automate repetitive tasks using Macros and VBA scripting",
+      "Perform advanced data analysis with Power Query and Power Pivot",
+      "Create dynamic dashboards with interactive elements using slicers and timelines",
+      "Implement best practices for data modeling and performance optimization in large datasets",
+    ],
+    curriculum: [
+      {
+        title: "Advanced Functionality & Formulas",
+        description:
+          "Exploring INDEX-MATCH combinations, array formulas, and the power of dynamic arrays for sophisticated data manipulation.",
+      },
+      {
+        title: "Automation with Macros & VBA",
+        description:
+          "Learning to record and write VBA scripts to automate complex workflows and enhance productivity.",
+      },
+      {
+        title: "Data Analysis with Power Tools",
+        description:
+          "Leveraging Power Query for advanced data transformation and Power Pivot for building robust data models.",
+      },
+      {
+        title: "Dynamic Dashboards & Interactivity",
+        description:
+          "Designing dashboards with interactive features such as slicers, timelines, and conditional formatting to enhance user experience.",
+      },
+      {
+        title: "Data Modeling & Performance Optimization",
+        description:
+          "Implementing best practices for structuring data models and optimizing Excel performance when working with large datasets.",
+      },
+    ],
+    prerequisites: "Intermediate Excel skills",
+    certificate: "Yes",
+  },
+  {
+    id: 19,
+    slug: "analytics-dax-capstone-dashboard-clinic",
+    title: "Analytics, DAX & Capstone Dashboard Clinic",
+    subTitle:
+      "Apply advanced analytics and DAX to real-world business scenarios",
+    level: "Advanced",
+    duration: "5 Days",
+    prices: {
+      ZM: { amount: 3500, currency: "ZMW" },
+      US: { amount: 150, currency: "USD" },
+    },
+    overview:
+      "This intensive five-day course focuses on advanced analytics, DAX creation, and dashboard optimization using Power BI. Participants will develop sophisticated analytical models, apply best-practice DAX patterns, and complete a hands-on capstone project, culminating in a dashboard clinic focused on performance, usability, and executive storytelling.",
+    learningOutcomes: [
+      "Design and implement advanced DAX measures for business analytics",
+      "Apply time intelligence and complex calculation logic to real-world datasets",
+      "Build analytical models that support deep business insight and decision-making",
+      "Develop an end-to-end Power BI solution through a guided capstone project",
+      "Optimize dashboards for performance, usability, and executive reporting",
+    ],
+    curriculum: [
+      {
+        title: "Advanced Analytics & DAX Foundations",
+        description:
+          "Exploring advanced DAX patterns, calculation logic, and analytical thinking required for complex business scenarios.",
+      },
+      {
+        title: "Time Intelligence & Business KPIs",
+        description:
+          "Building robust time-based calculations, KPIs, and variance analysis to support business performance measurement.",
+      },
+      {
+        title: "Analytical Modeling & Performance Optimization",
+        description:
+          "Designing efficient analytical models, optimizing DAX performance, and applying best practices for scalable reporting.",
+      },
+      {
+        title: "Capstone Project Development",
+        description:
+          "Developing a complete analytical solution from data modeling to insight-driven dashboards using real-world datasets.",
+      },
+      {
+        title: "Dashboard Clinic & Executive Storytelling",
+        description:
+          "Reviewing, refining, and optimizing dashboards with a focus on clarity, usability, performance, and executive-level storytelling.",
+      },
+    ],
+    prerequisites: "Intermediate Power BI and basic DAX knowledge",
+    certificate: "Yes",
+  },
+  {
+    id: 20,
+    slug: "ai-for-data-analysts-excel-and-power-bi",
+    title: "AI for Data Analysts: Excel and Power BI",
+    subTitle:
+      "Harness the power of AI to revolutionize your data analysis workflows in Excel and Power BI.",
+    level: "Intermediate",
+    duration: "5 Days",
+    prices: {
+      ZM: { amount: 4000, currency: "ZMW" },
+      US: { amount: 175, currency: "USD" },
+    },
+    overview:
+      "This course explores the integration of AI technologies within Excel and Power BI to enhance data analysis capabilities. Participants will learn how to leverage AI-driven features for data cleaning, predictive analytics, and automated insights generation.",
+    learningOutcomes: [
+      "Utilize AI-powered data cleaning and transformation tools in Excel and Power BI",
+      "Implement predictive analytics models using AI algorithms",
+      "Automate insights generation with AI-driven visualizations and reports",
+      "Integrate AI services such as Azure Cognitive Services into data workflows",
+    ],
+    curriculum: [
+      {
+        title: "AI-Powered Data Preparation",
+        description:
+          "Using AI features in Power Query and Excel for intelligent data cleaning and transformation.",
+      },
+      {
+        title: "Predictive Analytics with AI",
+        description:
+          "Building and deploying predictive models using AI algorithms within Power BI.",
+      },
+      {
+        title: "Automated Insights & Visualizations",
+        description:
+          "Leveraging AI to generate automated insights and create dynamic visualizations.",
+      },
+      {
+        title: "Integrating AI Services",
+        description:
+          "Connecting Azure Cognitive Services and other AI tools to enhance data analysis workflows.",
+      },
+    ],
+    prerequisites: "Basic knowledge of Excel and Power BI",
+    certificate: "Yes",
+  },
+  {
+    id: 21,
+    slug: "executive-strategic-data-analysis-for-decision-makers",
+    title: "Executive Strategic Data Analysis for Decision Makers",
+    subTitle:
+      "Empower your leadership with data-driven decision-making skills tailored for executives and senior managers.",
+    level: "Advanced",
+    duration: "3 Days",
+    prices: {
+      ZM: { amount: 5000, currency: "ZMW" },
+      US: { amount: 220, currency: "USD" },
+    },
+    overview:
+      "This course is designed to equip executives and senior managers with the skills to interpret complex data analytics without needing to write code. Learn to identify key metrics, evaluate data-driven strategies, and lead data-centric initiatives within your organization.",
+    learningOutcomes: [
+      "Interpret advanced data analytics to inform strategic decisions",
+      "Identify and focus on 'Hero Metrics' that drive business value",
+      "Effectively communicate with technical data teams to align on objectives",
+      "Evaluate the ROI of data and technology investments from a leadership perspective",
+    ],
+    curriculum: [
+      {
+        title: "Strategic KPI Identification",
+        description:
+          "Learn to distinguish between vanity metrics and actionable business drivers.",
+      },
+      {
+        title: "Executive Dashboard Literacy",
+        description:
+          "Develop skills to read, interpret, and question high-level data visualizations effectively.",
+      },
+      {
+        title: "Data-Driven Leadership",
+        description:
+          "Techniques for leading data-centric initiatives and fostering a data-driven culture within your organization.",
+      },
+      {
+        title: "Investment Evaluation",
+        description:
+          "Frameworks for assessing the value and impact of data and technology investments on business outcomes.",
+      },
+    ],
+    prerequisites: "Management experience",
+    certificate: "Yes",
+  },
+  {
+    id: 22,
+    slug: "analytics-with-power-bi",
+    title: "Analytics with Power BI",
+    subTitle:
+      "Unlock the full potential of Power BI for advanced data analytics and business intelligence.",
+    level: "Intermediate",
+    duration: "5 Days",
+    prices: {
+      ZM: { amount: 3000, currency: "ZMW" },
+      US: { amount: 130, currency: "USD" },
+    },
+    overview:
+      "This course provides a comprehensive guide to using Power BI for advanced analytics. Learn to build complex data models, create insightful visualizations, and deliver actionable business intelligence.",
+    learningOutcomes: [
+      "Design and implement advanced data models in Power BI",
+      "Create dynamic and interactive visualizations for deep data insights",
+      "Utilize DAX for complex calculations and data analysis",
+      "Develop end-to-end Power BI solutions for business intelligence",
+    ],
+    curriculum: [
+      {
+        title: "Advanced Data Modeling",
+        description:
+          "Building robust data models using relationships, hierarchies, and calculated tables.",
+      },
+      {
+        title: "Dynamic Visualizations",
+        description:
+          "Creating interactive reports and dashboards with advanced visual elements.",
+      },
+      {
+        title: "Complex DAX Calculations",
+        description:
+          "Writing sophisticated DAX measures for in-depth data analysis.",
+      },
+      {
+        title: "End-to-End Power BI Solutions",
+        description:
+          "Developing comprehensive Power BI projects from data ingestion to report delivery.",
+      },
+    ],
+    prerequisites: "Basic Power BI knowledge",
+    certificate: "Yes",
+  },
+  {
+    id: 23,
+    slug: "power-bi-for-data-analysis",
+    title: "Power BI for Data Analysis",
+    subTitle:
+      "Transform raw data into actionable insights using Power BI's powerful analytics capabilities.",
+    level: "Foundations/Intermediate",
+    duration: "3 Days",
+    prices: {
+      ZM: { amount: 1500, currency: "ZMW" },
+      US: { amount: 70, currency: "USD" },
+    },
+    overview:
+      "This course introduces the fundamentals of data analysis using Power BI. Learn to connect to data sources, create visualizations, and build reports that drive business decisions.",
+    learningOutcomes: [
+      "Connect to various data sources and prepare data for analysis",
+      "Create compelling visualizations to represent data effectively",
+      "Build interactive reports and dashboards in Power BI",
+      "Utilize basic DAX functions for data calculations",
+    ],
+    curriculum: [
+      {
+        title: "Data Connection & Preparation",
+        description:
+          "Connecting to different data sources and transforming data for analysis.",
+      },
+      {
+        title: "Visualization Creation",
+        description:
+          "Designing effective visualizations to communicate data insights.",
+      },
+      {
+        title: "Report & Dashboard Building",
+        description:
+          "Constructing interactive reports and dashboards in Power BI.",
+      },
+      {
+        title: "Basic DAX for Data Calculations",
+        description:
+          "Using fundamental DAX functions to perform data calculations and analysis.",
+      },
+    ],
+    prerequisites: "Basic computer literacy",
+    certificate: "Yes",
+  },
+  {
+    id: 24,
+    slug: "analytics-capstone-and-dashboard-clinic",
+    title: "Analytics Capstone and Dashboard Clinic",
+    subTitle:
+      "Apply your analytics skills in a real-world project and refine your dashboards for maximum impact.",
+    level: "Advanced",
+    duration: "5 Days",
+    prices: {
+      ZM: { amount: 4000, currency: "ZMW" },
+      US: { amount: 175, currency: "USD" },
+    },
+    overview:
+      "This capstone course allows participants to apply their analytics knowledge in a comprehensive project. Focus on building a complete analytics solution and participate in a dashboard clinic to enhance performance and usability.",
+    learningOutcomes: [
+      "Develop a complete analytics solution from data modeling to dashboard creation",
+      "Apply best practices in DAX and data visualization",
+      "Optimize dashboards for performance and user experience",
+      "Receive feedback and refine dashboards in a collaborative clinic setting",
+    ],
+    curriculum: [
+      {
+        title: "Capstone Project Development",
+        description:
+          "Guided development of a full analytics solution using real-world datasets.",
+      },
+      {
+        title: "DAX & Visualization Best Practices",
+        description:
+          "Implementing advanced DAX techniques and visualization principles for effective analytics.",
+      },
+      {
+        title: "Dashboard Optimization",
+        description:
+          "Techniques for improving dashboard performance and enhancing user experience.",
+      },
+      {
+        title: "Collaborative Dashboard Clinic",
+        description:
+          "Participating in a clinic to receive feedback and refine dashboards with peer and instructor input.",
+      },
+    ],
+    prerequisites: "Intermediate Power BI and DAX knowledge",
+    certificate: "Yes",
   },
 ];
 

@@ -60,14 +60,14 @@ export default function Services() {
       label: "Executive Coaching",
       icon: "/icons/data.svg",
       heading: "Strategy and implementation support",
-      description: "Customized programs for your team's skill level",
+      description: "Customized programs for your team's skill level.",
     },
     {
       id: "data-strategy",
       label: "Data Strategy Development",
       icon: "/icons/strategy.svg",
       heading: "From Power BI to advanced analytics",
-      description: "Structured programs that build lasting capability",
+      description: "Structured programs that build lasting capability.",
     },
     {
       id: "research-and-insights",
@@ -162,10 +162,10 @@ export default function Services() {
                 <div className="mb-5 md:mb-6 w-16 h-16 bg-linear-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center">
                   <Image
                     src={tab.icon}
-                    className="size-12"
+                    className="w-6 h-6"
                     alt={`${tab.label} icon`}
-                    width={30}
-                    height={30}
+                    width={24}
+                    height={24}
                   />
                 </div>
                 <h2 className="mb-5 font-medium leading-[1.2] md:mb-6 text-3xl md:text-[2.75rem] font-heading">

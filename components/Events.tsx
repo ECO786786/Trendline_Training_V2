@@ -19,26 +19,21 @@ function EventCard({
   slug,
 }: EventCardProps) {
   return (
-    <div className="flex flex-col items-center border border-black px-4 py-6 md:flex-row md:py-4 rounded-lg">
-      <div className="flex min-w-24 shrink-0 flex-col items-center  p-0 px-1 py-3 text-base md:px-1 md:py-3">
+    <div className="flex flex-col items-center border border-gray-400  px-4 py-6 md:flex-row md:py-4 rounded-lg">
+      <div className="flex min-w-24 shrink-0 flex-col items-center p-0 px-1 py-3 text-base md:px-1 md:py-3">
         <span>{date.month}</span>
         <span className="text-2xl font-bold md:text-3xl lg:text-4xl">
           {date.day}
         </span>
         <span>{date.fullDate}</span>
       </div>
-      <div className="mt-6 flex flex-col items-start border-t border-black pt-6 md:ml-6 md:mt-0 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+      <div className="mt-6 flex flex-col items-start border-t border-gray-400 pt-6 md:ml-6 md:mt-0 md:border-l md:border-t-0 md:pl-6 md:pt-0">
         <div className="flex flex-wrap items-center gap-4">
           <a href={`/registration?course=${slug}`}>
             <h2 className="text-xl font-bold md:text-2xl mb-1">{title}</h2>
           </a>
-          {/* {category && (
-            <p className="bg-gray-100 px-2 py-1 text-sm font-semibold">
-              {category}
-            </p>
-          )} */}
         </div>
-        <p className="mb-2 text-sm">{category}</p>
+        <p className="mb-2 text-sm text-[#1e3a8a] font-medium">{category}</p>
         <p className="mb-4">{description}</p>
         <Link
           href={`/registration?course=${slug}`}
@@ -54,7 +49,7 @@ function EventCard({
 export default function Events() {
   const events = [
     {
-      date: { month: "Feb", day: "16", fullDate: "Feb 2026" },
+      date: { month: "Feb", day: "16", fullDate: "2026" },
       title: "Financial modelling and forecasting",
       category: "Advanced",
       description:
@@ -63,7 +58,7 @@ export default function Events() {
       slug: "financial-modelling-and-forecasting",
     },
     {
-      date: { month: "Mar", day: "16", fullDate: "Mar 2026" },
+      date: { month: "Mar", day: "16", fullDate: "2026" },
       title: "Advanced Excel for data analysis",
       category: "Intermediate",
       description:
@@ -72,13 +67,13 @@ export default function Events() {
       slug: "advanced-excel-for-data-analysis",
     },
     {
-      date: { month: "Mar", day: "23", fullDate: "Mar 2026" },
+      date: { month: "Mar", day: "23", fullDate: "2026" },
       title: "Financial analysis with Power BI",
       category: "Advanced",
       description:
         "Five days learning visualization and business intelligence fundamentals",
       buttonText: "Register now",
-      slug: "financial-analysis-with-power-bi",
+      slug: "financial-analysis-power-bi",
     },
   ];
 
@@ -96,17 +91,20 @@ export default function Events() {
           </div>
           <Link
             href="/training-schedule"
-            className="flex items-center justify-center px-6 py-2 border border-border-primary hover:bg-gray-100 transition-colors font-medium rounded-full"
+            className="flex items-center justify-center px-6 py-2 border border-gray-400  hover:bg-gray-100 transition-colors font-medium rounded-full"
           >
             View calendar
           </Link>
         </div>
         <div className="mb-16 grid auto-cols-fr auto-rows-auto grid-cols-1 items-start gap-8 lg:grid-cols-2">
-          <div className="border border-black rounded-lg">
-            <a href="#" className="relative block w-full max-w-full">
+          <div className="border border-gray-400  rounded-lg">
+            <Link
+              href="/registration?course=data-analysis-with-excel"
+              className="relative block w-full max-w-full"
+            >
               <div className="w-full overflow-hidden">
                 <Image
-                  src="/images/excel.jpg"
+                  src="/images/power-bi-course.png"
                   alt="Data analysis with Excel course"
                   className="aspect-3/2 size-full object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
                   width={800}
@@ -118,15 +116,15 @@ export default function Events() {
                 <span className="text-2xl font-bold md:text-3xl lg:text-4xl">
                   09
                 </span>
-                <span>Feb 2026</span>
+                <span>2026</span>
               </div>
-            </a>
+            </Link>
             <div className="flex flex-col items-start p-6">
-              <a href="#">
+              <Link href="/registration?course=data-analysis-with-excel">
                 <h2 className="text-xl font-bold md:text-2xl">
                   Data analysis with Excel
                 </h2>
-              </a>
+              </Link>
               <p className="mb-2 text-[#1e3a8a] font-medium">
                 Foundations/Intermediate
               </p>

@@ -20,7 +20,7 @@ export default function Hero() {
                   Data
                 </span>
               </h1>
-              <p className="md:text-md opacity-0 animate-fade-up animate-delay-300">
+              <p className="md:text-md opacity-0 animate-fade-up animate-delay-300 text-[#04030B]">
                 Trendline Training & Consultancy provides expert led corporate
                 training and consultancy services that empower organizations to
                 leverage data for strategic decision making and sustainable
