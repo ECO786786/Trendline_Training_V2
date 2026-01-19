@@ -38,9 +38,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#folder 
-/actions
-/cookies
-/lib
-/data
-/hooks
+# folder 
+# these are source folders that should be tracked
+# /actions
+# /cookies
+# /lib
+# /data
+# /hooks
