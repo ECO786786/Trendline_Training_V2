@@ -1,5 +1,6 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
 import { contactSchema } from "@/lib/contact-schema";
 
 /**
@@ -30,12 +31,33 @@ export async function submitContactForm(
     };
   }
 
-  // 👉 Do real work here (DB, email, etc.)
-  //console.log("Form submitted:", parsed.data);
-  console.log("Contact form submitted");
+  try {
+      const { fullName, email, phone, company, subject, message } = parsed.data;
 
-  return {
-    success: true,
-    errors: {},
-  };
+      await prisma.inquiry.create({
+          data: {
+              type: "general",
+              fullName,
+              email,
+              phone: phone || "",
+              company: company || "",
+              subject,
+              message
+          }
+      });
+      console.log("Contact inquiry saved to database");
+
+      return {
+        success: true,
+        errors: {},
+      };
+  } catch (e) {
+      console.error("Failed to save contact form:", e);
+      return {
+          success: false,
+          errors: {
+              form: ["Failed to send message. Please try again."]
+          }
+      };
+  }
 }

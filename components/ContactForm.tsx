@@ -210,27 +210,35 @@ export default function ContactForm() {
             </p>
           )}
         </div>
-        <label className="flex items-center gap-3 text-sm cursor-pointer">
-          <input
-            type="checkbox"
-            name="terms"
-            aria-invalid={!!getError("terms")}
-            onChange={() => handleInputChange("terms")}
-            className="h-5 w-5 cursor-pointer"
-          />
-          <span>
-            I agree to the{" "}
-            <Link href="/privacy" className="text-[#1e3a8a] hover:underline">
-              Privacy Policy
-            </Link>
-          </span>
-        </label>
-
-        {getError("terms") && (
-          <p className="mt-1 text-xs text-red-600 animate-in fade-in">
-            {getError("terms")![0]}
-          </p>
-        )}
+        <div className="pt-2 mb-2">
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <div className="relative flex items-center pt-0.5">
+              <input
+                type="checkbox"
+                name="terms"
+                id="privacy-policy"
+                required
+                aria-invalid={!!getError("terms")}
+                onChange={() => handleInputChange("terms")}
+                className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
+              />
+            </div>
+            <span className="text-sm text-gray-600 leading-normal">
+              I have read and agree to the{" "}
+              <Link
+                href="/privacy"
+                className="text-[#1e3a8a] font-semibold hover:underline decoration-2 underline-offset-2"
+              >
+                Privacy Policy
+              </Link>
+            </span>
+          </label>
+          {getError("terms") && (
+            <p className="mt-1 text-xs text-red-600 animate-in fade-in">
+              {getError("terms")![0]}
+            </p>
+          )}
+        </div>
         <SubmitButton />
       </form>
     </>

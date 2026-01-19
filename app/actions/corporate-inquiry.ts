@@ -1,5 +1,6 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
 import { corporateInquirySchema } from "@/lib/contact-schema";
 
 type CorporateInquiryFormState = {
@@ -25,11 +26,34 @@ export async function submitCorporateInquiry(
     };
   }
 
-  // 👉 Do real work here (DB, email, etc.)
-  console.log("Corporate inquiry submitted");
+  try {
+      const { fullName, email, phone, company, message, serviceName, servicePrice } = parsed.data;
 
-  return {
-    success: true,
-    errors: {},
-  };
+      await prisma.inquiry.create({
+          data: {
+              type: "corporate",
+              fullName,
+              email,
+              phone: phone || "",
+              company: company || "",
+              message: message || "",
+              serviceName,
+              servicePrice
+          }
+      });
+      console.log("Corporate inquiry saved to database");
+
+      return {
+        success: true,
+        errors: {},
+      };
+  } catch (e) {
+      console.error("Failed to save corporate inquiry:", e);
+      return {
+          success: false,
+          errors: {
+              form: ["Failed to submit inquiry. Please try again."]
+          }
+      };
+  }
 }

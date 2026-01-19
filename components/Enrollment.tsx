@@ -313,6 +313,30 @@ export default function Enrollment() {
                   </div>
                 </div>
 
+                {/* Privacy Policy */}
+                <div className="pt-2">
+                  <label className="flex items-start gap-3 cursor-pointer group">
+                    <div className="relative flex items-center pt-0.5">
+                      <input
+                        className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
+                        id="privacy-policy"
+                        name="privacy"
+                        required
+                        type="checkbox"
+                      />
+                    </div>
+                    <span className="text-sm text-gray-600 leading-normal">
+                      I have read and agree to the{" "}
+                      <a
+                        className="text-[#1e3a8a] font-semibold hover:underline decoration-2 underline-offset-2"
+                        href="/privacy"
+                      >
+                        Privacy Policy
+                      </a>
+                    </span>
+                  </label>
+                </div>
+
                 {/* Submit Button */}
                 <div className="flex flex-col gap-4 pt-4">
                   <button

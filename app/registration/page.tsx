@@ -442,6 +442,28 @@ function EnrollmentContent() {
                     </div>
                   </div>
                 )}
+                <div className="pt-2">
+                  <label className="flex items-start gap-3 cursor-pointer group">
+                    <div className="relative flex items-center pt-0.5">
+                      <input
+                        className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
+                        id="privacy-policy"
+                        name="privacy"
+                        required
+                        type="checkbox"
+                      />
+                    </div>
+                    <span className="text-sm text-[#4c739a] dark:text-slate-400 leading-normal">
+                      I have read and agree to the{" "}
+                      <a
+                        className="text-[#1e3a8a] dark:text-blue-400 font-semibold hover:underline decoration-2 underline-offset-2"
+                        href="/privacy"
+                      >
+                        Privacy Policy
+                      </a>
+                    </span>
+                  </label>
+                </div>
                 <div className="pt-2 flex flex-col gap-3">
                   <SubmitButton />
                   <p className="text-center text-xs text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">

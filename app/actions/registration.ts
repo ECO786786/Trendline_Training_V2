@@ -1,5 +1,6 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
 import { registrationSchema } from "@/lib/contact-schema";
 
 type RegistrationFormState = {
@@ -25,11 +26,45 @@ export async function submitRegistrationForm(
     };
   }
 
-  // 👉 Do real work here (create user, hash password, etc.)
-  console.log("Registration submitted");
+  try {
+      const { course, firstName, surname, email, phone, company, deliveryMethod } = parsed.data;
+      
+      let courseId: number | undefined;
 
-  return {
-    success: true,
-    errors: {},
-  };
+      if (course) {
+          const courseRecord = await prisma.course.findUnique({
+              where: { slug: course }
+          });
+          if (courseRecord) {
+              courseId = courseRecord.id;
+          }
+      }
+
+      await prisma.registration.create({
+          data: {
+              firstName,
+              surname,
+              email,
+              phone: phone || "", // Schema might allow optional, DB expects string
+              company,
+              deliveryMethod,
+              courseId
+          }
+      });
+      
+      console.log("Registration saved to database");
+      return {
+        success: true,
+        errors: {},
+      };
+
+  } catch (e) {
+      console.error("Failed to save registration:", e);
+      return {
+          success: false,
+          errors: {
+              form: ["Failed to save registration. Please try again."]
+          }
+      }
+  }
 }

@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id              Int               @id @default(autoincrement())
+  slug            String            @unique
+  title           String
+  subTitle        String?
+  description     String?
+  category        String
+  duration        String
+  level           String
+  priceZM         Float
+  priceUS         Float
+  overview        String
+  prerequisites   String?
+  certificate     String?
+  imageSrc        String?
+  imageAlt        String?
+  
+  // Relations
+  curriculum      CurriculumItem[]
+  learningOutcomes LearningOutcome[]
+  registrations   Registration[]
+  
+  updatedAt       DateTime          @updatedAt
+  createdAt       DateTime          @default(now())
+}
+
+model CurriculumItem {
+  id          Int     @id @default(autoincrement())
+  courseId    Int
+  title       String
+  description String
+  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model LearningOutcome {
+  id          Int     @id @default(autoincrement())
+  courseId    Int
+  description String
+  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model Registration {
+  id             Int      @id @default(autoincrement())
+  courseId       Int?     // Optional because user might register generally (though usually specific)
+  firstName      String
+  surname        String
+  email          String
+  phone          String
+  company        String? // Optional
+  deliveryMethod String  // "in-person", "online-live", "hybrid"
+  course         Course? @relation(fields: [courseId], references: [id])
+  createdAt      DateTime @default(now())
+}
+
+model Inquiry {
+  id           Int      @id @default(autoincrement())
+  type         String   // "general", "corporate"
+  fullName     String
+  email        String
+  phone        String
+  company      String?
+  subject      String?  // For contact form
+  message      String?
+  serviceName  String?  // For corporate inquiry
+  servicePrice String?  // For corporate inquiry
+  createdAt    DateTime @default(now())
+}
