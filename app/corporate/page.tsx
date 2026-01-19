@@ -35,10 +35,15 @@ export default function Corporate() {
         <ContentCard
           key={index}
           {...item}
-          primaryCTA={{
-            ...item.primaryCTA,
-            onClick: () => openInquiryModal(item.title),
-          }}
+          primaryCTA={
+            item.primaryCTA
+              ? {
+                  text: item.primaryCTA.text,
+                  href: item.primaryCTA.href,
+                  onClick: () => openInquiryModal(item.title),
+                }
+              : undefined
+          }
         />
       ))}
 
