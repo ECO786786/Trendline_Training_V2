@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, use } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCourseBySlug } from "@/data/courseDetails";
@@ -11,6 +12,8 @@ export default function CourseDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const searchParams = useSearchParams();
+  const isFromSchedule = searchParams.get("from") === "schedule";
   const course = getCourseBySlug(slug);
 
   const [expandedModule, setExpandedModule] = useState<number>(0);
@@ -173,10 +176,14 @@ export default function CourseDetailPage({
               <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                 <div className="p-6">
                   <Link
-                    href={`/registration?course=${slug}`}
+                    href={
+                      isFromSchedule
+                        ? `/registration?course=${slug}&from=schedule`
+                        : `/registration?course=${slug}`
+                    }
                     className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600 mb-4 w-full cursor-pointer"
                   >
-                    Register Your Interest
+                    {isFromSchedule ? "Register Now" : "Register Your Interest"}
                   </Link>
                   <Link
                     href="/brochures/trendline-training-brochure.pdf"

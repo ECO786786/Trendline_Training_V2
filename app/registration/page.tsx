@@ -40,6 +40,7 @@ interface DeliveryMethod {
 function EnrollmentContent() {
   const searchParams = useSearchParams();
   const courseSlug = searchParams.get("course") || "";
+  const isFromSchedule = searchParams.get("from") === "schedule";
 
   const [state, formAction] = useActionState(
     submitRegistrationForm,
@@ -381,32 +382,66 @@ function EnrollmentContent() {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-gray-900 dark:text-gray-200 text-base font-medium">
-                    Preferred Delivery Method
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {deliveryMethods.map((method, index) => (
-                      <label key={method.value} className="cursor-pointer">
-                        <input
-                          type="radio"
-                          name="deliveryMethod"
-                          value={method.value}
-                          defaultChecked={index === 0}
-                          className="sr-only peer"
-                        />
-                        <div className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 peer-checked:border-[#1e3a8a] peer-checked:bg-blue-50 dark:peer-checked:bg-blue-900/20 peer-checked:ring-1 peer-checked:ring-[#1e3a8a] transition-all hover:bg-gray-50 dark:hover:bg-gray-700 h-full text-center">
-                          <div className="text-gray-600 peer-checked:text-[#1e3a8a] mb-2">
-                            {method.icon}
-                          </div>
-                          <span className="text-sm font-semibold text-gray-900 dark:text-white peer-checked:text-[#1e3a8a]">
-                            {method.label}
-                          </span>
+                {isFromSchedule ? (
+                  <>
+                    <div className="flex flex-col gap-3">
+                      <p className="text-[#0d141b] dark:text-slate-200 text-sm font-bold">
+                        Delivery Method & Location
+                      </p>
+                      <div className="p-4 rounded-xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-900/10 flex items-center gap-4">
+                        <div className="text-[#1e3a8a] p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm shrink-0">
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                          </svg>
                         </div>
-                      </label>
-                    ))}
+                        <div className="flex flex-col gap-0.5">
+                          <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider">
+                            In-person Intensive
+                          </span>
+                          <p className="text-[#0d141b] dark:text-white font-bold text-sm">
+                            Venue: To Be Confirmed (Lusaka)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      type="hidden"
+                      name="deliveryMethod"
+                      value="in-person"
+                    />
+                  </>
+                ) : (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-gray-900 dark:text-gray-200 text-base font-medium">
+                      Preferred Delivery Method
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {deliveryMethods.map((method, index) => (
+                        <label key={method.value} className="cursor-pointer">
+                          <input
+                            type="radio"
+                            name="deliveryMethod"
+                            value={method.value}
+                            defaultChecked={index === 0}
+                            className="sr-only peer"
+                          />
+                          <div className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 peer-checked:border-[#1e3a8a] peer-checked:bg-blue-50 dark:peer-checked:bg-blue-900/20 peer-checked:ring-1 peer-checked:ring-[#1e3a8a] transition-all hover:bg-gray-50 dark:hover:bg-gray-700 h-full text-center">
+                            <div className="text-gray-600 peer-checked:text-[#1e3a8a] mb-2">
+                              {method.icon}
+                            </div>
+                            <span className="text-sm font-semibold text-gray-900 dark:text-white peer-checked:text-[#1e3a8a]">
+                              {method.label}
+                            </span>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="pt-2 flex flex-col gap-3">
                   <SubmitButton />
                   <p className="text-center text-xs text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1">

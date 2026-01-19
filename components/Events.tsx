@@ -29,14 +29,14 @@ function EventCard({
       </div>
       <div className="mt-6 flex flex-col items-start border-t border-gray-400 pt-6 md:ml-6 md:mt-0 md:border-l md:border-t-0 md:pl-6 md:pt-0">
         <div className="flex flex-wrap items-center gap-4">
-          <a href={`/registration?course=${slug}`}>
+          <a href={`/registration?course=${slug}&from=schedule`}>
             <h2 className="text-xl font-bold md:text-2xl mb-1">{title}</h2>
           </a>
         </div>
         <p className="mb-2 text-sm text-[#1e3a8a] font-medium">{category}</p>
         <p className="mb-4">{description}</p>
         <Link
-          href={`/registration?course=${slug}`}
+          href={`/registration?course=${slug}&from=schedule`}
           className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
         >
           {buttonText}
@@ -99,7 +99,7 @@ export default function Events() {
         <div className="mb-16 grid auto-cols-fr auto-rows-auto grid-cols-1 items-start gap-8 lg:grid-cols-2">
           <div className="border border-gray-400  rounded-lg">
             <Link
-              href="/registration?course=data-analysis-with-excel"
+              href="/registration?course=data-analysis-with-excel&from=schedule"
               className="relative block w-full max-w-full"
             >
               <div className="w-full overflow-hidden">
@@ -120,7 +120,7 @@ export default function Events() {
               </div>
             </Link>
             <div className="flex flex-col items-start p-6">
-              <Link href="/registration?course=data-analysis-with-excel">
+              <Link href="/registration?course=data-analysis-with-excel&from=schedule">
                 <h2 className="text-xl font-bold md:text-2xl">
                   Data analysis with Excel
                 </h2>
@@ -133,7 +133,7 @@ export default function Events() {
                 creating dashboards and visual representations.
               </p>
               <Link
-                href={`/registration?course=data-analysis-with-excel`}
+                href={`/registration?course=data-analysis-with-excel&from=schedule`}
                 className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
               >
                 Register now

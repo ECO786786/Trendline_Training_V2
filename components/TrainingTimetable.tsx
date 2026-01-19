@@ -384,13 +384,13 @@ export default function TrainingTimetable() {
 
                 <div className="flex min-w-50 flex-col gap-3 border-t border-gray-100 pt-5 md:border-t-0 md:pt-0">
                   <Link
-                    href={`/registration/${course.slug}`}
+                    href={`/registration?course=${course.slug}&from=schedule`}
                     className="inline-flex h-12 items-center justify-center rounded-full bg-blue-900 text-sm font-bold text-white shadow-md transition-colors hover:bg-blue-950"
                   >
                     Register Now
                   </Link>
                   <Link
-                    href={`/courses/${course.slug}`}
+                    href={`/courses/${course.slug}?from=schedule`}
                     className="inline-flex h-12 items-center justify-center rounded-full border-2 border-blue-900 bg-white text-sm font-bold text-blue-900 transition-colors hover:bg-blue-50"
                   >
                     View Details
