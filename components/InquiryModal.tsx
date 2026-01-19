@@ -227,13 +227,13 @@ export default function InquiryModal({
           <div>
             <label
               className="block text-gray-700 mb-2 font-medium"
-              htmlFor="notes"
+              htmlFor="message"
             >
               Additional Notes
             </label>
             <textarea
-              id="notes"
-              name="notes"
+              id="message"
+              name="message"
               rows={3}
               placeholder="Any specific requirements or questions?"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/50"
@@ -246,7 +246,7 @@ export default function InquiryModal({
                 <input
                   className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
                   id="privacy-policy"
-                  name="privacy"
+                  name="terms"
                   required
                   type="checkbox"
                 />

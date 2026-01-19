@@ -6,13 +6,24 @@ import { courseDetails } from '../data/courseDetails'
 const prisma = new PrismaClient()
 
 async function main() {
-  console.log('Start seeding ...')
-
-  // Clear existing data
+  const bcrypt = require('bcryptjs');
+  const hashedPassword = await bcrypt.hash('password123', 10);
+  
+  await prisma.user.upsert({
+      where: { email: 'admin@trendline.com' },
+      update: {},
+      create: {
+          email: 'admin@trendline.com',
+          name: 'Trendline Admin',
+          password: hashedPassword,
+          role: 'ADMIN'
+      }
+  });
+ 
   await prisma.learningOutcome.deleteMany()
   await prisma.curriculumItem.deleteMany()
-  await prisma.registration.deleteMany()
-  await prisma.inquiry.deleteMany()
+  // await prisma.registration.deleteMany() // Optional: keep registrations?
+  // await prisma.inquiry.deleteMany() // Optional: keep inquiries?
   await prisma.course.deleteMany()
 
   // Iterate over courseDetails as the primary source
@@ -21,7 +32,6 @@ async function main() {
     // Matching logic: Try to match by ID or similar title
     const landingData = courses.find(c => c.id === detail.id) || courses.find(c => c.title === detail.title)
 
-    console.log(`Seeding course: ${detail.title}`)
 
     await prisma.course.create({
       data: {
@@ -55,7 +65,6 @@ async function main() {
     })
   }
 
-  console.log('Seeding finished.')
 }
 
 main()

@@ -1,36 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useActionState } from "react";
+import { useFormStatus } from "react-dom";
+import { submitRegistrationForm } from "@/app/actions/registration";
 
-interface FormData {
-  firstName: string;
-  surname: string;
-  email: string;
-  phone: string;
-  company: string;
+const initialState = {
+  success: false,
+  errors: {} as Record<string, string[]>,
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="flex h-14 w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-blue-900 px-6 text-lg font-bold leading-normal tracking-wide text-white shadow-lg transition-all hover:bg-blue-950 hover:shadow-xl active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+    >
+      {pending ? "Submitting..." : "Register Your Interest"}
+    </button>
+  );
 }
 
 export default function Enrollment() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    surname: "",
-    email: "",
-    phone: "",
-    company: "",
-  });
+  const [state, formAction] = useActionState(submitRegistrationForm, initialState);
+  const [modalClosed, setModalClosed] = useState(false);
+  const [clearedErrors, setClearedErrors] = useState<Set<string>>(new Set());
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
+  const showModal = state.success && !modalClosed;
+
+  const closeModal = () => {
+    setModalClosed(true);
+    // Optional: Reset form or redirect
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const getError = (field: string) => {
+    if (clearedErrors.has(field)) return undefined;
+    return state.errors[field];
+  };
+
+  const handleInputChange = (field: string) => {
+    if (state.errors[field] && !clearedErrors.has(field)) {
+      setClearedErrors((prev) => new Set(prev).add(field));
+    }
+  };
+
+  // Wrapper to handle submit and reset local state if needed
+  const handleSubmit = (payload: FormData) => {
+    setModalClosed(false);
+    setClearedErrors(new Set());
+    formAction(payload);
   };
 
   const highlights = [
@@ -56,6 +76,41 @@ export default function Enrollment() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 font-display text-gray-900">
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl text-center">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <svg
+                className="h-8 w-8 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h3 className="mb-2 text-2xl font-bold text-gray-900">
+              Registration Successful!
+            </h3>
+            <p className="mb-8 text-gray-600">
+              Thank you for registering your interest in Data Analysis with Excel. We will contact you shortly with further details.
+            </p>
+            <button
+              onClick={closeModal}
+              className="w-full rounded-lg bg-blue-900 py-3 text-base font-bold text-white transition-colors hover:bg-blue-950"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <header className="w-full border-b border-gray-200 bg-slate-50">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between whitespace-nowrap px-4 py-4 sm:px-10">
@@ -178,69 +233,91 @@ export default function Enrollment() {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <form action={handleSubmit} className="flex flex-col gap-6" noValidate>
+                {/* Hidden Context Fields */}
+                <input type="hidden" name="course" value="data-analysis-excel" />
+                <input type="hidden" name="deliveryMethod" value="in-person" />
+
                 {/* First Name & Surname */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label className="flex flex-col">
-                    <span className="pb-2 text-sm font-bold text-gray-900">
-                      First Name
-                    </span>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50"
-                      placeholder="e.g. Jane"
-                      required
-                    />
-                  </label>
-                  <label className="flex flex-col">
-                    <span className="pb-2 text-sm font-bold text-gray-900">
-                      Surname
-                    </span>
-                    <input
-                      type="text"
-                      name="surname"
-                      value={formData.surname}
-                      onChange={handleInputChange}
-                      className="h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50"
-                      placeholder="e.g. Smith"
-                      required
-                    />
-                  </label>
+                  <div className="flex flex-col">
+                    <label className="flex flex-col">
+                      <span className="pb-2 text-sm font-bold text-gray-900">
+                        First Name
+                      </span>
+                      <input
+                        type="text"
+                        name="firstName"
+                        onChange={() => handleInputChange("firstName")}
+                        className={`h-12 w-full rounded-lg border ${getError("firstName") ? "border-red-500" : "border-slate-300"} bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50`}
+                        placeholder="e.g. Jane"
+                        required
+                      />
+                    </label>
+                    {getError("firstName") && (
+                        <p className="mt-1 text-xs text-red-600">
+                          {getError("firstName")![0]}
+                        </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="flex flex-col">
+                      <span className="pb-2 text-sm font-bold text-gray-900">
+                        Surname
+                      </span>
+                      <input
+                        type="text"
+                        name="surname"
+                        onChange={() => handleInputChange("surname")}
+                        className={`h-12 w-full rounded-lg border ${getError("surname") ? "border-red-500" : "border-slate-300"} bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50`}
+                        placeholder="e.g. Smith"
+                        required
+                      />
+                    </label>
+                    {getError("surname") && (
+                        <p className="mt-1 text-xs text-red-600">
+                          {getError("surname")![0]}
+                        </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Email */}
-                <label className="flex flex-col">
-                  <span className="pb-2 text-sm font-bold text-gray-900">
-                    Work Email Address
-                  </span>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="h-12 w-full rounded-lg border border-slate-300 bg-white py-3 pl-12 pr-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50"
-                      placeholder="name@company.com"
-                      required
-                    />
-                    <svg
-                      className="absolute left-4 top-3 h-6 w-6 text-slate-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
+                <div className="flex flex-col">
+                    <label className="flex flex-col">
+                    <span className="pb-2 text-sm font-bold text-gray-900">
+                        Work Email Address
+                    </span>
+                    <div className="relative">
+                        <input
+                        type="email"
+                        name="email"
+                        onChange={() => handleInputChange("email")}
+                        className={`h-12 w-full rounded-lg border ${getError("email") ? "border-red-500" : "border-slate-300"} bg-white py-3 pl-12 pr-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50`}
+                        placeholder="name@company.com"
+                        required
+                        />
+                        <svg
+                        className="absolute left-4 top-3 h-6 w-6 text-slate-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                        </svg>
+                    </div>
                 </label>
+                {getError("email") && (
+                    <p className="mt-1 text-xs text-red-600">
+                        {getError("email")![0]}
+                    </p>
+                )}
+                </div>
 
                 {/* Phone & Company */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -251,8 +328,6 @@ export default function Enrollment() {
                     <input
                       type="tel"
                       name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
                       className="h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50"
                       placeholder="+260 000 000 000"
                     />
@@ -264,8 +339,6 @@ export default function Enrollment() {
                     <input
                       type="text"
                       name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
                       className="h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-gray-900 placeholder:text-slate-400 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/50"
                       placeholder="Company Name"
                     />
@@ -318,9 +391,9 @@ export default function Enrollment() {
                   <label className="flex items-start gap-3 cursor-pointer group">
                     <div className="relative flex items-center pt-0.5">
                       <input
-                        className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
+                        className="form-checkbox size-5 rounded border-[#cfdbe7] text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
                         id="privacy-policy"
-                        name="privacy"
+                        name="terms"
                         required
                         type="checkbox"
                       />
@@ -339,12 +412,15 @@ export default function Enrollment() {
 
                 {/* Submit Button */}
                 <div className="flex flex-col gap-4 pt-4">
-                  <button
-                    type="submit"
-                    className="flex h-14 w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-blue-900 px-6 text-lg font-bold leading-normal tracking-wide text-white shadow-lg transition-all hover:bg-blue-950 hover:shadow-xl active:scale-[0.98]"
-                  >
-                    Register Your Interest
-                  </button>
+                  <SubmitButton />
+
+                  {/* General Error Message */}
+                  {state.errors.form && (
+                      <p className="text-center text-sm text-red-600">
+                          {state.errors.form[0]}
+                      </p>
+                  )}
+
                   <div className="flex items-center justify-center gap-2 text-xs text-slate-600">
                     <svg
                       className="h-4 w-4"

@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import { whatsappNumber } from "@/lib/env";
 
 export const metadata: Metadata = {
   title:
@@ -81,9 +82,8 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <WhatsAppButton
-          phoneNumber="1234567890"
-          message="Hello! I'm interested in your services."
-        />
+          phoneNumber={whatsappNumber}
+          message="Hello! How can we help you today?"/>
         <Footer />
       </body>
     </html>

@@ -21,23 +21,44 @@ export async function GET() {
   }
 }
 
+import { registrationSchema } from "@/lib/contact-schema";
+
+// ... existing GET
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    // Attempt to connect course via ID if provided, or slug lookup if needed
-    // Assuming body contains flat registration data
+    // Validate with Zod
+    const result = registrationSchema.safeParse({
+        ...body,
+        terms: true // API clients usually imply acceptance or we can require it in body
+    });
+
+    if (!result.success) {
+        return NextResponse.json({ error: result.error.flatten() }, { status: 400 });
+    }
+
+    const { firstName, surname, email, phone, company, deliveryMethod, course } = result.data;
+    
+    // Attempt to connect course via ID if provided, or find by slug from schema
+    let courseId: number | undefined;
+    if (body.courseId) courseId = body.courseId;
+    else if (course) {
+        const courseRecord = await prisma.course.findUnique({ where: { slug: course } });
+        if (courseRecord) courseId = courseRecord.id;
+    }
     
     const registration = await prisma.registration.create({
       data: {
-        firstName: body.firstName,
-        surname: body.surname,
-        email: body.email,
-        phone: body.phone,
-        company: body.company,
-        deliveryMethod: body.deliveryMethod,
+        firstName,
+        surname,
+        email,
+        phone: phone || "",
+        company,
+        deliveryMethod,
         // Optional Link to course if courseId provided
-        course: body.courseId ? { connect: { id: body.courseId } } : undefined
+        course: courseId ? { connect: { id: courseId } } : undefined
       },
     });
 

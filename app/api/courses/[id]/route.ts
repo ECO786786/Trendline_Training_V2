@@ -34,10 +34,18 @@ export async function GET(
   }
 }
 
+import { auth } from "@/auth";
+import { courseSchema } from "@/lib/contact-schema";
+
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const id = parseInt((await params).id);
   
   if (isNaN(id)) {
@@ -46,6 +54,17 @@ export async function PUT(
 
   try {
     const body = await request.json();
+    const result = courseSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json({ error: result.error.flatten() }, { status: 400 });
+    }
+
+    const { 
+        slug, title, subTitle, description, category, duration, level, 
+        priceZM, priceUS, overview, prerequisites, certificate, imageSrc, imageAlt,
+        learningOutcomes, curriculum 
+    } = result.data;
 
     // Transaction to update base fields and replace relations
     const updatedCourse = await prisma.$transaction(async (tx) => {
@@ -53,38 +72,38 @@ export async function PUT(
         const course = await tx.course.update({
             where: { id },
             data: {
-                slug: body.slug,
-                title: body.title,
-                subTitle: body.subTitle,
-                description: body.description,
-                category: body.category,
-                duration: body.duration,
-                level: body.level,
-                priceZM: body.priceZM,
-                priceUS: body.priceUS,
-                overview: body.overview,
-                prerequisites: body.prerequisites,
-                certificate: body.certificate,
-                imageSrc: body.imageSrc,
-                imageAlt: body.imageAlt,
+                slug,
+                title,
+                subTitle,
+                description,
+                category,
+                duration,
+                level,
+                priceZM,
+                priceUS,
+                overview,
+                prerequisites,
+                certificate,
+                imageSrc,
+                imageAlt,
             }
         });
 
         // 2. Handle Relations if provided (Replace all strategy)
-        if (body.learningOutcomes) {
+        if (learningOutcomes) {
             await tx.learningOutcome.deleteMany({ where: { courseId: id } });
             await tx.learningOutcome.createMany({
-                data: body.learningOutcomes.map((o: any) => ({
+                data: learningOutcomes.map((o: any) => ({
                     courseId: id,
                     description: typeof o === 'string' ? o : o.description
                 }))
             });
         }
 
-        if (body.curriculum) {
+        if (curriculum) {
             await tx.curriculumItem.deleteMany({ where: { courseId: id } });
             await tx.curriculumItem.createMany({
-                data: body.curriculum.map((c: any) => ({
+                data: curriculum.map((c: any) => ({
                     courseId: id,
                     title: c.title,
                     description: c.description
@@ -112,6 +131,11 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await auth();
+  if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const id = parseInt((await params).id);
   
   if (isNaN(id)) {

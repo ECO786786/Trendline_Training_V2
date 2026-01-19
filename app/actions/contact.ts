@@ -45,7 +45,6 @@ export async function submitContactForm(
               message
           }
       });
-      console.log("Contact inquiry saved to database");
 
       return {
         success: true,

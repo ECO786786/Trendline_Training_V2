@@ -77,3 +77,12 @@ model Inquiry {
   servicePrice String?  // For corporate inquiry
   createdAt    DateTime @default(now())
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("USER") // 'ADMIN' or 'USER'
+  createdAt DateTime @default(now())
+}

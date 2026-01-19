@@ -20,41 +20,56 @@ export async function GET() {
   }
 }
 
+import { auth } from "@/auth";
+import { courseSchema } from "@/lib/contact-schema";
+
 export async function POST(request: Request) {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
-    
-    // Basic validation implies required fields are present
-    // For brevity, we'll trust the body structure matches schema mostly, 
-    // but in production use Zod.
+    const result = courseSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json({ error: result.error.flatten() }, { status: 400 });
+    }
+
+    const { 
+        slug, title, subTitle, description, category, duration, level, 
+        priceZM, priceUS, overview, prerequisites, certificate, imageSrc, imageAlt,
+        curriculum, learningOutcomes 
+    } = result.data;
     
     const course = await prisma.course.create({
       data: {
-        slug: body.slug,
-        title: body.title,
-        subTitle: body.subTitle,
-        description: body.description,
-        category: body.category,
-        duration: body.duration,
-        level: body.level,
-        priceZM: body.priceZM,
-        priceUS: body.priceUS,
-        overview: body.overview,
-        prerequisites: body.prerequisites,
-        certificate: body.certificate,
-        imageSrc: body.imageSrc,
-        imageAlt: body.imageAlt,
-        learningOutcomes: {
-            create: body.learningOutcomes?.map((outcome: any) => ({
-                description: typeof outcome === 'string' ? outcome : outcome.description
-            })) || []
-        },
+        slug,
+        title,
+        subTitle,
+        description,
+        category,
+        duration,
+        level,
+        priceZM,
+        priceUS,
+        overview,
+        prerequisites,
+        certificate,
+        imageSrc,
+        imageAlt,
         curriculum: {
-            create: body.curriculum?.map((item: any) => ({
-                title: item.title,
-                description: item.description
-            })) || []
-        }
+          create: curriculum?.map((c: any) => ({
+            title: c.title,
+            description: c.description,
+          })),
+        },
+        learningOutcomes: {
+          create: learningOutcomes?.map((o: any) => ({
+             description: typeof o === 'string' ? o : o.description
+          })),
+        },
       },
     });
 

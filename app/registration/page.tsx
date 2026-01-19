@@ -448,9 +448,10 @@ function EnrollmentContent() {
                       <input
                         className="form-checkbox size-5 rounded border-[#cfdbe7] dark:border-slate-600 text-[#1e3a8a] focus:ring-[#1e3a8a]/50 transition-all cursor-pointer"
                         id="privacy-policy"
-                        name="privacy"
+                        name="terms"
                         required
                         type="checkbox"
+                        onChange={() => handleInputChange("terms")}
                       />
                     </div>
                     <span className="text-sm text-[#4c739a] dark:text-slate-400 leading-normal">
@@ -463,6 +464,11 @@ function EnrollmentContent() {
                       </a>
                     </span>
                   </label>
+                  {getError("terms") && (
+                    <p className="mt-1 text-xs text-red-600">
+                      {getError("terms")![0]}
+                    </p>
+                  )}
                 </div>
                 <div className="pt-2 flex flex-col gap-3">
                   <SubmitButton />

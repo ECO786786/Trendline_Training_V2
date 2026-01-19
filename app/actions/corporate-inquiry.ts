@@ -41,7 +41,6 @@ export async function submitCorporateInquiry(
               servicePrice
           }
       });
-      console.log("Corporate inquiry saved to database");
 
       return {
         success: true,

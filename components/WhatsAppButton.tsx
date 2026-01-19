@@ -1,7 +1,7 @@
 "use client";
 
 interface WhatsAppFloatButtonProps {
-  phoneNumber: string;
+  phoneNumber?: string;
   message?: string;
 }
 
@@ -9,6 +9,8 @@ export default function WhatsAppFloatButton({
   phoneNumber,
   message = "",
 }: WhatsAppFloatButtonProps) {
+  if (!phoneNumber) return null;
+
   const whatsappUrl = `https://wa.me/${phoneNumber}${
     message ? `?text=${encodeURIComponent(message)}` : ""
   }`;

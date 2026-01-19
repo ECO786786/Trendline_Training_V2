@@ -52,7 +52,6 @@ export async function submitRegistrationForm(
           }
       });
       
-      console.log("Registration saved to database");
       return {
         success: true,
         errors: {},
