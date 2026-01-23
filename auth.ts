@@ -1,23 +1,8 @@
-
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
-
-async function getUser(email: string) {
-  const localPrisma = new PrismaClient();
-  try {
-    const user = await localPrisma.user.findUnique({ where: { email } });
-    await localPrisma.$disconnect();
-    return user;
-  } catch (error) {
-    console.error("Failed to fetch user:", error);
-    await localPrisma.$disconnect();
-    throw new Error("Failed to fetch user.");
-  }
-}
 
 export const { auth, signIn, signOut, handlers } = NextAuth({
   providers: [
@@ -29,17 +14,31 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
-          const user = await getUser(email);
+          
+          try {
+            const user = await prisma.user.findUnique({ 
+              where: { email } 
+            });
 
-          if (!user) return null;
+            if (!user) {
+              console.warn(`Auth attempt failed: User not found for ${email}`);
+              return null;
+            }
 
-          const passwordsMatch = await bcrypt.compare(password, user.password);
+            const passwordsMatch = await bcrypt.compare(password, user.password);
 
-          if (passwordsMatch) {
-             return {
-                 ...user,
-                 id: user.id.toString()
-             };
+            if (passwordsMatch) {
+              return {
+                id: user.id.toString(),
+                email: user.email,
+                name: user.name,
+              };
+            } else {
+              console.warn(`Auth attempt failed: Password mismatch for ${email}`);
+            }
+          } catch (error) {
+            console.error("Database error during authentication:", error);
+            throw new Error("Authentication failed due to a server error.");
           }
         }
         return null;
@@ -47,17 +46,21 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token, user }) {
-        if (session.user) {
-            session.user.id = token.id as string;
-        }
-        return session;
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
     }
+  },
+  trustHost: true, 
+  pages: {
+    signIn: '/auth/login',
   }
 });
