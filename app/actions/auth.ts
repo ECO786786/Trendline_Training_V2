@@ -13,15 +13,17 @@ export async function authenticate(
       ...Object.fromEntries(formData),
       redirectTo: "/admin/dashboard"
     });
-  } catch (error) {
+    } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
           return "Invalid credentials.";
         default:
+          console.error("Authentication error details:", error);
           return "Something went wrong.";
       }
     }
+    console.error("Unexpected authentication error:", error);
     throw error;
   }
 }
