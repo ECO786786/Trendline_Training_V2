@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && mkdir -p .next && echo '<html><body></body></html>' > .next/dummy.html"
   publish = ".next"
 
 [[plugins]]
