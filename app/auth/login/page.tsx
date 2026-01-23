@@ -1,28 +1,51 @@
-
 "use client";
 
-import { useActionState } from "react";
-import { authenticate } from "@/app/actions/auth";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
-  const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
-    undefined
-  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsPending(true);
+    setErrorMessage(null);
+
+    const form = new FormData(e.currentTarget);
+    const credentials = Object.fromEntries(form) as {
+      email?: string;
+      password?: string;
+    };
+
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: credentials.email,
+      password: credentials.password,
+    } as any);
+
+    setIsPending(false);
+
+    if (res?.error) {
+      setErrorMessage(res.error);
+      return;
+    }
+
+    // success
+    router.push("/admin/dashboard");
+  }
 
   return (
     <main className="flex items-center justify-center md:h-screen">
       <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32">
         <div className="flex w-full items-end rounded-lg bg-[#1e3a8a] p-3 md:h-36">
-          <div className="w-32 text-white md:w-36">
-            Trendline Admin
-          </div>
+          <div className="w-32 text-white md:w-36">Trendline Admin</div>
         </div>
-        <form action={formAction} className="space-y-3">
+        <form onSubmit={onSubmit} className="space-y-3">
           <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-            <h1 className="mb-3 text-2xl">
-              Please log in to continue.
-            </h1>
+            <h1 className="mb-3 text-2xl">Please log in to continue.</h1>
             <div className="w-full">
               <div>
                 <label
@@ -63,8 +86,9 @@ export default function Page() {
               </div>
             </div>
             <button
-                className="mt-4 w-full bg-[#1e3a8a] text-white p-3 rounded-lg font-medium hover:bg-blue-800 transition-colors aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
-                aria-disabled={isPending}
+              type="submit"
+              className="mt-4 w-full bg-[#1e3a8a] text-white p-3 rounded-lg font-medium hover:bg-blue-800 transition-colors aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+              aria-disabled={isPending}
             >
               Log in
             </button>
@@ -74,9 +98,7 @@ export default function Page() {
               aria-atomic="true"
             >
               {errorMessage && (
-                <>
-                  <p className="text-sm text-red-500">{errorMessage}</p>
-                </>
+                <p className="text-sm text-red-500">{errorMessage}</p>
               )}
             </div>
           </div>
