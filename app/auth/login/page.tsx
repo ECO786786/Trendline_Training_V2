@@ -20,11 +20,11 @@ export default function Page() {
       password?: string;
     };
 
-    const res = await signIn("credentials", {
+    const res = (await signIn("credentials", {
       redirect: false,
       email: credentials.email,
       password: credentials.password,
-    } as any);
+    } as any)) as any;
 
     setIsPending(false);
 
