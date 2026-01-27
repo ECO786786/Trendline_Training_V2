@@ -40,6 +40,7 @@ export const registrationSchema = z.object({
     phone: sanitizedString.optional(),
     company: sanitizedString.optional(),
     course: sanitizedString.optional(), // Slug
+    scheduledCourseId: z.coerce.number().optional(),
     deliveryMethod: z.enum(["in-person", "online", "hybrid"]),
     terms: z.literal(true, {
       message: "You must accept the Privacy Policy",

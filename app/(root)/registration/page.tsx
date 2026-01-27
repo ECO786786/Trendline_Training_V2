@@ -41,6 +41,7 @@ function EnrollmentContent() {
   const searchParams = useSearchParams();
   const courseSlug = searchParams.get("course") || "";
   const isFromSchedule = searchParams.get("from") === "schedule";
+  const scheduleId = searchParams.get("scheduleId");
 
   const [state, formAction] = useActionState(
     submitRegistrationForm,
@@ -413,6 +414,13 @@ function EnrollmentContent() {
                       name="deliveryMethod"
                       value="in-person"
                     />
+                    {scheduleId && (
+                      <input
+                        type="hidden"
+                        name="scheduledCourseId"
+                        value={scheduleId}
+                      />
+                    )}
                   </>
                 ) : (
                   <div className="flex flex-col gap-2">

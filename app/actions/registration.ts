@@ -28,7 +28,7 @@ export async function submitRegistrationForm(
   }
 
   try {
-      const { course, firstName, surname, email, phone, company, deliveryMethod } = parsed.data;
+      const { course, firstName, surname, email, phone, company, deliveryMethod, scheduledCourseId } = parsed.data;
       
       let courseId: number | undefined;
 
@@ -38,6 +38,8 @@ export async function submitRegistrationForm(
           });
           if (courseRecord) {
               courseId = courseRecord.id;
+          } else {
+              console.warn(`[Registration] Course slug provided but not found in DB: ${course}`);
           }
       }
 
@@ -64,7 +66,14 @@ export async function submitRegistrationForm(
               phone: phone || "",
               company,
               deliveryMethod: mappedMethod,
-              courseId
+              courseId,
+              // If scheduledCourseId is present, we should also verify it matches the courseId if desired, 
+              // but for now just saving it is enough. Be aware that 'scheduledCourseId' is the scalar field 
+              // which Prisma might expect or we can use connect. 
+              // In the original file, the schema says: 
+              // scheduledCourse   ScheduledCourse? @relation(fields: [scheduledCourseId], references: [id])
+              // So passing `scheduledCourseId` scalar is fine.
+              scheduledCourseId
           }
       });
       

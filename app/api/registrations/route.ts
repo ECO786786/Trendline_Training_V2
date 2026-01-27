@@ -48,6 +48,7 @@ export async function POST(request: Request) {
     else if (course) {
         const courseRecord = await prisma.course.findUnique({ where: { slug: course } });
         if (courseRecord) courseId = courseRecord.id;
+        else console.warn(`[API Registration] Course slug provided but not found in DB: ${course}`);
     }
     
     const registration = await prisma.registration.create({

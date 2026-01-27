@@ -11,6 +11,8 @@ export default async function DashboardPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  console.log(registrations, 'registrations')
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">

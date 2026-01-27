@@ -125,7 +125,7 @@ export const courses: {
     description:
       "Learn to design, build, and apply financial models for decision-making, forecasting, and business strategy in real-world scenarios.",
     buttonText: "Learn more",
-    buttonLink: "/courses/financial-modelling",
+    buttonLink: "/courses/financial-modelling-and-forecasting",
     imageSrc: "/images/financial-modelling.jpg",
     imageAlt: "financial modelling course",
   },
