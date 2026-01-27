@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { corporateInquirySchema } from "@/lib/contact-schema";
+import { InquiryType } from "@prisma/client";
 
 type CorporateInquiryFormState = {
   success: boolean;
@@ -31,7 +32,7 @@ export async function submitCorporateInquiry(
 
       await prisma.inquiry.create({
           data: {
-              type: "corporate",
+              type: InquiryType.CORPORATE,
               fullName,
               email,
               phone: phone || "",

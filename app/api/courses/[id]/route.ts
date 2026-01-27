@@ -1,5 +1,6 @@
 
 import { prisma } from "@/lib/prisma";
+import { CourseLevel } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -66,9 +67,8 @@ export async function PUT(
         learningOutcomes, curriculum 
     } = result.data;
 
-    // Transaction to update base fields and replace relations
+
     const updatedCourse = await prisma.$transaction(async (tx) => {
-        // 1. Update main fields
         const course = await tx.course.update({
             where: { id },
             data: {
@@ -78,7 +78,7 @@ export async function PUT(
                 description,
                 category,
                 duration,
-                level,
+                level: level as CourseLevel,
                 priceZM,
                 priceUS,
                 overview,
@@ -89,7 +89,6 @@ export async function PUT(
             }
         });
 
-        // 2. Handle Relations if provided (Replace all strategy)
         if (learningOutcomes) {
             await tx.learningOutcome.deleteMany({ where: { courseId: id } });
             await tx.learningOutcome.createMany({

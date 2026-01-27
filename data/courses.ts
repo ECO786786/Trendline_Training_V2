@@ -1,4 +1,14 @@
-export const courses = [
+export const courses: {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  duration: string;
+  buttonText: string;
+  buttonLink: string;
+  imageSrc: string;
+  imageAlt: string;
+}[] = [
   {
     id: 1,
     category: "Foundations",

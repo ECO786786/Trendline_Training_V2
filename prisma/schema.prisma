@@ -1,81 +1,127 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
+// Enums
+enum Role {
+  USER
+  ADMIN
+  DEVELOPER
+  MARKETING
+}
+
+enum InquiryType {
+  GENERAL
+  CORPORATE
+}
+
+enum DeliveryMethod {
+  IN_PERSON
+  ONLINE_LIVE
+  HYBRID
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  ALL_LEVELS
+}
+
+enum RegistrationType {
+  BOOKING
+  INTEREST
+}
+
 model Course {
-  id              Int               @id @default(autoincrement())
-  slug            String            @unique
-  title           String
-  subTitle        String?
-  description     String?
-  category        String
-  duration        String
-  level           String
-  priceZM         Float
-  priceUS         Float
-  overview        String
-  prerequisites   String?
-  certificate     String?
-  imageSrc        String?
-  imageAlt        String?
-  
+  id            Int         @id @default(autoincrement())
+  slug          String      @unique
+  title         String
+  subTitle      String?
+  description   String?     @db.Text
+  category      String
+  duration      String
+  level         CourseLevel
+  priceZM       Decimal     @db.Decimal(10, 2)
+  priceUS       Decimal     @db.Decimal(10, 2)
+  overview      String      @db.Text
+  prerequisites String?     @db.Text // Can be long
+  certificate   String?
+  imageSrc      String?
+  imageAlt      String?
+
   // Relations
-  curriculum      CurriculumItem[]
+  curriculum       CurriculumItem[]
   learningOutcomes LearningOutcome[]
-  registrations   Registration[]
-  
-  updatedAt       DateTime          @updatedAt
-  createdAt       DateTime          @default(now())
+  registrations    Registration[]
+  scheduledCourses ScheduledCourse[]
+
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
 }
 
 model CurriculumItem {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   courseId    Int
   title       String
-  description String
-  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  description String @db.Text // Descriptions can be long
+  course      Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
 
 model LearningOutcome {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   courseId    Int
   description String
-  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course      Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model ScheduledCourse {
+  id           Int      @id @default(autoincrement())
+  courseId     Int
+  startDate    DateTime
+  endDate      DateTime
+  location     String   @default("Mika Convention Center, Lusaka")
+  maxAttendees Int      @default(20)
+
+  course        Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  registrations Registration[]
 }
 
 model Registration {
-  id             Int      @id @default(autoincrement())
-  courseId       Int?     // Optional because user might register generally (though usually specific)
-  firstName      String
-  surname        String
-  email          String
-  phone          String
-  company        String? // Optional
-  deliveryMethod String  // "in-person", "online-live", "hybrid"
-  course         Course? @relation(fields: [courseId], references: [id])
-  createdAt      DateTime @default(now())
+  id                Int              @id @default(autoincrement())
+  courseId          Int?
+  scheduledCourseId Int?
+  firstName         String
+  surname           String
+  email             String
+  phone             String
+  company           String?
+  deliveryMethod    DeliveryMethod
+  type              RegistrationType @default(BOOKING)
+  course            Course?          @relation(fields: [courseId], references: [id])
+  scheduledCourse   ScheduledCourse? @relation(fields: [scheduledCourseId], references: [id])
+  updatedAt         DateTime         @updatedAt @default(now())
+  createdAt         DateTime         @default(now())
 }
 
 model Inquiry {
-  id           Int      @id @default(autoincrement())
-  type         String   // "general", "corporate"
+  id           Int         @id @default(autoincrement())
+  type         InquiryType
   fullName     String
   email        String
   phone        String
   company      String?
-  subject      String?  // For contact form
-  message      String?
-  serviceName  String?  // For corporate inquiry
-  servicePrice String?  // For corporate inquiry
-  createdAt    DateTime @default(now())
+  subject      String?
+  message      String?     @db.Text
+  serviceName  String?
+  servicePrice String?
+  updatedAt    DateTime    @updatedAt @default(now())
+  createdAt    DateTime    @default(now())
 }
 
 model User {
@@ -83,6 +129,7 @@ model User {
   email     String   @unique
   password  String
   name      String?
-  role      String   @default("USER") // 'ADMIN' or 'USER'
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 }

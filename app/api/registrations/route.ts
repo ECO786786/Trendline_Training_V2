@@ -1,5 +1,6 @@
 
 import { prisma } from "@/lib/prisma";
+import { DeliveryMethod } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
         email,
         phone: phone || "",
         company,
-        deliveryMethod,
+        deliveryMethod: deliveryMethod === "online" ? DeliveryMethod.ONLINE_LIVE : deliveryMethod === "in-person" ? DeliveryMethod.IN_PERSON : DeliveryMethod.HYBRID,
         // Optional Link to course if courseId provided
         course: courseId ? { connect: { id: courseId } } : undefined
       },

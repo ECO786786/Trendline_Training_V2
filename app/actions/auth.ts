@@ -1,4 +1,4 @@
-import { signIn } from "@/auth";
+import { signIn } from "next-auth/react";
 import { AuthError } from "next-auth";
 
 export async function authenticate(
@@ -8,13 +8,19 @@ export async function authenticate(
   try {
     await signIn("credentials", {
       ...Object.fromEntries(formData),
-      redirectTo: "/admin/dashboard"
+      redirectTo: "/admin/dashboard",
     });
-  } catch (error: any) {
-    if (error?.digest?.startsWith("NEXT_REDIRECT")) {
+  } catch (error: unknown) {
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "digest" in error &&
+      typeof (error as { digest?: string }).digest === "string" &&
+      (error as { digest: string }).digest.startsWith("NEXT_REDIRECT")
+    ) {
       throw error;
     }
-    
+
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
@@ -24,8 +30,9 @@ export async function authenticate(
           return `Auth Error: ${error.type || "Unknown"}`;
       }
     }
-    
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     console.error("Unexpected authentication error:", errorMessage);
     return `Server Error: ${errorMessage}`;
   }

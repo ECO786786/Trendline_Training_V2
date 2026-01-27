@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { registrationSchema } from "@/lib/contact-schema";
+import { DeliveryMethod } from "@prisma/client";
 
 type RegistrationFormState = {
   success: boolean;
@@ -40,14 +41,29 @@ export async function submitRegistrationForm(
           }
       }
 
+      let mappedMethod: DeliveryMethod;
+      switch (deliveryMethod) {
+        case "in-person":
+          mappedMethod = DeliveryMethod.IN_PERSON;
+          break;
+        case "online":
+          mappedMethod = DeliveryMethod.ONLINE_LIVE;
+          break;
+        case "hybrid":
+          mappedMethod = DeliveryMethod.HYBRID;
+          break;
+        default:
+          mappedMethod = DeliveryMethod.ONLINE_LIVE;
+      }
+
       await prisma.registration.create({
           data: {
               firstName,
               surname,
               email,
-              phone: phone || "", // Schema might allow optional, DB expects string
+              phone: phone || "",
               company,
-              deliveryMethod,
+              deliveryMethod: mappedMethod,
               courseId
           }
       });

@@ -71,7 +71,7 @@ const authOptions = {
   },
 };
 
-// Export a handlers object compatible with the App Router API route
+
 const _nextAuth = NextAuth(authOptions) as any;
 
 export const handlers = _nextAuth.handlers;

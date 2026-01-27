@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { contactSchema } from "@/lib/contact-schema";
+import { InquiryType } from "@prisma/client";
 
 /**
  * Represents the state of a contact form submission.
@@ -36,7 +37,7 @@ export async function submitContactForm(
 
       await prisma.inquiry.create({
           data: {
-              type: "general",
+              type: InquiryType.GENERAL,
               fullName,
               email,
               phone: phone || "",

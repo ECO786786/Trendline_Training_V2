@@ -1,5 +1,6 @@
 
 import { prisma } from "@/lib/prisma";
+import { CourseLevel } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
         description,
         category,
         duration,
-        level,
+        level: level as CourseLevel,
         priceZM,
         priceUS,
         overview,
