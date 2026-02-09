@@ -107,6 +107,22 @@ export default function Footer() {
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
               </a>
+              <a
+                href="https://www.tiktok.com/@trendlinetraining"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-4 h-4"
+                >
+    <path d="M19.321 5.562a5.124 5.124 0 0 1-3.092-1.01 5.164 5.164 0 0 1-1.58-2.33h-3.7v13.43a2.64 2.64 0 1 1-2.64-2.64c.26 0 .51.04.74.11V9.31a6.44 6.44 0 1 0 5.6 6.37V9.76a8.86 8.86 0 0 0 4.67 1.37V7.42a5.23 5.23 0 0 1-.998-.858z"/>
+                </svg>
+              </a>
             </nav>
           </div>
           <nav aria-label="Quick Links">
