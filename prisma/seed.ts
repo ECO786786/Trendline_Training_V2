@@ -110,16 +110,14 @@ async function main(): Promise<void> {
   }
 
   // Seed Scheduled Courses (2026 Timetable)
-  // Helper to create date in 2026
+
   const mkDate = (month: number, day: number) => new Date(2026, month - 1, day);
   
   const schedule = [
     { slug: "data-analytics-fundamentals", start: mkDate(2, 9), days: 3 },
     { slug: "financial-modelling-and-forecasting", start: mkDate(2, 16), days: 5 },
-    { slug: "intermediate-data-analytics", start: mkDate(3, 16), days: 3 },
     { slug: "financial-analysis-power-bi", start: mkDate(3, 23), days: 5 },
-    { slug: "excel-power-bi-integrated-reporting", start: mkDate(4, 13), days: 5 },
-    { slug: "power-bi-mastery-program", start: mkDate(5, 11), days: 5 },
+    { slug: "analytics-dax-creation-capstone-dashboard-clinic", start: mkDate(4, 13), days: 5 },
     { slug: "data-governance-reporting-standards", start: mkDate(5, 26), days: 3 },
     { slug: "advanced-data-analytics-ai", start: mkDate(6, 8), days: 5 },
     { slug: "executive-strategic-data-analysis", start: mkDate(6, 18), days: 3 }, 
@@ -127,7 +125,7 @@ async function main(): Promise<void> {
     { slug: "sql-for-data-analysis", start: mkDate(9, 7), days: 5 },
   ];
 
-  console.log("Seeding scheduled courses...");
+
   for (const session of schedule) {
     const course = await prisma.course.findUnique({ where: { slug: session.slug } });
     if (course) {

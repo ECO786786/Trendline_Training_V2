@@ -29,7 +29,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Kickstart your career by turning raw numbers into meaningful business stories using the industry's most essential tools.",
     level: "Beginner",
-    duration: "1 Month",
+    duration: "3 Days",
     prices: {
       ZM: { amount: 1500, currency: "ZMW" },
       US: { amount: 70, currency: "USD" },
@@ -79,7 +79,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Bridge the gap between data collection and strategic execution with advanced SQL mastery and architectural insights.",
     level: "Intermediate",
-    duration: "2 Months",
+    duration: "5 Days",
     prices: {
       ZM: { amount: 2500, currency: "ZMW" },
       US: { amount: 110, currency: "USD" },
@@ -1214,6 +1214,51 @@ export const courseDetails: CourseDetail[] = [
     prerequisites: "Intermediate Power BI and DAX knowledge",
     certificate: "Yes",
   },
+  {
+  id: 25,
+  slug: "analytics-dax-creation-capstone-dashboard-clinic",
+  title: "Analytics (DAX Creation, Capstone & Dashboard Clinic)",
+  subTitle:
+    "Master DAX through hands-on creation, real-world capstone work, and live dashboard optimisation clinics.",
+  level: "Advanced",
+  duration: "5 Days",
+  prices: {
+    ZM: { amount: 3000, currency: "ZMW" },
+    US: { amount: 130, currency: "USD" },
+  },
+  overview:
+    "This advanced, practice-led course focuses on building strong DAX foundations, applying them in a real-world capstone project, and refining Power BI dashboards through guided clinic sessions. You’ll move beyond theory to confidently design performant measures, optimise models, and deliver production-ready dashboards that answer real business questions.",
+  learningOutcomes: [
+    "Write clear, efficient, and scalable DAX measures from scratch",
+    "Apply DAX patterns to solve real-world analytical problems",
+    "Build and complete an end-to-end Power BI capstone dashboard",
+    "Debug, optimise, and improve existing dashboards in clinic-style sessions",
+  ],
+  curriculum: [
+    {
+      title: "DAX Foundations & Measure Design",
+      description:
+        "Core DAX concepts, evaluation context, common functions, and best practices for writing maintainable measures.",
+    },
+    {
+      title: "Advanced DAX Patterns",
+      description:
+        "Time intelligence, complex aggregations, performance considerations, and reusable DAX patterns.",
+    },
+    {
+      title: "Capstone Dashboard Project",
+      description:
+        "Design and build a complete Power BI dashboard using real-world data, from requirements to final delivery.",
+    },
+    {
+      title: "Dashboard Clinic & Optimisation",
+      description:
+        "Live review and refinement of dashboards, focusing on usability, performance, and analytical clarity.",
+    },
+  ],
+  prerequisites: "Intermediate Power BI experience and basic familiarity with DAX",
+  certificate: "Yes",
+}
 ];
 
 export function getCourseBySlug(slug: string): CourseDetail | undefined {
