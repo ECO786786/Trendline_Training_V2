@@ -3,25 +3,26 @@ import bcrypt from "bcryptjs";
 import { courses } from "../data/courses.ts";
 import { courseDetails } from "../data/courseDetails.ts";
 
-const prisma = new PrismaClient();
+export async function seed(prisma: PrismaClient) {
+  // Always create the admin user, even in production
+  console.log("Seeding admin user...");
+  const adminPassword = await bcrypt.hash("password123", 10);
+  await prisma.user.upsert({
+    where: { email: "admin@trendline.com" },
+    update: {},
+    create: {
+      email: "admin@trendline.com",
+      name: "Trendline Admin",
+      password: adminPassword,
+      role: "ADMIN",
+    },
+  });
 
-async function main(): Promise<void> {
   if (process.env.NODE_ENV === "production") {
-    console.log("Production environment detected. Skipping hardcoded user seeding.");
+    console.log("Production environment detected. Skipping other hardcoded users.");
   } else {
     console.log("Seeding development users...");
-    const adminPassword = await bcrypt.hash("password123", 10);
-    await prisma.user.upsert({
-      where: { email: "admin@trendline.com" },
-      update: {},
-      create: {
-        email: "admin@trendline.com",
-        name: "Trendline Admin",
-        password: adminPassword,
-        role: "ADMIN",
-      },
-    });
-
+    
     const devPassword = await bcrypt.hash("devpass456", 10);
     await prisma.user.upsert({
       where: { email: "dev@trendline.com" },
@@ -146,12 +147,18 @@ async function main(): Promise<void> {
   }
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e: Error) => {
+async function main() {
+  const prisma = new PrismaClient();
+  try {
+    await seed(prisma);
+  } catch (e) {
     console.error(e);
-    await prisma.$disconnect();
     process.exit(1);
-  });
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
