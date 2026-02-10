@@ -49,24 +49,6 @@ function EventCard({
 export default function Events() {
   const events = [
     {
-      date: { month: "Feb", day: "16", fullDate: "2026" },
-      title: "Financial modelling and forecasting",
-      category: "Advanced",
-      description:
-        "Five days mastering predictive models and financial planning techniques",
-      buttonText: "Register now",
-      slug: "financial-modelling-and-forecasting",
-    },
-    {
-      date: { month: "Mar", day: "16", fullDate: "2026" },
-      title: "Advanced Excel for data analysis",
-      category: "Intermediate",
-      description:
-        "Three intensive days exploring advanced formulas and analytical methods",
-      buttonText: "Register now",
-      slug: "advanced-excel-for-data-analysis",
-    },
-    {
       date: { month: "Mar", day: "23", fullDate: "2026" },
       title: "Financial analysis with Power BI",
       category: "Advanced",
@@ -75,6 +57,24 @@ export default function Events() {
       buttonText: "Register now",
       slug: "financial-analysis-power-bi",
     },
+    {
+      date: { month: "Apr", day: "13", fullDate: "2026" },
+      title: "Analytics (DAX Creation, Capstone & Dashboard Clinic)",
+      category: "Advanced",
+      description:
+        "Master DAX through hands-on creation, real-world capstone work, and live dashboard optimisation clinics.",
+      buttonText: "Register now",
+      slug: "analytics-dax-creation-capstone-dashboard-clinic",
+    },
+    {
+      date: { month: "May", day: "26", fullDate: "2026" },
+      title: "Data Governance & Reporting Standards",
+      category: "All Levels",
+      description:
+        "Build trusted, compliant, and consistent reporting across the organization.",
+      buttonText: "Register now",
+      slug: "data-governance-reporting-standards",
+    }
   ];
 
   return (
@@ -104,7 +104,7 @@ export default function Events() {
             >
               <div className="w-full overflow-hidden">
                 <Image
-                  src="/images/excel.jpg"
+                  src="/images/forecasting.png"
                   alt="Data analysis with Excel course"
                   className="aspect-3/2 size-full object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
                   width={800}
@@ -114,26 +114,25 @@ export default function Events() {
               <div className="absolute right-4 top-4 flex min-w-28 flex-col items-center bg-white px-1 py-3 text-sm rounded-lg shadow-md">
                 <span>Feb</span>
                 <span className="text-2xl font-bold md:text-3xl lg:text-4xl">
-                  09
+                  16
                 </span>
                 <span>2026</span>
               </div>
             </Link>
             <div className="flex flex-col items-start p-6">
-              <Link href="/registration?course=data-analysis-with-excel&from=schedule">
+              <Link href="/registration?course=financial-modelling-and-forecasting&from=schedule">
                 <h2 className="text-xl font-bold md:text-2xl">
-                  Data analysis with Excel
+                  Financial Modelling and Forecasting
                 </h2>
               </Link>
               <p className="mb-2 text-[#1e3a8a] font-medium">
-                Foundations/Intermediate
+                Advanced
               </p>
               <p className="mb-4">
-                Intensive 3-day workshop focused on practical instruction in
-                creating dashboards and visual representations.
+                Five days mastering predictive models and financial planning techniques.
               </p>
               <Link
-                href={`/registration?course=data-analysis-with-excel&from=schedule`}
+                href={`/registration?course=financial-modelling-and-forecasting&from=schedule`}
                 className="inline-flex items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-2 text-[14px] md:text-base font-medium text-white shadow hover:bg-blue-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600"
               >
                 Register now
