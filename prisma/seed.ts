@@ -4,8 +4,6 @@ import { courses } from "../data/courses.ts";
 import { courseDetails } from "../data/courseDetails.ts";
 
 export async function seed(prisma: PrismaClient) {
-  // Always create the admin user, even in production
-  console.log("Seeding admin user...");
   const adminPassword = await bcrypt.hash("password123", 10);
   await prisma.user.upsert({
     where: { email: "admin@trendline.com" },
@@ -159,6 +157,10 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+
+if (
+  process.argv[1].endsWith("seed.ts") || 
+  import.meta.url === `file://${process.argv[1]}`
+) {
   main();
 }

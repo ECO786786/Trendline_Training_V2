@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope, Inter } from "next/font/google";
-import { Navbar } from "@/components/navigation/Navbar";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import Footer from "@/components/Footer";
-import CookieConsent from "@/components/CookieConsent";
-import { whatsappNumber } from "@/lib/env";
 
 export const metadata: Metadata = {
   title:
@@ -78,14 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body className="antialiased">
-        <Navbar />
         {children}
-        <CookieConsent />
-        <WhatsAppButton
-          phoneNumber={whatsappNumber}
-          message="Hello! How can we help you today?"
-        />
-        <Footer />
       </body>
     </html>
   );

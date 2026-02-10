@@ -9,8 +9,16 @@ export default function PublicLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Global layout (`app/layout.tsx`) already renders `Navbar`,
-  // `CookieConsent`, `WhatsAppButton`, and `Footer`.
-  // Keep this nested layout minimal to avoid duplicate UI.
-  return <>{children}</>;
+  return (
+    <>
+      <Navbar />
+      {children}
+      <CookieConsent />
+      <WhatsAppButton
+        phoneNumber={whatsappNumber}
+        message="Hello! How can we help you today?"
+      />
+      <Footer />
+    </>
+  );
 }
