@@ -36,7 +36,7 @@ export const courses: {
   {
     id: 3,
     category: "Advanced",
-    duration: "3 days",
+    duration: "5 days",
     title: "Advanced Data Analytics & AI",
     description:
       "Dive deep into machine learning, predictive analytics, and AI applications. Learn to implement advanced statistical models and develop automated data pipelines for enterprise-level solutions.",

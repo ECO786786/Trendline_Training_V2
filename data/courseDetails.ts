@@ -129,7 +129,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Future-proof your expertise. Harness the power of Machine Learning and Predictive Analytics to drive enterprise innovation.",
     level: "Advanced",
-    duration: "8 Weeks",
+    duration: "5 Days",
     prices: {
       ZM: { amount: 4500, currency: "ZMW" },
       US: { amount: 200, currency: "USD" },
