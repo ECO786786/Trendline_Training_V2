@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Logo from "../logo/Logo";
 
 export default function Hero() {
@@ -10,6 +12,16 @@ export default function Hero() {
       <div className="container mx-auto">
         <div className="flex flex-col items-center">
           <header className="mb-12 text-center md:mb-18 lg:mb-20">
+            <Link
+              href="/training-schedule"
+              className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50/50 px-4 py-1.5 text-xs sm:text-sm font-medium text-blue-900 transition-colors hover:bg-blue-100 mb-6 opacity-0 animate-fade-up animate-delay-100"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              New: Financial analysis with Power BI Class
+            </Link>
             <div className="w-full max-w-2xl">
               <h1
                 id="hero-heading"
