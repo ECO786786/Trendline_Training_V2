@@ -82,15 +82,9 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: 11,
-    src: "/images/zambian-institute-marketing-partnership.jpg",
+    src: "/images/zambian-marketing-institute-training-partnership.jpg",
     alt: "Zambian Institute of Marketing partnership announcement",
     caption: "Official Partnership with the Zambian Institute of Marketing"
-  },
-  {
-    id: 12,
-    src: "/images/zambian-marketing-institute-training-partnership.jpg",
-    alt: "Zambian Marketing Institute training collaboration",
-    caption: "Delivering Accredited Marketing Training in Partnership"
   }
 ];
 
