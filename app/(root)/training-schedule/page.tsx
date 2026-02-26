@@ -6,11 +6,6 @@ export const dynamic = "force-dynamic";
 
 export default async function TrainingSchedulePage() {
   const scheduledCourses = await prisma.scheduledCourse.findMany({
-    where: {
-      startDate: {
-        gte: new Date(),
-      },
-    },
     include: {
       course: true,
       _count: {

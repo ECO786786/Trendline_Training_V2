@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Logo from "../logo/Logo";
 
 export default function Hero() {

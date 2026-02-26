@@ -142,14 +142,14 @@ export default function TrainingTimetable({ initialCourses }: TrainingTimetableP
                 key={course.id}
                 className="group flex flex-col gap-6 rounded-2xl border border-gray-300 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-xl md:flex-row"
               >
-                <div className="flex h-24 w-full shrink-0 flex-col items-center justify-center rounded-xl bg-blue-900 text-white md:h-36 md:w-36 lg:h-40 lg:w-40">
+                {/* <div className="flex h-24 w-full shrink-0 flex-col items-center justify-center rounded-xl bg-blue-900 text-white md:h-36 md:w-36 lg:h-40 lg:w-40">
                   <span className="text-[10px] font-bold uppercase tracking-widest opacity-70">
                     DATE
                   </span>
                   <span className="text-2xl font-black">
                     {course.dateRange}
                   </span>
-                </div>
+                </div> */}
                 <div className="flex grow flex-col justify-center gap-3">
                   <div className="flex items-start justify-between gap-4">
                     <div>
