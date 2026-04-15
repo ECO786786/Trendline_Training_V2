@@ -208,8 +208,8 @@ export default function Team() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white min-h-screen">
-      <div className="flex px-8 md:px-16 py-16 md:py-28 flex-col items-center gap-12 md:gap-20 w-full">
+    <div className="flex flex-col items-center justify-center bg-gray-50 min-h-screen">
+      <div className="flex px-[5%] md:px-16 py-16 md:py-28 flex-col items-center gap-12 md:gap-20 w-full">
         <div className="flex container w-full flex-col items-center gap-12 md:gap-20">
           <div className="flex max-w-3xl w-full flex-col items-center justify-center gap-4 text-center">
             <div className="flex items-center">
