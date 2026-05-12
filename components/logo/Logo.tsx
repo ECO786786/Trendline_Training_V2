@@ -11,6 +11,8 @@ export default function Logo() {
     { src: "/images/dangote-cement-1.png", alt: "Dangote Cement logo" },
     { src: "/images/gatesvile.png", alt: "Gatesville logo" },
     { src: "/images/ZIHRM.png", alt: "ZIHRM logo" },
+    { src: "/icons/ZIBFS-logo.svg", alt: "ZIBFS logo" },
+    { src: "/icons/kwame-nkrumah-logo.svg", alt: "Kwame Nkrumah logo" },
   ];
 
   return (

@@ -3,7 +3,6 @@ import Team from "@/components/TeamCard";
 import Origins from "@/components/Origins";
 import AboutHero from "@/components/about/AboutHero";
 import AboutWhyChoose from "@/components/about/AboutWhyChoose";
-import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "About Us | Trendline Training & Consultancy Ltd",

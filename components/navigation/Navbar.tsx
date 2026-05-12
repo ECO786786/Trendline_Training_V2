@@ -80,7 +80,7 @@ export function Navbar() {
                 isMobile && setIsMobileDropdownOpen((prev) => !prev)
               }
             >
-              <span>Our Services</span>
+              <span>Resources</span>
               <svg
                 className={`w-5 h-5 transition-transform duration-300 ${
                   isMobile
@@ -109,28 +109,28 @@ export function Navbar() {
               }`}
             >
               <Link
-                href="/corporate"
+                href="/courses"
                 className={`block py-3 pl-[5%] text-base transition-colors ${
-                  isActive("/corporate") ? "text-blue-900 font-bold" : ""
+                  isActive("/courses") ? "text-blue-900 font-bold" : ""
                 }`}
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   setIsMobileDropdownOpen(false);
                 }}
               >
-                Corporate Solutions
+                Courses
               </Link>
             </div>
             <div className="hidden lg:block absolute lg:w-62.5 left-0 top-full mt-2 z-50 min-w-50 rounded-md border border-gray-200 bg-white p-2 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
               <Link
-                href="/corporate"
+                href="/courses"
                 className={`block px-4 py-2 text-base rounded transition-colors ${
-                  isActive("/corporate")
+                  isActive("/courses")
                     ? "text-blue-900 font-bold bg-blue-50"
                     : "hover:bg-blue-50"
                 }`}
               >
-                Corporate Solutions
+                Courses
               </Link>
             </div>
           </div>

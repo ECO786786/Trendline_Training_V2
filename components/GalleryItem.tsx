@@ -13,7 +13,6 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
- 
   {
     id: 1,
     src: "/images/liquid-team.jpg",
@@ -84,8 +83,20 @@ const galleryItems: GalleryItem[] = [
     id: 11,
     src: "/images/zambian-marketing-institute-training-partnership.jpg",
     alt: "Zambian Institute of Marketing partnership announcement",
-    caption: "Official Partnership with the Zambian Institute of Marketing"
-  }
+    caption: "Official Partnership with the Zambian Institute of Marketing",
+  },
+  {
+    id: 12,
+    src: "/images/institute-of-banking-training-day.jpg",
+    alt: "Institute of Banking Training Day",
+    caption: "Institute of Banking Training Day",
+  },
+  {
+    id: 13,
+    src: "/images/institute-of-banking-training-day-group.jpg",
+    alt: "Institute of Banking Training Day Group Photo",
+    caption: "Institute of Banking Training Day Group Photo",
+  },
 ];
 
 export default function GalleryItem() {

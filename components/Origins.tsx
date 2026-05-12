@@ -6,21 +6,17 @@ export default function Origins() {
       <div className="container">
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div>
-            <p className="mb-3 font-semibold text-[#1e3a8a] md:mb-4">
-              Co-Founder
-            </p>
             <h2 className="mb-5 text-4xl font-medium lg:tracking-[-1%] lg:leading-15 md:mb-6  lg:text-5xl">
-              How Trendline Became Zambia’s Trusted Data Analytics Partner
+              The Co-Founders Message 
             </h2>
             <p className="mb-5 md:mb-6 md:text-md">
-              Trendline Training & Consultancy Ltd exists to translate knowledge
-              into measurable impact. We differentiate ourselves by integrating
-              practical application, business context, and analytical thinking
-              to develop professionals who don’t just understand concepts—but
-              can apply them to solve real problems and drive results. Our focus
-              is on building confidence, sharpening decision-making, and
-              enabling both individuals and organizations to operate with
-              clarity, precision, and purpose in a data-driven world.
+              As Co-Founder of Trendline Training & Consultancy Ltd, I am proud
+              to welcome you to a firm built on purpose, practicality, and
+              impact. Our work is guided by the ACTION philosophy, which
+              reflects our commitment to delivering solutions that move
+              individuals and organizations forward. We exist to help you make
+              sense of your data, strengthen your decision making, and translate
+              knowledge into meaningful results.
             </p>
           </div>
           <div>

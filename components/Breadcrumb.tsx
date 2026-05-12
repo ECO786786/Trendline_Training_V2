@@ -9,7 +9,7 @@ export default function Breadcrumb({ breadcrumbs }: BreadcrumbProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="mb-6 text-sm text-gray-600 w-full px-[5%]"
+      className="mb-6 text-sm text-gray-600 w-full px-[1%]"
     >
       <ol className="flex items-center gap-2">
         {breadcrumbs.map((crumb, index) => (

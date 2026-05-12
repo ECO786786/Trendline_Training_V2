@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Breadcrumb from "../Breadcrumb";
 
 const galleryImages = [
   {
-    src: "/images/about-us.jpg",
+    src: "/images/class-in-session.jpg",
     alt: "Trendline Training team facilitating a workshop",
     accent: "from-[#1e3a8a]/20 via-transparent to-transparent",
   },
@@ -16,7 +17,7 @@ const galleryImages = [
     accent: "from-[#d97706]/20 via-transparent to-transparent",
   },
   {
-    src: "/images/live-session.jpg",
+    src: "/images/institute-of-banking-training.jpg",
     alt: "Live presentation during a corporate learning session",
     accent: "from-[#0f766e]/20 via-transparent to-transparent",
   },
@@ -56,8 +57,14 @@ export default function AboutHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ffffff_42%,#eef4ff_100%)] px-[5%] py-16 md:py-24 lg:py-28"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ffffff_42%,#eef4ff_100%)] px-[5%] py-16 md:pb-24 lg:pb-28"
     >
+      <Breadcrumb
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "About Us", href: "/about" },
+        ]}
+      />
       <div className="absolute inset-x-0 top-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(30,58,138,0.16),transparent_48%),radial-gradient(circle_at_top_right,rgba(217,119,6,0.14),transparent_36%)]" />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col">
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
@@ -118,7 +125,7 @@ export default function AboutHero() {
                 >
                   <div className="relative aspect-[0.82] overflow-hidden">
                     <div
-                      className={`absolute inset-0 z-10 bg-linear-to-b ${image.accent}`}
+                      className={`absolute inset-0 z-0 bg-linear-to-t ${image.accent} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
                     />
                     <Image
                       src={image.src}
