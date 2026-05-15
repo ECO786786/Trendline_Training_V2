@@ -97,6 +97,12 @@ const galleryItems: GalleryItem[] = [
     alt: "Institute of Banking Training Day Group Photo",
     caption: "Institute of Banking Training Day Group Photo",
   },
+  {
+    id: 14,
+    src: "/images/kwame-nkuruma-hr-partnership.jpg",
+    alt: "Kwame Nkuruma HR Partnership Announcement",
+    caption: "Kwame Nkuruma HR Partnership Announcement",
+  },
 ];
 
 export default function GalleryItem() {

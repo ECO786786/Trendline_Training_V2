@@ -15,31 +15,31 @@ interface WhyChooseUsProps {
 }
 
 export default function WhyChooseUs({
-  title = "Why Choose Our Corporate Solutions?",
-  subtitle = "We understand the unique challenges faced by corporate teams and deliver solutions that drive real business impact.",
+  title = "Why Partner With Us?",
+  subtitle = "We don't just train; we transform. Partnering with Trendline means joining a network dedicated to excellence and measurable impact.",
   features,
 }: WhyChooseUsProps) {
   const defaultFeatures: FeatureCard[] = [
     {
       id: 1,
       icon: <Building2 className="w-8 h-8 text-[#1e3a8a]" strokeWidth={1.5} />,
-      title: "Enterprise Experience",
+      title: "Expertise & Authority",
       description:
-        "Proven enterprise experience tackling complex corporate data challenges.",
+        "Leverage our deep industry knowledge and recognized authority in data analytics and corporate training.",
     },
     {
       id: 2,
       icon: <Sliders className="w-8 h-8 text-[#1e3a8a]" strokeWidth={1.5} />,
-      title: "Customized Approach",
+      title: "Expanded Reach",
       description:
-        "Every solution is tailored to your specific industry, team size, and business objectives.",
+        "Tap into our growing alumni network of professionals and corporate decision-makers across the region.",
     },
     {
       id: 3,
       icon: <TrendingUp className="w-8 h-8 text-[#1e3a8a]" strokeWidth={1.5} />,
-      title: "Proven Results",
+      title: "Mutual Growth",
       description:
-        "95% client satisfaction rate with measurable ROI improvements in data efficiency.",
+        "Our partnership models are designed for shared success, offering revenue sharing and co-branding opportunities.",
     },
   ];
 

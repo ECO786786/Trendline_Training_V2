@@ -1,132 +1,77 @@
 export const courses: {
   id: number;
   title: string;
+  price: string;
   description: string;
-  category: string;
   duration: string;
   buttonText: string;
   buttonLink: string;
-  imageSrc: string;
-  imageAlt: string;
+  slug: string;
 }[] = [
   {
     id: 1,
-    category: "Foundations",
-    duration: "3 days",
+    duration: "4-6 Weeks (Flexible Time)",
     title: "Data Analytics Fundamentals",
+    price: "K2,500",
     description:
       "Master data analysis essentials through hands-on training in Excel, basic statistics, and data visualization. Ideal for beginners starting their analytics journey with confidence today.",
     buttonText: "Learn more",
     buttonLink: "/courses/data-analytics-fundamentals",
-    imageSrc: "/images/foundations-data-analytics.jpg",
-    imageAlt: "Data analytics fundamentals course",
+    slug: "data-analytics-fundamentals",
   },
   {
     id: 2,
-    category: "Intermediate",
-    duration: "3 days",
-    title: "Intermediate Data Analytics",
+    duration: "4-6 Weeks (Flexible Time)",
+    title: "Excel",
+    price: "K2,500",
     description:
-      "Build on your foundation with advanced analysis techniques, data modeling, and business applications. Gain expertise in transforming complex data into actionable insights that drive results.",
+      "Master Excel with our comprehensive course. Learn essential functions, data manipulation, and visualization techniques to unlock insights and boost productivity.",
     buttonText: "Learn more",
-    buttonLink: "/courses/intermediate-data-analytics",
-    imageSrc: "/images/intermediate-data-analytics.jpg",
-    imageAlt: "Intermediate data analytics course",
+    buttonLink: "/courses/excel",
+    slug: "excel",
   },
   {
     id: 3,
-    category: "Advanced",
-    duration: "5 days",
-    title: "Advanced Data Analytics & AI",
-    description:
-      "Dive deep into machine learning, predictive analytics, and AI applications. Learn to implement advanced statistical models and develop automated data pipelines for enterprise-level solutions.",
-    buttonText: "Learn more",
-    buttonLink: "/courses/advanced-data-analytics-ai",
-    imageSrc: "/images/advanced-data-analytics-ai.jpg",
-    imageAlt: "Advanced data analytics and AI course",
-  },
-  {
-    id: 4,
-    category: "Business Intelligence",
-    duration: "5 days",
+    duration: "4-6 Weeks (Flexible Time)",
     title: "Power BI Mastery Program",
+    price: "K2,500",
     description:
       "Master the art of creating dynamic dashboards and reports with Power BI. Learn DAX, data modeling, and advanced visualization techniques for actionable business insights.",
     buttonText: "Learn more",
     buttonLink: "/courses/power-bi-mastery-program",
-    imageSrc: "/images/power-bi-mastery-program.jpg",
-    imageAlt: "Power BI mastery program course",
+    slug: "power-bi-mastery-program",
   },
   {
-    id: 5,
-    category: "Database & Analytics",
-    duration: "5 days",
+    id: 4,
+    duration: "4-6 Weeks (Flexible Time)",
     title: "SQL for Data Analysis",
+    price: "K2,500",
     description:
       "Master SQL querying, database design, and advanced analytics techniques. Learn to write efficient queries, perform complex data transformations, and derive actionable insights from databases.",
     buttonText: "Learn more",
     buttonLink: "/courses/sql-for-data-analysis",
-    imageSrc: "/images/sql-for-data-analysis.jpg",
-    imageAlt: "SQL for data analysis",
+    slug: "sql-for-data-analysis",
   },
   {
-    id: 6,
-    category: "Data Visualization",
-    duration: "5 days",
-    title: "Data Visualization Essentials",
-    description:
-      "Master the art of transforming complex data into compelling visual stories. Learn advanced visualization techniques, best practices, and industry-standard tools.",
-    buttonText: "Learn more",
-    buttonLink: "/courses/data-visualization-essentials",
-    imageSrc: "/images/data-visualization-essentials.jpg",
-    imageAlt: "Data visualization essentials course",
-  },
-  {
-    id: 7,
-    category: "Specialized",
-    duration: "5 days",
-    title: "Data Storytelling Mastery",
-    description:
-      "Master the art of crafting compelling narratives with data, learn storytelling frameworks, and develop impactful presentations.",
-    buttonText: "Learn more",
-    buttonLink: "/courses/data-storytelling-mastery",
-    imageSrc: "/images/data-storytelling-mastery.jpg",
-    imageAlt: "Data storytelling mastery course",
-  },
-  {
-    id: 8,
-    category: "Career Growth",
-    duration: "5 days",
-    title: "Soft Skills for Data Professionals",
-    description:
-      "Enhance communication, leadership, and collaboration skills essential for data professionals to effectively work with stakeholders.",
-    buttonLink: "/courses/soft-skills-for-data-professionals",
-    buttonText: "Learn more",
-    imageSrc: "/images/soft-skills-for-data-professionals.jpg",
-    imageAlt: "Soft skills for data professionals course",
-  },
-  {
-    id: 9,
-    category: "Secure Systems",
-    duration: "5 days",
-    title: "Cyber Security",
-    description:
-      "Develop practical skills to identify threats, protect data, and strengthen systems against cyber attacks in today’s digital landscape.",
-    buttonText: "Learn more",
-    buttonLink: "/courses/cyber-security",
-    imageSrc: "/images/cyber-security.jpg",
-    imageAlt: "Cyber security course",
-  },
-  {
-    id: 10,
-    category: "Forecasting",
-    duration: "5 days",
+    id: 5,
+    duration: "4-6 Weeks (Flexible Time)",
     title: "Financial Modelling",
+    price: "K2,500",
     description:
       "Learn to design, build, and apply financial models for decision-making, forecasting, and business strategy in real-world scenarios.",
     buttonText: "Learn more",
     buttonLink: "/courses/financial-modelling-and-forecasting",
-    imageSrc: "/images/financial-modelling.jpg",
-    imageAlt: "financial modelling course",
+    slug: "financial-modelling-and-forecasting",
+  },
+  {
+    id: 6,
+    duration: "4-6 Weeks (Flexible Time)",
+    title: "Introduction to Data Science",
+    price: "K2,500",
+    description:
+      "Get started with data science fundamentals. Learn essential concepts, tools, and techniques for analyzing and interpreting data.",
+    buttonText: "Learn more",
+    buttonLink: "/courses/introduction-to-data-science",
+    slug: "introduction-to-data-science",
   },
 ];

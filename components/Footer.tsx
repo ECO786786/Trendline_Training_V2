@@ -5,7 +5,6 @@ export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Corporate Solutions", href: "/corporate" },
     { name: "Courses", href: "/courses" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
@@ -13,34 +12,15 @@ export default function Footer() {
 
   const trainingPrograms = [
     {
-      name: "Data Analytics – Fundamentals",
+      name: "Data Analytics Fundamentals",
       href: "/courses/data-analytics-fundamentals",
-    },
-    {
-      name: "Data Analytics – Intermediate",
-      href: "/courses/intermediate-data-analytics",
-    },
-    {
-      name: "Data Analytics – Advanced",
-      href: "/courses/advanced-data-analytics-ai",
     },
     {
       name: "Power BI Mastery Course",
       href: "/courses/power-bi-mastery-program",
     },
     { name: "SQL for Data Analysis", href: "/courses/sql-for-data-analysis" },
-    {
-      name: "Data Visualization Essentials",
-      href: "/courses/data-visualization-essentials",
-    },
-    {
-      name: "Data Storytelling Mastery",
-      href: "/courses/data-storytelling-mastery",
-    },
-    {
-      name: "Soft Skills for Data Professionals",
-      href: "/courses/soft-skills-for-data-professionals",
-    },
+    { name: "Excel", href: "/courses/excel" },
   ];
 
   const legalLinks = [
@@ -120,7 +100,7 @@ export default function Footer() {
                   fill="currentColor"
                   className="w-4 h-4"
                 >
-    <path d="M19.321 5.562a5.124 5.124 0 0 1-3.092-1.01 5.164 5.164 0 0 1-1.58-2.33h-3.7v13.43a2.64 2.64 0 1 1-2.64-2.64c.26 0 .51.04.74.11V9.31a6.44 6.44 0 1 0 5.6 6.37V9.76a8.86 8.86 0 0 0 4.67 1.37V7.42a5.23 5.23 0 0 1-.998-.858z"/>
+                  <path d="M19.321 5.562a5.124 5.124 0 0 1-3.092-1.01 5.164 5.164 0 0 1-1.58-2.33h-3.7v13.43a2.64 2.64 0 1 1-2.64-2.64c.26 0 .51.04.74.11V9.31a6.44 6.44 0 1 0 5.6 6.37V9.76a8.86 8.86 0 0 0 4.67 1.37V7.42a5.23 5.23 0 0 1-.998-.858z" />
                 </svg>
               </a>
             </nav>
@@ -140,8 +120,8 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <nav aria-label="Training Programs">
-            <h3 className="text-lg font-bold mb-6">Training Programs</h3>
+          <nav aria-label="Training Courses">
+            <h3 className="text-lg font-bold mb-6">Training Courses</h3>
             <ul className="space-y-3">
               {trainingPrograms.map((program) => (
                 <li key={program.name}>

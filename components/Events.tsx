@@ -14,12 +14,6 @@ export default function Events() {
               Upcoming sessions in Lusaka. Spots are limited.
             </p>
           </div>
-          <Link
-            href="/training-schedule"
-            className="flex items-center justify-center px-6 py-2 border border-gray-400  hover:bg-gray-100 transition-colors font-medium rounded-full"
-          >
-            View calendar
-          </Link>
         </div>
         <div className="mb-16 grid auto-cols-fr auto-rows-auto grid-cols-1 items-start gap-8 lg:grid-cols-2">
           <div className="border border-gray-400  rounded-lg">
@@ -50,11 +44,10 @@ export default function Events() {
                   Financial analysis with Power BI
                 </h2>
               </Link>
-              <p className="mb-2 text-[#1e3a8a] font-medium">
-                Advanced
-              </p>
+              <p className="mb-2 text-[#1e3a8a] font-medium">Advanced</p>
               <p className="mb-4">
-                Transform financial data into automated, insight-driven reports using Power BI and advanced DAX.
+                Transform financial data into automated, insight-driven reports
+                using Power BI and advanced DAX.
               </p>
               <Link
                 href={`/registration?course=financial-analysis-power-bi&from=schedule`}
@@ -92,11 +85,10 @@ export default function Events() {
                   Analytics (DAX Creation, Capstone & Dashboard Clinic)
                 </h2>
               </Link>
-              <p className="mb-2 text-[#1e3a8a] font-medium">
-                Advanced
-              </p>
+              <p className="mb-2 text-[#1e3a8a] font-medium">Advanced</p>
               <p className="mb-4">
-                Master DAX through hands-on creation, real-world capstone work, and live dashboard optimisation clinics.
+                Master DAX through hands-on creation, real-world capstone work,
+                and live dashboard optimisation clinics.
               </p>
               <Link
                 href={`/registration?course=analytics-dax-creation-capstone-dashboard-clinic&from=schedule`}

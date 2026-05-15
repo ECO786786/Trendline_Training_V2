@@ -2,19 +2,18 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Breadcrumb from "./Breadcrumb";
 
 export interface Course {
   id: number;
-  dateRange: string;
   title: string;
+  price: string;
   description: string;
   duration: string;
-  seatsLeft: number;
-  isLimited: boolean;
-  status: "open" | "closed" | "waitlist";
+  buttonText: string;
+  buttonLink: string;
   slug: string;
 }
-
 
 const ITEMS_PER_PAGE = 5;
 
@@ -22,9 +21,10 @@ export interface TrainingTimetableProps {
   initialCourses: Course[];
 }
 
-export default function TrainingTimetable({ initialCourses }: TrainingTimetableProps) {
+export default function TrainingTimetable({
+  initialCourses,
+}: TrainingTimetableProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("date-earliest");
   const [currentPage, setCurrentPage] = useState(1);
 
   const processedCourses = useMemo(() => {
@@ -34,15 +34,9 @@ export default function TrainingTimetable({ initialCourses }: TrainingTimetableP
         c.description.toLowerCase().includes(searchQuery.toLowerCase()),
     );
 
-    if (sortBy === "title-az") {
-      result.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortBy === "date-latest") {
-      result.sort((a, b) => b.id - a.id);
-    } else {
-      result.sort((a, b) => a.id - b.id);
-    }
+    result.sort((a, b) => a.id - b.id);
     return result;
-  }, [searchQuery, sortBy]);
+  }, [initialCourses, searchQuery]);
 
   const totalPages = Math.ceil(processedCourses.length / ITEMS_PER_PAGE);
   const paginatedCourses = processedCourses.slice(
@@ -53,26 +47,20 @@ export default function TrainingTimetable({ initialCourses }: TrainingTimetableP
   return (
     <div className="relative min-h-screen w-full bg-gray-50 pb-20">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-10">
-        <nav className="mb-6 flex items-center gap-2" aria-label="Breadcrumb">
-          <Link
-            href="/"
-            className="text-sm font-medium text-gray-500 hover:text-blue-900"
-          >
-            Home
-          </Link>
-          <span className="text-gray-300">/</span>
-          <span className="text-sm font-medium text-blue-700">
-            2026 Schedule
-          </span>
-        </nav>
+        <Breadcrumb
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Courses", href: "/courses" },
+          ]}
+        />
         <header className="mb-12 flex flex-col gap-4">
-          <h1 className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            2026 Training Schedule
+          <h1 className="text-5xl font-medium tracking-[-0.04em] text-[#04030B] md:text-6xl lg:text-[4rem] lg:leading-[120%]">
+            Courses
           </h1>
-          <p className="max-w-3xl text-lg text-slate-600 md:text-xl">
-            Explore our professional development calendar. From fundamental
-            Excel skills to advanced AI, find the perfect course to advance your
-            career.
+          <p className="max-w-3xl md:text-md text-[#04030B]">
+            Discover our comprehensive range of training programs designed to
+            enhance your organization&apos;s data capabilities and strategic
+            decision making.
           </p>
         </header>
         <div className="mb-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-gray-300 bg-white p-4 shadow-sm lg:flex-row">
@@ -103,18 +91,8 @@ export default function TrainingTimetable({ initialCourses }: TrainingTimetableP
           </div>
 
           <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto">
-            <select
-              className="h-12 w-full rounded-xl border border-gray-300 bg-gray-50 px-4 text-sm font-bold text-slate-600 outline-none focus:ring-2 focus:ring-blue-900/10 sm:w-64"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="date-earliest">Date (Earliest First)</option>
-              <option value="date-latest">Date (Latest First)</option>
-              <option value="title-az">Course Title (A-Z)</option>
-            </select>
-
             <Link
-              href="/brochures/calendar.pdf"
+              href="/brochures/services.jpg"
               target="_blank"
               className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#1e3a8a] px-6 text-sm font-bold text-white transition-all hover:bg-blue-950 active:scale-95 sm:w-auto"
             >
@@ -131,79 +109,87 @@ export default function TrainingTimetable({ initialCourses }: TrainingTimetableP
                   d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              PDF Calendar
+              Our Services
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           {paginatedCourses.length > 0 ? (
             paginatedCourses.map((course) => (
               <div
                 key={course.id}
-                className="group flex flex-col gap-6 rounded-2xl border border-gray-300 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-xl md:flex-row"
+                className="group flex flex-col md:flex-row gap-5 p-5 rounded-xl bg-white dark:bg-[#1a2632] shadow-sm hover:shadow-md border border-[#e7edf3] dark:border-slate-800 transition-all duration-300"
               >
-                {/* <div className="flex h-24 w-full shrink-0 flex-col items-center justify-center rounded-xl bg-blue-900 text-white md:h-36 md:w-36 lg:h-40 lg:w-40">
-                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-70">
-                    DATE
-                  </span>
-                  <span className="text-2xl font-black">
-                    {course.dateRange}
-                  </span>
-                </div> */}
-                <div className="flex grow flex-col justify-center gap-3">
-                  <div className="flex items-start justify-between gap-4">
+                <div className="grow flex flex-col gap-3 justify-center">
+                  <div className="flex justify-between items-start gap-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 transition-colors group-hover:text-blue-900">
+                      <h3 className="text-xl font-bold text-[#0d141b] dark:text-white group-hover:text-blue-900 transition-colors cursor-pointer">
                         {course.title}
                       </h3>
-                      <p className="mt-1 text-base text-slate-500 line-clamp-2">
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                         {course.description}
                       </p>
                     </div>
-                    <div className="flex min-w-fit flex-col items-end gap-1.5">
-                      <span className="rounded-full bg-green-100 px-3 py-1 text-[10px] font-bold uppercase text-green-700">
-                        {course.status}
-                      </span>
-                      <span
-                        className={`text-xs font-bold ${course.isLimited ? "text-orange-600 uppercase" : "text-slate-500"}`}
-                      >
-                        {course.isLimited
-                          ? `Last ${course.seatsLeft} Seats!`
-                          : `${course.seatsLeft} seats left`}
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="text-lg font-black text-blue-900 dark:text-blue-400">
+                        {course.price}
                       </span>
                     </div>
                   </div>
 
-                  <div className="mt-2 flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-bold text-slate-700 w-fit">
-                    <svg
-                      className="h-5 w-5 text-blue-900"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {course.duration}
+                  <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
+                    <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                      <svg
+                        className="h-5 w-5 text-slate-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                      <svg
+                        className="h-5 w-5 text-slate-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8h18v9a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2 17h20M8 21h8"
+                        />
+                      </svg>
+                      <span>Online Or Consultant Led</span>
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex min-w-50 flex-col gap-3 border-t border-gray-100 pt-5 md:border-t-0 md:pt-0">
+                <div className="flex md:flex-col justify-start gap-3 min-w-35 pt-4 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-700">
                   <Link
-                    href={`/registration?course=${course.slug}&from=schedule&scheduleId=${course.id}`}
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-blue-900 text-sm font-bold text-white shadow-md transition-colors hover:bg-blue-950"
+                    href={course.buttonLink}
+                    className="flex-1 md:flex-none bg-blue-900 hover:bg-blue-950 text-white font-bold py-2.5 px-4 rounded-full transition-colors text-sm text-center "
                   >
-                    Register Now
+                    {course.buttonText}
                   </Link>
                   <Link
-                    href={`/courses/${course.slug}?from=schedule`}
-                    className="inline-flex h-12 items-center justify-center rounded-full border-2 border-blue-900 bg-white text-sm font-bold text-blue-900 transition-colors hover:bg-blue-50"
+                    href={`/registration?course=${course.slug}`}
+                    className="flex-1 md:flex-none bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 font-bold py-2.5 px-4 rounded-full transition-colors text-sm text-center"
                   >
-                    View Details
+                    Register
                   </Link>
                 </div>
               </div>

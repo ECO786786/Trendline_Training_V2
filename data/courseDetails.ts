@@ -29,10 +29,10 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Kickstart your career by turning raw numbers into meaningful business stories using the industry's most essential tools.",
     level: "Beginner",
-    duration: "3 Days",
+    duration: "4-6 Weeks (Flexible Time)",
     prices: {
-      ZM: { amount: 1500, currency: "ZMW" },
-      US: { amount: 70, currency: "USD" },
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 75, currency: "USD" },
     },
     overview:
       "A comprehensive foundation designed to help you master the core pillars of data analysis: Excel, basic statistics, and SQL.",
@@ -179,10 +179,10 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Master the art of visual storytelling. Build executive-ready dashboards that automate reporting and inspire action.",
     level: "Intermediate",
-    duration: "5 Days",
+    duration: "4-6 Weeks (Flexible Time)",
     prices: {
-      ZM: { amount: 3500, currency: "ZMW" },
-      US: { amount: 150, currency: "USD" },
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 75, currency: "USD" },
     },
     overview:
       "Transform static data into dynamic stories. This course focuses on Power BI's ecosystem to deliver real-time business intelligence.",
@@ -229,7 +229,7 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "The language of data. Unlock the secrets of relational databases to extract, transform, and analyze information with precision.",
     level: "Intermediate",
-    duration: "5 Days",
+    duration: "4-6 Weeks (Flexible Time)",
     prices: {
       ZM: { amount: 2500, currency: "ZMW" },
       US: { amount: 110, currency: "USD" },
@@ -479,9 +479,9 @@ export const courseDetails: CourseDetail[] = [
     subTitle:
       "Predict the future with precision. Build robust financial frameworks to forecast growth, evaluate risk, and steer strategic investments.",
     level: "All Levels",
-    duration: "5 Days",
+    duration: "4-6 Weeks (Flexible Time)",
     prices: {
-      ZM: { amount: 1500, currency: "ZMW" },
+      ZM: { amount: 2500, currency: "ZMW" },
       US: { amount: 75, currency: "USD" },
     },
     overview:
@@ -1215,50 +1215,145 @@ export const courseDetails: CourseDetail[] = [
     certificate: "Yes",
   },
   {
-  id: 25,
-  slug: "analytics-dax-creation-capstone-dashboard-clinic",
-  title: "Analytics (DAX Creation, Capstone & Dashboard Clinic)",
-  subTitle:
-    "Master DAX through hands-on creation, real-world capstone work, and live dashboard optimisation clinics.",
-  level: "Advanced",
-  duration: "5 Days",
-  prices: {
-    ZM: { amount: 3000, currency: "ZMW" },
-    US: { amount: 130, currency: "USD" },
+    id: 25,
+    slug: "analytics-dax-creation-capstone-dashboard-clinic",
+    title: "Analytics (DAX Creation, Capstone & Dashboard Clinic)",
+    subTitle:
+      "Master DAX through hands-on creation, real-world capstone work, and live dashboard optimisation clinics.",
+    level: "Advanced",
+    duration: "5 Days",
+    prices: {
+      ZM: { amount: 3000, currency: "ZMW" },
+      US: { amount: 130, currency: "USD" },
+    },
+    overview:
+      "This advanced, practice-led course focuses on building strong DAX foundations, applying them in a real-world capstone project, and refining Power BI dashboards through guided clinic sessions. You’ll move beyond theory to confidently design performant measures, optimise models, and deliver production-ready dashboards that answer real business questions.",
+    learningOutcomes: [
+      "Write clear, efficient, and scalable DAX measures from scratch",
+      "Apply DAX patterns to solve real-world analytical problems",
+      "Build and complete an end-to-end Power BI capstone dashboard",
+      "Debug, optimise, and improve existing dashboards in clinic-style sessions",
+    ],
+    curriculum: [
+      {
+        title: "DAX Foundations & Measure Design",
+        description:
+          "Core DAX concepts, evaluation context, common functions, and best practices for writing maintainable measures.",
+      },
+      {
+        title: "Advanced DAX Patterns",
+        description:
+          "Time intelligence, complex aggregations, performance considerations, and reusable DAX patterns.",
+      },
+      {
+        title: "Capstone Dashboard Project",
+        description:
+          "Design and build a complete Power BI dashboard using real-world data, from requirements to final delivery.",
+      },
+      {
+        title: "Dashboard Clinic & Optimisation",
+        description:
+          "Live review and refinement of dashboards, focusing on usability, performance, and analytical clarity.",
+      },
+    ],
+    prerequisites:
+      "Intermediate Power BI experience and basic familiarity with DAX",
+    certificate: "Yes",
   },
-  overview:
-    "This advanced, practice-led course focuses on building strong DAX foundations, applying them in a real-world capstone project, and refining Power BI dashboards through guided clinic sessions. You’ll move beyond theory to confidently design performant measures, optimise models, and deliver production-ready dashboards that answer real business questions.",
-  learningOutcomes: [
-    "Write clear, efficient, and scalable DAX measures from scratch",
-    "Apply DAX patterns to solve real-world analytical problems",
-    "Build and complete an end-to-end Power BI capstone dashboard",
-    "Debug, optimise, and improve existing dashboards in clinic-style sessions",
-  ],
-  curriculum: [
-    {
-      title: "DAX Foundations & Measure Design",
-      description:
-        "Core DAX concepts, evaluation context, common functions, and best practices for writing maintainable measures.",
+  {
+    id: 26,
+    slug: "excel",
+    title: "Excel",
+    subTitle: "Master Excel for data analysis, reporting, and automation",
+    level: "Foundations/Intermediate",
+    duration: "4-6 Weeks (Flexible Time)",
+    prices: {
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 75, currency: "USD" },
     },
-    {
-      title: "Advanced DAX Patterns",
-      description:
-        "Time intelligence, complex aggregations, performance considerations, and reusable DAX patterns.",
+    overview:
+      "Learn to analyze, summarize, and present data using Excel for informed decision-making. This course takes you from interface basics to building functional analytical dashboards.",
+    learningOutcomes: [
+      "Clean and prepare raw data efficiently using industry-standard shortcuts",
+      "Master Logical, Lookup (VLOOKUP/XLOOKUP), Text, and Date functions",
+      "Implement Data Validation and advanced filtering to maintain data integrity",
+      "Construct interactive PivotTables and PivotCharts for rapid data summarization",
+      "Apply core visualization principles to build simple, effective analytical dashboards",
+    ],
+    curriculum: [
+      {
+        title: "Foundations & Data Cleaning",
+        description:
+          "Mastering the Excel interface, best practices shortcuts, and essential techniques for preparing messy data for analysis.",
+      },
+      {
+        title: "The Analyst's Formula Toolkit",
+        description:
+          "A deep dive into the 'Big Four' function categories: Logical (IF/IFS), Lookup (XLOOKUP), Text manipulation, and Date calculations.",
+      },
+      {
+        title: "Data Management & Integrity",
+        description:
+          "Using sorting, multi-level filtering, and data validation rules to ensure your datasets remain accurate and easy to navigate.",
+      },
+      {
+        title: "Summarization with PivotTables",
+        description:
+          "Building PivotTables and PivotCharts to transform thousands of rows of data into clear, actionable summaries.",
+      },
+      {
+        title: "Visualization & Dashboards",
+        description:
+          "Applying visualization principles to design and build simple analytical dashboards that communicate insights at a glance.",
+      },
+    ],
+    prerequisites: "Basic computer literacy",
+    certificate: "Yes",
+  },
+  {
+    id: 27,
+    slug: "introduction-to-data-science",
+    title: "Introduction to Data Science",
+    subTitle: "Explore the fundamentals of data science and its applications",
+    level: "Foundations",
+    duration: "4-6 Weeks (Flexible Time)",
+    prices: {
+      ZM: { amount: 2500, currency: "ZMW" },
+      US: { amount: 75, currency: "USD" },
     },
-    {
-      title: "Capstone Dashboard Project",
-      description:
-        "Design and build a complete Power BI dashboard using real-world data, from requirements to final delivery.",
-    },
-    {
-      title: "Dashboard Clinic & Optimisation",
-      description:
-        "Live review and refinement of dashboards, focusing on usability, performance, and analytical clarity.",
-    },
-  ],
-  prerequisites: "Intermediate Power BI experience and basic familiarity with DAX",
-  certificate: "Yes",
-}
+    overview:
+      "This course provides a comprehensive introduction to data science, covering key concepts, tools, and techniques used in the field. Participants will learn about data manipulation, exploratory data analysis, and basic machine learning algorithms.",
+    learningOutcomes: [
+      "Understand the data science workflow and key concepts",
+      "Manipulate and analyze data using Python libraries such as Pandas and NumPy",
+      "Perform exploratory data analysis (EDA) to uncover insights",
+      "Implement basic machine learning algorithms for predictive modeling",
+    ],
+    curriculum: [
+      {
+        title: "Data Science Fundamentals",
+        description:
+          "An overview of data science, its importance, and the key stages in the data science workflow.",
+      },
+      {
+        title: "Data Manipulation with Python",
+        description:
+          "Using Python libraries like Pandas and NumPy to clean, manipulate, and analyze data effectively.",
+      },
+      {
+        title: "Exploratory Data Analysis (EDA)",
+        description:
+          "Techniques for visualizing and summarizing data to identify patterns and insights.",
+      },
+      {
+        title: "Introduction to Machine Learning",
+        description:
+          "Implementing basic machine learning algorithms such as linear regression and decision trees for predictive modeling.",
+      },
+    ],
+    prerequisites: "Basic programming knowledge",
+    certificate: "Yes",
+  },
 ];
 
 export function getCourseBySlug(slug: string): CourseDetail | undefined {

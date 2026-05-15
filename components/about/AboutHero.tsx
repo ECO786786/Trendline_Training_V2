@@ -95,10 +95,10 @@ export default function AboutHero() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/training-schedule"
+                href="/courses"
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#1e3a8a] px-6 py-3 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-950"
               >
-                View training schedule
+                View our courses
               </Link>
               <Link
                 href="/contact"
