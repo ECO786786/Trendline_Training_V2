@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX, useState } from "react";
+import React, { JSX } from "react";
 import ContactForm from "@/components/ContactForm";
 
 interface ContactInfoItem {
@@ -10,15 +10,6 @@ interface ContactInfoItem {
 }
 
 export default function ContactInfo() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    company: "",
-    message: "",
-    terms: false,
-  });
 
   const contactInfo: ContactInfoItem[] = [
     {
@@ -66,24 +57,6 @@ export default function ContactInfo() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-;
-    // Add your form submission logic here
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value, type } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
-  };
 
   return (
     <section className="container mx-auto px-[5%] py-16 md:py-24 lg:py-28">

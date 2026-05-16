@@ -5,9 +5,14 @@ import { useFormStatus } from "react-dom";
 import { submitContactForm } from "../app/actions/contact";
 import Link from "next/link";
 
-const initialState = {
+const initialState: {
+  success: boolean;
+  errors: Record<string, string[] | undefined>;
+  fields?: Record<string, string>;
+} = {
   success: false,
-  errors: {} as Record<string, string[]>,
+  errors: {},
+  fields: {},
 };
 
 function SubmitButton() {
@@ -50,6 +55,8 @@ export default function ContactForm() {
     return formAction(formData);
   };
 
+  const formKey = state.fields ? JSON.stringify(state.fields) : "initial";
+
   return (
     <>
       {showModal && (
@@ -86,7 +93,12 @@ export default function ContactForm() {
         </div>
       )}
 
-      <form action={handleSubmit} noValidate aria-describedby="form-status">
+      <form key={formKey} action={handleSubmit} noValidate aria-describedby="form-status">
+        {getError("form") && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-sm text-red-600">{getError("form")![0]}</p>
+          </div>
+        )}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <div>
             <label
@@ -98,6 +110,7 @@ export default function ContactForm() {
             <input
               id="fullName"
               name="fullName"
+              defaultValue={state.fields?.fullName || ""}
               aria-invalid={!!getError("fullName")}
               aria-describedby="fullName-error"
               onChange={() => handleInputChange("fullName")}
@@ -123,6 +136,7 @@ export default function ContactForm() {
               type="email"
               id="email"
               name="email"
+              defaultValue={state.fields?.email || ""}
               aria-invalid={!!getError("email")}
               aria-describedby="email-error"
               onChange={() => handleInputChange("email")}
@@ -147,6 +161,7 @@ export default function ContactForm() {
             <input
               id="phone"
               name="phone"
+              defaultValue={state.fields?.phone || ""}
               className="w-full rounded-md border border-gray-300 px-4 py-3"
             />
           </div>
@@ -158,6 +173,7 @@ export default function ContactForm() {
             <input
               id="company"
               name="company"
+              defaultValue={state.fields?.company || ""}
               className="w-full rounded-md border border-gray-300 px-4 py-3"
             />
           </div>
@@ -169,6 +185,7 @@ export default function ContactForm() {
           <input
             id="subject"
             name="subject"
+            defaultValue={state.fields?.subject || ""}
             aria-invalid={!!getError("subject")}
             aria-describedby="subject-error"
             onChange={() => handleInputChange("subject")}
@@ -194,6 +211,7 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows={5}
+            defaultValue={state.fields?.message || ""}
             aria-invalid={!!getError("message")}
             aria-describedby="message-error"
             onChange={() => handleInputChange("message")}
