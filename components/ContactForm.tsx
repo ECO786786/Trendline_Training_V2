@@ -156,14 +156,27 @@ export default function ContactForm() {
 
           <div>
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
-              Phone
+              Phone *
             </label>
             <input
               id="phone"
               name="phone"
               defaultValue={state.fields?.phone || ""}
-              className="w-full rounded-md border border-gray-300 px-4 py-3"
+              aria-invalid={!!getError("phone")}
+              aria-describedby="phone-error"
+              onChange={() => handleInputChange("phone")}
+              className={`w-full rounded-md border px-4 py-3 ${
+                getError("phone") ? "border-red-500" : "border-gray-300"
+              }`}
             />
+            {getError("phone") && (
+              <p
+                id="phone-error"
+                className="mt-1 text-xs text-red-600 animate-in fade-in"
+              >
+                {getError("phone")![0]}
+              </p>
+            )}
           </div>
 
           <div>

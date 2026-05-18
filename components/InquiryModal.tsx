@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { X } from "lucide-react";
-import { submitCorporateInquiry } from "@/app/actions/corporate-inquiry";
+import { submitContactForm } from "@/app/actions/contact";
 
 const initialState = {
   success: false,
@@ -38,7 +38,7 @@ export default function InquiryModal({
   servicePrice = "",
 }: InquiryModalProps) {
   const [state, formAction] = useActionState(
-    submitCorporateInquiry,
+    submitContactForm,
     initialState
   );
   const [clearedErrors, setClearedErrors] = useState<Set<string>>(new Set());
@@ -58,6 +58,19 @@ export default function InquiryModal({
   const handleSubmit = (formData: FormData) => {
     setClearedErrors(new Set());
     setShowSuccess(false);
+
+    // Combine message and service info to ensure it meets the 10 character minimum
+    // and provides full context to the admin
+    const originalMessage = formData.get("message") as string;
+    let combinedMessage = originalMessage || "I am interested in this corporate service.";
+    if (serviceName) {
+      combinedMessage += `\n\nService requested: ${serviceName}`;
+      if (servicePrice) {
+        combinedMessage += `\nEstimated Price: ${servicePrice}`;
+      }
+    }
+    formData.set("message", combinedMessage);
+
     return formAction(formData);
   };
 
@@ -138,8 +151,11 @@ export default function InquiryModal({
         )}
 
         <form action={handleSubmit} noValidate className="space-y-6">
-          <input type="hidden" name="serviceName" value={serviceName} />
-          <input type="hidden" name="servicePrice" value={servicePrice} />
+          <input 
+            type="hidden" 
+            name="subject" 
+            value={serviceName ? `Corporate Inquiry - ${serviceName}` : "Corporate Inquiry"} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

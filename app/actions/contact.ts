@@ -18,7 +18,7 @@ type ContactFormState = {
 export async function submitContactForm(
   prevState: ContactFormState | null,
   formData: FormData
-) {
+): Promise<ContactFormState> {
   const rawData = Object.fromEntries(formData.entries());
 
   const fields: Record<string, string> = {

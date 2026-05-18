@@ -39,43 +39,46 @@ export default async function DashboardPage() {
     };
   });
 
-  const [corporateRows] = await pool.execute<RowDataPacket[]>(
-    `SELECT id, full_name AS fullName, email, phone, company, service_name AS serviceName, 
-            service_price AS servicePrice, message, created_at AS createdAt
-     FROM corporate_submissions ORDER BY created_at DESC`
-  );
-
   const [contactRows] = await pool.execute<RowDataPacket[]>(
     `SELECT id, full_name AS fullName, email, phone, company, subject, message,
             created_at AS createdAt
      FROM contact_submissions ORDER BY created_at DESC`
   );
 
-  const inquiries: InquiryItem[] = [
-    ...corporateRows.map((row) => ({
-      id: row.id,
-      type: "CORPORATE" as const,
-      fullName: row.fullName,
-      email: row.email,
-      phone: row.phone,
-      company: row.company,
-      serviceName: row.serviceName,
-      servicePrice: row.servicePrice,
-      message: row.message,
-      createdAt: new Date(row.createdAt),
-    })),
-    ...contactRows.map((row) => ({
-      id: row.id,
-      type: "GENERAL" as const,
-      fullName: row.fullName,
-      email: row.email,
-      phone: row.phone,
-      company: row.company,
-      subject: row.subject,
-      message: row.message,
-      createdAt: new Date(row.createdAt),
-    })),
-  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const inquiries: InquiryItem[] = contactRows.map((row) => {
+    const isCorporate = row.subject.startsWith("Corporate Inquiry");
+    let serviceName = "";
+    if (isCorporate && row.subject.includes(" - ")) {
+      serviceName = row.subject.split(" - ")[1];
+    }
+    
+    if (isCorporate) {
+      return {
+        id: row.id,
+        type: "CORPORATE" as const,
+        fullName: row.fullName,
+        email: row.email,
+        phone: row.phone,
+        company: row.company,
+        serviceName,
+        servicePrice: "",
+        message: row.message,
+        createdAt: new Date(row.createdAt),
+      };
+    } else {
+      return {
+        id: row.id,
+        type: "GENERAL" as const,
+        fullName: row.fullName,
+        email: row.email,
+        phone: row.phone,
+        company: row.company,
+        subject: row.subject,
+        message: row.message,
+        createdAt: new Date(row.createdAt),
+      };
+    }
+  });
 
   return (
     <div className="w-full">
