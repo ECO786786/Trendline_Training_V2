@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "build": "npx tsx update_db_schema.ts && next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
     "start": "NODE_ENV=production node .next/standalone/server.js",
     "lint": "eslint"
   },
