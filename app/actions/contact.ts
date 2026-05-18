@@ -1,8 +1,7 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import pool from "@/lib/db";
 import { contactSchema } from "@/lib/contact-schema";
-import { InquiryType } from "@prisma/client";
 
 /**
  * Represents the state of a contact form submission.
@@ -22,7 +21,6 @@ export async function submitContactForm(
 ) {
   const rawData = Object.fromEntries(formData.entries());
 
-  // Preserve submitted values to repopulate form on validation failure
   const fields: Record<string, string> = {
     fullName: (rawData.fullName as string) || "",
     email: (rawData.email as string) || "",
@@ -46,32 +44,26 @@ export async function submitContactForm(
   }
 
   try {
-      const { fullName, email, phone, company, subject, message } = parsed.data;
+    const { fullName, email, phone, company, subject, message } = parsed.data;
 
-      await prisma.inquiry.create({
-          data: {
-              type: InquiryType.GENERAL,
-              fullName,
-              email,
-              phone: phone || "",
-              company: company || "",
-              subject,
-              message
-          }
-      });
+    await pool.execute(
+      `INSERT INTO contact_submissions (full_name, email, phone, company, subject, message)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [fullName, email, phone || "", company || "", subject, message]
+    );
 
-      return {
-        success: true,
-        errors: {},
-      };
+    return {
+      success: true,
+      errors: {},
+    };
   } catch (e) {
-      console.error("Failed to save contact form:", e);
-      return {
-          success: false,
-          errors: {
-              form: ["Failed to send message. Please try again."]
-          },
-          fields,
-      };
+    console.error("Failed to save contact form:", e);
+    return {
+      success: false,
+      errors: {
+        form: ["Failed to send message. Please try again."],
+      },
+      fields,
+    };
   }
 }

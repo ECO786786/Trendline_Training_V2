@@ -23,7 +23,6 @@ if (!parsedEnv.success) {
   const errors = parsedEnv.error.flatten().fieldErrors;
   console.error("Invalid environment variables:", errors);
   if (process.env.NODE_ENV === "production") {
-    // Include validation details in the thrown error to help build logs/debugging
     throw new Error(
       `Missing or invalid environment variables. Details: ${JSON.stringify(errors)}`,
     );

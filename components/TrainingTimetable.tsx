@@ -15,7 +15,7 @@ export interface Course {
   slug: string;
 }
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 6;
 
 export interface TrainingTimetableProps {
   initialCourses: Course[];
@@ -46,7 +46,7 @@ export default function TrainingTimetable({
 
   return (
     <div className="relative min-h-screen w-full bg-gray-50 pb-20">
-      <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-10">
+      <div className="px-[5%] pt-6 pb-16 md:pt-8 md:pb-24 lg:pt-10 lg:pb-28">
         <Breadcrumb
           breadcrumbs={[
             { label: "Home", href: "/" },

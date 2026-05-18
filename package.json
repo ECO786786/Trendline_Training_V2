@@ -5,15 +5,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
     "start": "NODE_ENV=production node .next/standalone/server.js",
     "lint": "eslint"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "lucide-react": "^0.562.0",
+    "mysql2": "^3.22.3",
     "next": "16.1.1",
     "next-auth": "^5.0.0-beta.30",
     "nodemailer": "^7.0.12",
@@ -33,13 +33,9 @@
     "@types/sanitize-html": "^2.16.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
-    "prisma": "^5.22.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
-  },
-  "prisma": {
-    "seed": "node --loader ts-node/esm -r tsconfig-paths/register prisma/seed.ts"
   }
 }

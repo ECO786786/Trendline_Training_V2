@@ -305,9 +305,19 @@ function EnrollmentContent() {
                     <input
                       type="tel"
                       name="phone"
+                      onChange={() => handleInputChange("phone")}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-[#1e3a8a]/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 h-12 px-4 text-base"
+                      className={`w-full rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-[#1e3a8a]/50 border ${
+                        getError("phone")
+                          ? "border-red-500"
+                          : "border-gray-300 dark:border-gray-600"
+                      } bg-white dark:bg-gray-800 h-12 px-4 text-base`}
                     />
+                    {getError("phone") && (
+                      <p className="mt-1 text-xs text-red-600">
+                        {getError("phone")![0]}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col">
                     <p className="text-gray-900 dark:text-gray-200 text-base font-medium pb-2">

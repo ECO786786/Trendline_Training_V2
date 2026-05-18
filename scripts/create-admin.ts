@@ -1,8 +1,8 @@
-
-import { PrismaClient } from "@prisma/client";
+import mysql from "mysql2/promise";
 import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
 
-const prisma = new PrismaClient();
+dotenv.config();
 
 async function main() {
   const email = process.env.ADMIN_EMAIL;
@@ -14,30 +14,34 @@ async function main() {
     process.exit(1);
   }
 
+  const pool = mysql.createPool({
+    uri: process.env.DATABASE_URL,
+  });
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await prisma.user.upsert({
-    where: { email },
-    update: {
-      password: hashedPassword,
-      role: "ADMIN",
-    },
-    create: {
-      email,
-      name: "Admin User",
-      password: hashedPassword,
-      role: "ADMIN",
-    },
-  });
-
-  console.log(`Admin user ${user.email} created/updated successfully.`);
+  try {
+    const [rows] = await pool.execute<any[]>("SELECT id FROM users WHERE email = ?", [email]);
+    
+    if (rows.length > 0) {
+      await pool.execute(
+        "UPDATE users SET password = ?, role = 'ADMIN' WHERE email = ?",
+        [hashedPassword, email]
+      );
+      console.log(`Admin user ${email} updated successfully.`);
+    } else {
+      await pool.execute(
+        "INSERT INTO users (email, name, password, role) VALUES (?, ?, ?, 'ADMIN')",
+        [email, "Admin User", hashedPassword]
+      );
+      console.log(`Admin user ${email} created successfully.`);
+    }
+  } catch (error) {
+    console.error("Database error:", error);
+    process.exit(1);
+  } finally {
+    await pool.end();
+  }
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main();

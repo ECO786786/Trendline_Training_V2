@@ -1,17 +1,81 @@
-import { prisma } from "../../../lib/prisma.ts";
-import { InquiryType } from "@prisma/client";
+import pool from "@/lib/db";
+import { RowDataPacket } from "mysql2";
+
+type InquiryItem = {
+  id: number;
+  type: "GENERAL" | "CORPORATE";
+  fullName: string;
+  email: string;
+  phone: string;
+  company: string | null;
+  subject?: string | null;
+  message: string | null;
+  serviceName?: string | null;
+  servicePrice?: string | null;
+  createdAt: Date;
+};
+
+import { getCourseBySlug } from "@/data/courseDetails";
 
 export default async function DashboardPage() {
-  const registrations = await prisma.registration.findMany({
-    orderBy: { createdAt: "desc" },
-    include: { course: true, scheduledCourse: true },
+  const [registrations] = await pool.execute<RowDataPacket[]>(
+    `SELECT r.*, r.course_slug
+     FROM registrations r
+     ORDER BY r.created_at DESC`
+  );
+
+  const registrationsMapped = registrations.map(reg => {
+    const courseDetail = reg.course_slug ? getCourseBySlug(reg.course_slug) : null;
+    return {
+      id: reg.id as number,
+      email: reg.email as string,
+      company: reg.company as string | null,
+      createdAt: reg.created_at as Date,
+      course: courseDetail ? { title: courseDetail.title } : null,
+      scheduledCourse: null as any,
+      deliveryMethod: reg.delivery_method as string,
+      firstName: reg.first_name as string,
+      surname: reg.surname as string,
+    };
   });
 
-  const inquiries = await prisma.inquiry.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const [corporateRows] = await pool.execute<RowDataPacket[]>(
+    `SELECT id, full_name AS fullName, email, phone, company, service_name AS serviceName, 
+            service_price AS servicePrice, message, created_at AS createdAt
+     FROM corporate_submissions ORDER BY created_at DESC`
+  );
 
-  console.log(registrations, 'registrations')
+  const [contactRows] = await pool.execute<RowDataPacket[]>(
+    `SELECT id, full_name AS fullName, email, phone, company, subject, message,
+            created_at AS createdAt
+     FROM contact_submissions ORDER BY created_at DESC`
+  );
+
+  const inquiries: InquiryItem[] = [
+    ...corporateRows.map((row) => ({
+      id: row.id,
+      type: "CORPORATE" as const,
+      fullName: row.fullName,
+      email: row.email,
+      phone: row.phone,
+      company: row.company,
+      serviceName: row.serviceName,
+      servicePrice: row.servicePrice,
+      message: row.message,
+      createdAt: new Date(row.createdAt),
+    })),
+    ...contactRows.map((row) => ({
+      id: row.id,
+      type: "GENERAL" as const,
+      fullName: row.fullName,
+      email: row.email,
+      phone: row.phone,
+      company: row.company,
+      subject: row.subject,
+      message: row.message,
+      createdAt: new Date(row.createdAt),
+    })),
+  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   return (
     <div className="w-full">
@@ -48,7 +112,7 @@ export default async function DashboardPage() {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {registrations.map((reg) => (
+                {registrationsMapped.map((reg) => (
                   <tr
                     key={reg.id}
                     className="w-full border-b py-3 text-sm last-of-type:border-none hover:bg-gray-50"
@@ -84,7 +148,7 @@ export default async function DashboardPage() {
                     </td>
                   </tr>
                 ))}
-                {registrations.length === 0 && (
+                {registrationsMapped.length === 0 && (
                   <tr>
                     <td
                       colSpan={6}
@@ -96,7 +160,6 @@ export default async function DashboardPage() {
                 )}
               </tbody>
             </table>
-            {/* Mobile view for Enrollments can be added here if needed, keeping simple for now */}
           </div>
         </div>
       </div>
@@ -135,12 +198,12 @@ export default async function DashboardPage() {
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                       <span
                         className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
-                          inq.type === InquiryType.CORPORATE
+                          inq.type === "CORPORATE"
                             ? "bg-purple-50 text-purple-700 ring-purple-600/20"
                             : "bg-blue-50 text-blue-700 ring-blue-600/20"
                         }`}
                       >
-                        {inq.type === InquiryType.CORPORATE ? "Corporate" : "General"}
+                        {inq.type === "CORPORATE" ? "Corporate" : "General"}
                       </span>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3 font-medium text-gray-900">
@@ -155,7 +218,7 @@ export default async function DashboardPage() {
                       </div>
                     </td>
                     <td className="px-3 py-3 max-w-xs truncate">
-                      {inq.type === InquiryType.CORPORATE ? (
+                      {inq.type === "CORPORATE" ? (
                         <div className="flex flex-col">
                           <span className="font-medium text-gray-900">
                             {inq.company}

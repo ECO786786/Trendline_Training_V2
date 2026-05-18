@@ -75,7 +75,7 @@ export default function AboutHero() {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <h1 className="mt-6 max-w-4xl text-5xl font-medium tracking-[-0.04em] text-[#04030B] md:text-6xl lg:text-[4rem] lg:leading-[120%]">
+            <h1 className="max-w-4xl text-5xl font-medium tracking-[-0.04em] text-[#04030B] md:text-6xl lg:text-[4rem] lg:leading-[120%]">
               About Trendline Training & Consultancy
             </h1>
           </div>
@@ -87,7 +87,7 @@ export default function AboutHero() {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <p className="max-w-xl text-base leading-8 text-[#04030B] md:text-lg">
+            <p className="max-w-xl md:text-md text-[#04030B]">
               We help professionals and organisations move from spreadsheet
               survival mode to practical, decision-ready analytics through
               hands-on instruction, real business examples, and coaching that
@@ -148,7 +148,7 @@ export default function AboutHero() {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <p className="text-base leading-8 text-[#04030B] md:text-lg">
+            <p className="md:text-md text-[#04030B]">
               From Lusaka boardrooms to specialist classroom cohorts, our work
               blends strategy, analytics, and delivery so teams leave with more
               than inspiration. They leave with repeatable capability.

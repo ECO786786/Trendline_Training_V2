@@ -37,9 +37,9 @@ export const registrationSchema = z.object({
     firstName: sanitizedString.pipe(z.string().min(2, "First name is required")),
     surname: sanitizedString.pipe(z.string().min(2, "Surname is required")),
     email: z.string().email("Enter a valid email address"),
-    phone: sanitizedString.optional(),
+    phone: sanitizedString.pipe(z.string().min(1, "Phone number is required")),
     company: sanitizedString.optional(),
-    course: sanitizedString.optional(), // Slug
+    course: sanitizedString.pipe(z.string().min(1, "Please select a course")), 
     scheduledCourseId: z.coerce.number().optional(),
     deliveryMethod: z.enum(["in-person", "online", "hybrid"]),
     terms: z.literal(true, {

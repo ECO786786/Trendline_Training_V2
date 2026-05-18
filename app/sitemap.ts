@@ -1,20 +1,13 @@
 import { MetadataRoute } from 'next'
-import { prisma } from '@/lib/prisma'
+import { courseDetails } from '@/data/courseDetails'
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://trendlinec.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
-  const courses = await prisma.course.findMany({
-    select: {
-      slug: true,
-      updatedAt: true,
-    },
-  })
-
-  const courseEntries: MetadataRoute.Sitemap = courses.map((course) => ({
+  const courseEntries: MetadataRoute.Sitemap = courseDetails.map((course) => ({
     url: `${BASE_URL}/courses/${course.slug}`,
-    lastModified: course.updatedAt,
+    lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,
   }))

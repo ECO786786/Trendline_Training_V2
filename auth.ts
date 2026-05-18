@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-import { prisma } from "@/lib/prisma";
+import pool from "@/lib/db";
 import bcrypt from "bcryptjs";
 
 const authOptions = {
@@ -16,9 +16,11 @@ const authOptions = {
           const { email, password } = parsedCredentials.data;
 
           try {
-            const user = await prisma.user.findUnique({
-              where: { email },
-            });
+            const [rows] = await pool.execute<any[]>(
+              "SELECT * FROM users WHERE email = ?",
+              [email]
+            );
+            const user = rows[0];
 
             if (!user) {
               console.warn(`Auth attempt failed: User not found for ${email}`);

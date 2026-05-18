@@ -1,20 +1,18 @@
-
-import { prisma } from "@/lib/prisma";
-import { DeliveryMethod } from "@prisma/client";
+import pool from "@/lib/db";
 import { NextResponse } from "next/server";
+import { RowDataPacket } from "mysql2";
+import { registrationSchema } from "@/lib/contact-schema";
 
 export async function GET() {
   try {
-    const registrations = await prisma.registration.findMany({
-      include: {
-        course: {
-            select: { title: true, slug: true }
-        }
-      },
-      orderBy: { createdAt: 'desc' }
-    });
+    const [registrations] = await pool.execute<RowDataPacket[]>(
+      `SELECT r.*, r.course_slug as courseSlug
+       FROM registrations r
+       ORDER BY r.created_at DESC`
+    );
     return NextResponse.json(registrations);
   } catch (error) {
+    console.error("Error fetching registrations:", error);
     return NextResponse.json(
       { error: "Failed to fetch registrations" },
       { status: 500 }
@@ -22,18 +20,12 @@ export async function GET() {
   }
 }
 
-import { registrationSchema } from "@/lib/contact-schema";
-
-// ... existing GET
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    
-    // Validate with Zod
     const result = registrationSchema.safeParse({
         ...body,
-        terms: true // API clients usually imply acceptance or we can require it in body
+        terms: true 
     });
 
     if (!result.success) {
@@ -41,32 +33,22 @@ export async function POST(request: Request) {
     }
 
     const { firstName, surname, email, phone, company, deliveryMethod, course } = result.data;
+    const scheduledCourseId = body.scheduledCourseId || null;
     
-    // Attempt to connect course via ID if provided, or find by slug from schema
-    let courseId: number | undefined;
-    if (body.courseId) courseId = body.courseId;
-    else if (course) {
-        const courseRecord = await prisma.course.findUnique({ where: { slug: course } });
-        if (courseRecord) courseId = courseRecord.id;
-        else console.warn(`[API Registration] Course slug provided but not found in DB: ${course}`);
-    }
-    
-    const registration = await prisma.registration.create({
-      data: {
-        firstName,
-        surname,
-        email,
-        phone: phone || "",
-        company,
-        deliveryMethod: deliveryMethod === "online" ? DeliveryMethod.ONLINE_LIVE : deliveryMethod === "in-person" ? DeliveryMethod.IN_PERSON : DeliveryMethod.HYBRID,
-        // Optional Link to course if courseId provided
-        course: courseId ? { connect: { id: courseId } } : undefined
-      },
-    });
+    const deliveryMethodMapped = 
+        deliveryMethod === "online" ? "ONLINE_LIVE" : 
+        deliveryMethod === "in-person" ? "IN_PERSON" : 
+        "HYBRID";
 
-    return NextResponse.json(registration, { status: 201 });
+    const [insertResult] = await pool.execute(
+      `INSERT INTO registrations (first_name, surname, email, phone, company, delivery_method, course_slug, scheduled_course_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [firstName, surname, email, phone || "", company || "", deliveryMethodMapped, course || null, scheduledCourseId]
+    );
+
+    return NextResponse.json({ id: (insertResult as any).insertId, ...result.data }, { status: 201 });
   } catch (error) {
-    console.error(error);
+    console.error("Error creating registration:", error);
     return NextResponse.json(
       { error: "Failed to create registration" },
       { status: 500 }
