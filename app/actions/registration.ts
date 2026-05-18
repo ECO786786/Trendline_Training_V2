@@ -22,7 +22,7 @@ export async function submitRegistrationForm(
   }
 
   try {
-      const { course, firstName, surname, email, phone, company, deliveryMethod, scheduledCourseId } = parsed.data;
+      const { course, firstName, surname, email, phone, company, deliveryMethod } = parsed.data;
 
       const mappedMethod = 
           deliveryMethod === "online" ? "ONLINE_LIVE" : 
@@ -31,9 +31,9 @@ export async function submitRegistrationForm(
 
       // course is the slug, so we save it directly
       await pool.execute(
-          `INSERT INTO registrations (first_name, surname, email, phone, company, delivery_method, course_slug, scheduled_course_id)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-          [firstName, surname, email, phone || "", company || "", mappedMethod, course || null, scheduledCourseId || null]
+          `INSERT INTO registrations (first_name, surname, email, phone, company, delivery_method, course_slug)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          [firstName, surname, email, phone || "", company || "", mappedMethod, course || null]
       );
       
       return {
